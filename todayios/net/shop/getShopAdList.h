@@ -10,8 +10,6 @@
 
 @interface getShopAdList : baseRequest
 {
-    NSString *_strcid;
 }
-@property(nonatomic,strong)NSString* strcid;
 
 @end

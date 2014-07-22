@@ -7,7 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
+@class getShopAdList;
 
 @interface httpManager : NSObject
+{
+    getShopAdList *_getshopad;
+}
+
+@property(nonatomic,strong) getShopAdList *getshopad;
+
++ (httpManager *)shareInstance;
 
 @end

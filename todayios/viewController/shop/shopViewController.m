@@ -7,6 +7,7 @@
 //
 
 #import "shopViewController.h"
+#import "getShopAdList.h"
 
 @interface shopViewController ()
 
@@ -25,6 +26,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [[httpManager shareInstance].getshopad request];
 }
 
 - (void)didReceiveMemoryWarning

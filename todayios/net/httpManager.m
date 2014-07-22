@@ -7,7 +7,28 @@
 //
 
 #import "httpManager.h"
+#import "getShopAdList.h"
+
+static httpManager * shareins = nil;
 
 @implementation httpManager
+@synthesize getshopad = _getshopad;
+
++ (httpManager *)shareInstance
+{
+	if (nil == shareins)
+    {
+		shareins = [[httpManager alloc] init];
+	}
+	return shareins;
+}
+
+-(id)init{
+    self = [super init];
+    if(self){
+        _getshopad = [[getShopAdList alloc] init];
+    }
+    return self;
+}
 
 @end

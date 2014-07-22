@@ -56,6 +56,9 @@
 		35A0CC9C197D123100D201D3 /* httpManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 35A0CC9B197D123100D201D3 /* httpManager.m */; };
 		35A0CCA0197D149700D201D3 /* baseRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 35A0CC9F197D149700D201D3 /* baseRequest.m */; };
 		35A0CCA3197D14EC00D201D3 /* getShopAdList.m in Sources */ = {isa = PBXBuildFile; fileRef = 35A0CCA2197D14EC00D201D3 /* getShopAdList.m */; };
+		35A0CCC2197E0A9400D201D3 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 35A0CCC1197E0A9400D201D3 /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		35A0CCC7197E271700D201D3 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 35A0CCC4197E271700D201D3 /* SVProgressHUD.bundle */; };
+		35A0CCC8197E271700D201D3 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 35A0CCC6197E271700D201D3 /* SVProgressHUD.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -159,6 +162,13 @@
 		35A0CC9F197D149700D201D3 /* baseRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = baseRequest.m; path = net/baseRequest.m; sourceTree = "<group>"; };
 		35A0CCA1197D14EC00D201D3 /* getShopAdList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = getShopAdList.h; path = net/shop/getShopAdList.h; sourceTree = "<group>"; };
 		35A0CCA2197D14EC00D201D3 /* getShopAdList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = getShopAdList.m; path = net/shop/getShopAdList.m; sourceTree = "<group>"; };
+		35A0CCBD197DF83500D201D3 /* logdef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = logdef.h; sourceTree = "<group>"; };
+		35A0CCBE197DFA0200D201D3 /* commondef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = commondef.h; sourceTree = "<group>"; };
+		35A0CCC0197E0A9400D201D3 /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JSONKit.h; path = thirdparty/jsonkit/JSONKit.h; sourceTree = "<group>"; };
+		35A0CCC1197E0A9400D201D3 /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JSONKit.m; path = thirdparty/jsonkit/JSONKit.m; sourceTree = "<group>"; };
+		35A0CCC4197E271700D201D3 /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
+		35A0CCC5197E271700D201D3 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
+		35A0CCC6197E271700D201D3 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -228,6 +238,7 @@
 		35A0CB7A197CDEF400D201D3 /* todayios */ = {
 			isa = PBXGroup;
 			children = (
+				35A0CCBC197DF7A100D201D3 /* commondef */,
 				35A0CC99197D11DA00D201D3 /* model */,
 				35A0CC98197D105B00D201D3 /* net */,
 				35A0CBBA197D03F500D201D3 /* thirdparty */,
@@ -323,6 +334,8 @@
 		35A0CBBA197D03F500D201D3 /* thirdparty */ = {
 			isa = PBXGroup;
 			children = (
+				35A0CCC3197E271700D201D3 /* SVProgressHUD */,
+				35A0CCBF197E0A6400D201D3 /* jsonkit */,
 				35A0CC94197D0C8900D201D3 /* Reachability */,
 				35A0CBBB197D04AF00D201D3 /* asihttp */,
 			);
@@ -450,6 +463,35 @@
 			name = shop;
 			sourceTree = "<group>";
 		};
+		35A0CCBC197DF7A100D201D3 /* commondef */ = {
+			isa = PBXGroup;
+			children = (
+				35A0CCBD197DF83500D201D3 /* logdef.h */,
+				35A0CCBE197DFA0200D201D3 /* commondef.h */,
+			);
+			name = commondef;
+			sourceTree = "<group>";
+		};
+		35A0CCBF197E0A6400D201D3 /* jsonkit */ = {
+			isa = PBXGroup;
+			children = (
+				35A0CCC0197E0A9400D201D3 /* JSONKit.h */,
+				35A0CCC1197E0A9400D201D3 /* JSONKit.m */,
+			);
+			name = jsonkit;
+			sourceTree = "<group>";
+		};
+		35A0CCC3197E271700D201D3 /* SVProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				35A0CCC4197E271700D201D3 /* SVProgressHUD.bundle */,
+				35A0CCC5197E271700D201D3 /* SVProgressHUD.h */,
+				35A0CCC6197E271700D201D3 /* SVProgressHUD.m */,
+			);
+			name = SVProgressHUD;
+			path = thirdparty/SVProgressHUD;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -526,6 +568,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				35A0CB7F197CDEF400D201D3 /* InfoPlist.strings in Resources */,
+				35A0CCC7197E271700D201D3 /* SVProgressHUD.bundle in Resources */,
 				35A0CB87197CDEF400D201D3 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -550,6 +593,7 @@
 				35A0CC48197D099E00D201D3 /* ASIWebPageRequest.m in Sources */,
 				35A0CCA3197D14EC00D201D3 /* getShopAdList.m in Sources */,
 				35A0CC9C197D123100D201D3 /* httpManager.m in Sources */,
+				35A0CCC8197E271700D201D3 /* SVProgressHUD.m in Sources */,
 				35A0CC50197D099E00D201D3 /* ASIS3Bucket.m in Sources */,
 				35A0CBB3197CF17500D201D3 /* categoryViewController.m in Sources */,
 				35A0CC51197D099E00D201D3 /* ASIS3BucketObject.m in Sources */,
@@ -564,6 +608,7 @@
 				35A0CC47197D099E00D201D3 /* ASINetworkQueue.m in Sources */,
 				35A0CC4A197D099E00D201D3 /* ASICloudFilesContainer.m in Sources */,
 				35A0CC52197D099E00D201D3 /* ASIS3BucketRequest.m in Sources */,
+				35A0CCC2197E0A9400D201D3 /* JSONKit.m in Sources */,
 				35A0CBA6197CE9CA00D201D3 /* viewStart.m in Sources */,
 				35A0CC49197D099E00D201D3 /* ASICloudFilesCDNRequest.m in Sources */,
 				35A0CBB0197CF08D00D201D3 /* shopViewController.m in Sources */,
