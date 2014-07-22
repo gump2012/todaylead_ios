@@ -59,6 +59,8 @@
 		35A0CCC2197E0A9400D201D3 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 35A0CCC1197E0A9400D201D3 /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		35A0CCC7197E271700D201D3 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 35A0CCC4197E271700D201D3 /* SVProgressHUD.bundle */; };
 		35A0CCC8197E271700D201D3 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 35A0CCC6197E271700D201D3 /* SVProgressHUD.m */; };
+		35A0CCCE197E449900D201D3 /* shopadDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 35A0CCCD197E449900D201D3 /* shopadDataSource.m */; };
+		35A0CCD3197E511500D201D3 /* CP.m in Sources */ = {isa = PBXBuildFile; fileRef = 35A0CCD2197E511500D201D3 /* CP.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -169,6 +171,12 @@
 		35A0CCC4197E271700D201D3 /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
 		35A0CCC5197E271700D201D3 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
 		35A0CCC6197E271700D201D3 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
+		35A0CCC9197E2D1C00D201D3 /* notificationdef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = notificationdef.h; sourceTree = "<group>"; };
+		35A0CCCA197E31CA00D201D3 /* stringdef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stringdef.h; sourceTree = "<group>"; };
+		35A0CCCC197E449900D201D3 /* shopadDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = shopadDataSource.h; path = model/shop/shopadDataSource.h; sourceTree = "<group>"; };
+		35A0CCCD197E449900D201D3 /* shopadDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = shopadDataSource.m; path = model/shop/shopadDataSource.m; sourceTree = "<group>"; };
+		35A0CCD1197E511500D201D3 /* CP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CP.h; path = public/commonparameter/CP.h; sourceTree = "<group>"; };
+		35A0CCD2197E511500D201D3 /* CP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CP.m; path = public/commonparameter/CP.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -238,6 +246,7 @@
 		35A0CB7A197CDEF400D201D3 /* todayios */ = {
 			isa = PBXGroup;
 			children = (
+				35A0CCCF197E4FCB00D201D3 /* public */,
 				35A0CCBC197DF7A100D201D3 /* commondef */,
 				35A0CC99197D11DA00D201D3 /* model */,
 				35A0CC98197D105B00D201D3 /* net */,
@@ -450,6 +459,7 @@
 		35A0CC99197D11DA00D201D3 /* model */ = {
 			isa = PBXGroup;
 			children = (
+				35A0CCCB197E405700D201D3 /* shop */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -468,6 +478,8 @@
 			children = (
 				35A0CCBD197DF83500D201D3 /* logdef.h */,
 				35A0CCBE197DFA0200D201D3 /* commondef.h */,
+				35A0CCC9197E2D1C00D201D3 /* notificationdef.h */,
+				35A0CCCA197E31CA00D201D3 /* stringdef.h */,
 			);
 			name = commondef;
 			sourceTree = "<group>";
@@ -490,6 +502,32 @@
 			);
 			name = SVProgressHUD;
 			path = thirdparty/SVProgressHUD;
+			sourceTree = "<group>";
+		};
+		35A0CCCB197E405700D201D3 /* shop */ = {
+			isa = PBXGroup;
+			children = (
+				35A0CCCC197E449900D201D3 /* shopadDataSource.h */,
+				35A0CCCD197E449900D201D3 /* shopadDataSource.m */,
+			);
+			name = shop;
+			sourceTree = "<group>";
+		};
+		35A0CCCF197E4FCB00D201D3 /* public */ = {
+			isa = PBXGroup;
+			children = (
+				35A0CCD0197E50BC00D201D3 /* commonparameter */,
+			);
+			name = public;
+			sourceTree = "<group>";
+		};
+		35A0CCD0197E50BC00D201D3 /* commonparameter */ = {
+			isa = PBXGroup;
+			children = (
+				35A0CCD1197E511500D201D3 /* CP.h */,
+				35A0CCD2197E511500D201D3 /* CP.m */,
+			);
+			name = commonparameter;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -614,6 +652,8 @@
 				35A0CBB0197CF08D00D201D3 /* shopViewController.m in Sources */,
 				35A0CC4C197D099E00D201D3 /* ASICloudFilesContainerXMLParserDelegate.m in Sources */,
 				35A0CC42197D099E00D201D3 /* ASIDataDecompressor.m in Sources */,
+				35A0CCD3197E511500D201D3 /* CP.m in Sources */,
+				35A0CCCE197E449900D201D3 /* shopadDataSource.m in Sources */,
 				35A0CC46197D099E00D201D3 /* ASIInputStream.m in Sources */,
 				35A0CC4E197D099E00D201D3 /* ASICloudFilesObjectRequest.m in Sources */,
 				35A0CC53197D099E00D201D3 /* ASIS3ObjectRequest.m in Sources */,

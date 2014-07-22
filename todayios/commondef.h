@@ -9,7 +9,7 @@
 #ifndef todayios_commondef_h
 #define todayios_commondef_h
 
-#define MAIN_DOMAIN @"www.toupai360.com"
+#define MAIN_DOMAIN @"http://www.toupai360.com"
 #define MAIN_PORT   @"10080"
 
 #endif

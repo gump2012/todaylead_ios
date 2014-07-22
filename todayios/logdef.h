@@ -16,7 +16,7 @@
 #define LOG_Net(log, ...)
 #endif
 
-#define DEBUG_Test 0
+#define DEBUG_Test 1
 #if DEBUG_Test
 #define LOG_Test(log, ...) NSLog(log, ##__VA_ARGS__)
 #else

@@ -9,5 +9,7 @@
 #import "BaseViewController.h"
 
 @interface shopViewController : BaseViewController
-
+{
+    UITableView *_tableview;
+}
 @end

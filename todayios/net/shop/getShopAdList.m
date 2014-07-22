@@ -9,12 +9,13 @@
 #import "getShopAdList.h"
 #import "ASIHTTPRequest.h"
 #import "JSONKit.h"
+#import "shopadDataSource.h"
 
 @implementation getShopAdList
 
 -(void)request{
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@:%@/?m=shop&a=getAdList",MAIN_DOMAIN,MAIN_PORT]];
-    
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@:%@/?m=shop&a=getAdvertList",MAIN_DOMAIN,MAIN_PORT]];
+    LOG_Test(@"%@",url);
     ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
     
     [request setDelegate:self];
@@ -26,12 +27,12 @@
 - (void)requestFinished:(ASIHTTPRequest *)request
 {
     NSString *responseString = [request responseString];
-    
-    JSONDecoder *jd=[[JSONDecoder alloc] init];
-    NSDictionary *jsondic = [jd objectWithUTF8String:(const unsigned char *)[responseString UTF8String]
-                                              length:(unsigned int)[responseString length]];
+    NSDictionary *jsondic = [responseString objectFromJSONString];
     if (jsondic) {
-       LOG_Test(@"%@",jsondic);
+        [[shopadDataSource shareInstance].shopadDic removeAllObjects];
+        [[shopadDataSource shareInstance].shopadDic setDictionary:jsondic];
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:NotifyRefreshShopAd object:nil];
     }
 }
 
@@ -39,6 +40,7 @@
 {
     NSError *error = [request error];
     if (error) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:NotifyHttpRequestError object:nil];
         LOG_Error(@"%@",error);
     }
 }
