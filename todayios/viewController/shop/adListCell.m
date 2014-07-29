@@ -7,6 +7,7 @@
 //
 
 #import "adListCell.h"
+#import "UIImageView+WebCache.h"
 
 @implementation adListCell
 
