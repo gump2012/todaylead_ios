@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3532923519878DB000149438 /* adListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3532923419878DB000149438 /* adListCell.m */; };
 		35A0CB75197CDEF400D201D3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35A0CB74197CDEF400D201D3 /* Foundation.framework */; };
 		35A0CB77197CDEF400D201D3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35A0CB76197CDEF400D201D3 /* CoreGraphics.framework */; };
 		35A0CB79197CDEF400D201D3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35A0CB78197CDEF400D201D3 /* UIKit.framework */; };
@@ -74,6 +75,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3532923319878DB000149438 /* adListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = adListCell.h; path = viewController/shop/adListCell.h; sourceTree = "<group>"; };
+		3532923419878DB000149438 /* adListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = adListCell.m; path = viewController/shop/adListCell.m; sourceTree = "<group>"; };
 		35A0CB71197CDEF400D201D3 /* todayios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = todayios.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		35A0CB74197CDEF400D201D3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		35A0CB76197CDEF400D201D3 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -309,6 +312,8 @@
 			children = (
 				35A0CBAE197CF08D00D201D3 /* shopViewController.h */,
 				35A0CBAF197CF08D00D201D3 /* shopViewController.m */,
+				3532923319878DB000149438 /* adListCell.h */,
+				3532923419878DB000149438 /* adListCell.m */,
 			);
 			name = shop;
 			sourceTree = "<group>";
@@ -629,6 +634,7 @@
 				35A0CC41197D099E00D201D3 /* ASIDataCompressor.m in Sources */,
 				35A0CC54197D099E00D201D3 /* ASIS3Request.m in Sources */,
 				35A0CC48197D099E00D201D3 /* ASIWebPageRequest.m in Sources */,
+				3532923519878DB000149438 /* adListCell.m in Sources */,
 				35A0CCA3197D14EC00D201D3 /* getShopAdList.m in Sources */,
 				35A0CC9C197D123100D201D3 /* httpManager.m in Sources */,
 				35A0CCC8197E271700D201D3 /* SVProgressHUD.m in Sources */,

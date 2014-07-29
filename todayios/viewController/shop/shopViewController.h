@@ -8,7 +8,7 @@
 
 #import "BaseViewController.h"
 
-@interface shopViewController : BaseViewController
+@interface shopViewController : BaseViewController<UITableViewDataSource, UITableViewDelegate>
 {
     UITableView *_tableview;
 }
