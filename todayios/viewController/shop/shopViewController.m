@@ -23,12 +23,13 @@
         NSNotificationCenter *center=[NSNotificationCenter defaultCenter];
         [center addObserver:self
                    selector:@selector(refreshAdlist:)
-                       name:NotifyHttpRequestError
+                       name:NotifyRefreshShopAd
                      object:nil];
         
         _tableview = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, [CP shareInstance].w, [CP shareInstance].h)];
         _tableview.dataSource = self;
         _tableview.delegate = self;
+        _tableview.separatorStyle = UITableViewCellSeparatorStyleNone;
     }
     return self;
 }
@@ -40,6 +41,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self.view addSubview:_tableview];
+    
     [[httpManager shareInstance].getshopad request];
 }
 
@@ -74,7 +77,7 @@
                 adcell = [[adListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
             }
             
-            
+            [adcell refreshCell];
             
             return adcell;
         }
@@ -103,7 +106,7 @@
     switch (indexPath.section) {
         case 0:
         {
-            iheight = 300.0f;
+            iheight = 140.0f;
         }
             break;
             
