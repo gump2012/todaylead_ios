@@ -74,6 +74,8 @@
                 adcell = [[adListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
             }
             
+            
+            
             return adcell;
         }
             break;

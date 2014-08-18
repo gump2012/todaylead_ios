@@ -103,4 +103,9 @@
     [self turnPage];
 }
 
+-(void)refreshCell
+{
+    
+}
+
 @end

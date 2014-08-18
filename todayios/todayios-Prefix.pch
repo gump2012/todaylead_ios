@@ -21,3 +21,4 @@
 #import "notificationdef.h"
 #import "stringdef.h"
 #import "CP.h"
+#import "BaseCell.h"

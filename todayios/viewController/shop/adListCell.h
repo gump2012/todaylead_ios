@@ -6,9 +6,7 @@
 //  Copyright (c) 2014年 lishiming. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-
-@interface adListCell : UITableViewCell<UIScrollViewDelegate>
+@interface adListCell : BaseCell<UIScrollViewDelegate>
 {
     UIScrollView        *_scrollview;
     NSMutableArray      *_slideImages;

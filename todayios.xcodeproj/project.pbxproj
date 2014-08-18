@@ -24,6 +24,7 @@
 		3532926519879F5D00149438 /* UIImageView+HighlightedWebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 3532925319879F5D00149438 /* UIImageView+HighlightedWebCache.m */; };
 		3532926619879F5D00149438 /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 3532925519879F5D00149438 /* UIImageView+WebCache.m */; };
 		3532926719879F5D00149438 /* UIView+WebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3532925719879F5D00149438 /* UIView+WebCacheOperation.m */; };
+		353DFBC919A1E1F30098EC0F /* BaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 353DFBC819A1E1F30098EC0F /* BaseCell.m */; };
 		35A0CB75197CDEF400D201D3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35A0CB74197CDEF400D201D3 /* Foundation.framework */; };
 		35A0CB77197CDEF400D201D3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35A0CB76197CDEF400D201D3 /* CoreGraphics.framework */; };
 		35A0CB79197CDEF400D201D3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35A0CB78197CDEF400D201D3 /* UIKit.framework */; };
@@ -126,6 +127,8 @@
 		3532925519879F5D00149438 /* UIImageView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+WebCache.m"; sourceTree = "<group>"; };
 		3532925619879F5D00149438 /* UIView+WebCacheOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+WebCacheOperation.h"; sourceTree = "<group>"; };
 		3532925719879F5D00149438 /* UIView+WebCacheOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WebCacheOperation.m"; sourceTree = "<group>"; };
+		353DFBC719A1E1F30098EC0F /* BaseCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BaseCell.h; path = viewController/BaseCell.h; sourceTree = "<group>"; };
+		353DFBC819A1E1F30098EC0F /* BaseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BaseCell.m; path = viewController/BaseCell.m; sourceTree = "<group>"; };
 		35A0CB71197CDEF400D201D3 /* todayios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = todayios.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		35A0CB74197CDEF400D201D3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		35A0CB76197CDEF400D201D3 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -393,6 +396,8 @@
 				35A0CBA5197CE9CA00D201D3 /* viewStart.m */,
 				35A0CBAB197CEF9700D201D3 /* BaseViewController.h */,
 				35A0CBAC197CEF9700D201D3 /* BaseViewController.m */,
+				353DFBC719A1E1F30098EC0F /* BaseCell.h */,
+				353DFBC819A1E1F30098EC0F /* BaseCell.m */,
 			);
 			name = viewController;
 			sourceTree = "<group>";
@@ -754,6 +759,7 @@
 				35A0CC4A197D099E00D201D3 /* ASICloudFilesContainer.m in Sources */,
 				35A0CC52197D099E00D201D3 /* ASIS3BucketRequest.m in Sources */,
 				35A0CCC2197E0A9400D201D3 /* JSONKit.m in Sources */,
+				353DFBC919A1E1F30098EC0F /* BaseCell.m in Sources */,
 				35A0CBA6197CE9CA00D201D3 /* viewStart.m in Sources */,
 				35A0CC49197D099E00D201D3 /* ASICloudFilesCDNRequest.m in Sources */,
 				35A0CBB0197CF08D00D201D3 /* shopViewController.m in Sources */,
