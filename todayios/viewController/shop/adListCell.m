@@ -18,7 +18,7 @@
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        //[NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(runTimePage) userInfo:nil repeats:YES];
+        [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(runTimePage) userInfo:nil repeats:YES];
         // 初始化 scrollview
         _scrollview = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, [CP shareInstance].w, ADCELL_H)];
         _scrollview.bounces = YES;
@@ -29,6 +29,7 @@
         [self.contentView addSubview:_scrollview];
         // 初始化 数组 并添加四张图片
         _slideImages = [[NSMutableArray alloc] init];
+        _imageViewArr = [[NSMutableArray alloc] init];
         // 初始化 pagecontrol
         _pageControl = [[UIPageControl alloc]initWithFrame:CGRectMake(120,120,100,18)]; // 初始化mypagecontrol
         [_pageControl setCurrentPageIndicatorTintColor:[UIColor redColor]];
@@ -43,16 +44,19 @@
             UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake((320 * i) + 320, 0, [CP shareInstance].w, ADCELL_H)];
             [imageView sd_setImageWithURL:[NSURL URLWithString:[_slideImages objectAtIndex:i]]];
             [_scrollview addSubview:imageView]; // 首页是第0页,默认从第1页开始的。所以+320。。。
+            [_imageViewArr addObject:imageView];
         }
         // 取数组最后一张图片 放在第0页
         if (_slideImages.count > 0) {
             UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, [CP shareInstance].w, ADCELL_H)];
             [imageView sd_setImageWithURL:[NSURL URLWithString:[_slideImages objectAtIndex:([_slideImages count]-1)]]];
             [_scrollview addSubview:imageView];
+            [_imageViewArr addObject:imageView];
             // 取数组第一张图片 放在最后1页
             imageView = [[UIImageView alloc] initWithFrame:CGRectMake((320 * ([_slideImages count] + 1)) , 0, [CP shareInstance].w, ADCELL_H)];
             [imageView sd_setImageWithURL:[NSURL URLWithString:[_slideImages objectAtIndex:0]]];
             [_scrollview addSubview:imageView];
+            [_imageViewArr addObject:imageView];
             
             [_scrollview setContentSize:CGSizeMake(320 * ([_slideImages count] + 2), ADCELL_H)]; //  +上第1页和第4页  原理：4-[1-2-3-4]-1
         }
@@ -96,16 +100,16 @@
 // pagecontrol 选择器的方法
 - (void)turnPage
 {
-    int page = _pageControl.currentPage; // 获取当前的page
+    long  page = _pageControl.currentPage; // 获取当前的page
     [_scrollview scrollRectToVisible:CGRectMake(320*(page+1),0,[CP shareInstance].w, ADCELL_H) animated:NO];
     // 触摸pagecontroller那个点点 往后翻一页 +1
 }
 // 定时器 绑定的方法
 - (void)runTimePage
 {
-    int page = _pageControl.currentPage; // 获取当前的page
+    long  page = _pageControl.currentPage; // 获取当前的page
     page++;
-    page = page > _slideImages.count ? 0 : page ;
+    page = page >= _slideImages.count ? 0 : page ;
     _pageControl.currentPage = page;
     [self turnPage];
 }
@@ -127,19 +131,26 @@
                 }
                 
                 _pageControl.numberOfPages = [_slideImages count];
+                for (int i = 0; i < _imageViewArr.count; ++i) {
+                    UIImageView *imgview = [_imageViewArr objectAtIndex:i];
+                    [imgview removeFromSuperview];
+                }
                 
+                [_imageViewArr removeAllObjects];
                 
                 for (int i = 0;i<[_slideImages count];i++)
                 {
                     UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake((320 * i) + 320, 0, [CP shareInstance].w, ADCELL_H)];
                     [imageView sd_setImageWithURL:[NSURL URLWithString:[_slideImages objectAtIndex:i]]];
                     [_scrollview addSubview:imageView]; // 首页是第0页,默认从第1页开始的。所以+320。。。
+                    [_imageViewArr addObject:imageView];
                 }
                 // 取数组最后一张图片 放在第0页
                 if (_slideImages.count > 0) {
                     UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, [CP shareInstance].w, ADCELL_H)];
                     [imageView sd_setImageWithURL:[NSURL URLWithString:[_slideImages objectAtIndex:([_slideImages count]-1)]]];
                     [_scrollview addSubview:imageView];
+                    [_imageViewArr addObject:imageView];
                     // 取数组第一张图片 放在最后1页
                     imageView = [[UIImageView alloc] initWithFrame:CGRectMake((320 * ([_slideImages count] + 1)) ,
                                                                               0,
@@ -147,6 +158,7 @@
                                                                               ADCELL_H)];
                     [imageView sd_setImageWithURL:[NSURL URLWithString:[_slideImages objectAtIndex:0]]];
                     [_scrollview addSubview:imageView];
+                    [_imageViewArr addObject:imageView];
                     
                     [_scrollview setContentSize:CGSizeMake(320 * ([_slideImages count] + 2), ADCELL_H)]; //  +上第1页和第4页  原理：4-[1-2-3-4]-1
                 }

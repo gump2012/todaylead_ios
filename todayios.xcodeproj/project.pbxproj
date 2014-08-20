@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3390642219A38567003BA869 /* getShopTop.m in Sources */ = {isa = PBXBuildFile; fileRef = 3390642119A38567003BA869 /* getShopTop.m */; };
+		3390642519A386F1003BA869 /* shopTopDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 3390642419A386F1003BA869 /* shopTopDataSource.m */; };
+		3390642819A38DF5003BA869 /* recommendCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3390642719A38DF5003BA869 /* recommendCell.m */; };
 		3532923519878DB000149438 /* adListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3532923419878DB000149438 /* adListCell.m */; };
 		3532925819879F5D00149438 /* MKAnnotationView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 3532923819879F5D00149438 /* MKAnnotationView+WebCache.m */; };
 		3532925919879F5D00149438 /* NSData+ImageContentType.m in Sources */ = {isa = PBXBuildFile; fileRef = 3532923A19879F5D00149438 /* NSData+ImageContentType.m */; };
@@ -92,6 +95,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3390642019A38567003BA869 /* getShopTop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = getShopTop.h; path = net/shop/getShopTop.h; sourceTree = "<group>"; };
+		3390642119A38567003BA869 /* getShopTop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = getShopTop.m; path = net/shop/getShopTop.m; sourceTree = "<group>"; };
+		3390642319A386F1003BA869 /* shopTopDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = shopTopDataSource.h; path = model/shop/shopTopDataSource.h; sourceTree = "<group>"; };
+		3390642419A386F1003BA869 /* shopTopDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = shopTopDataSource.m; path = model/shop/shopTopDataSource.m; sourceTree = "<group>"; };
+		3390642619A38DF5003BA869 /* recommendCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = recommendCell.h; path = viewController/shop/recommendCell.h; sourceTree = "<group>"; };
+		3390642719A38DF5003BA869 /* recommendCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = recommendCell.m; path = viewController/shop/recommendCell.m; sourceTree = "<group>"; };
 		3532923319878DB000149438 /* adListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = adListCell.h; path = viewController/shop/adListCell.h; sourceTree = "<group>"; };
 		3532923419878DB000149438 /* adListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = adListCell.m; path = viewController/shop/adListCell.m; sourceTree = "<group>"; };
 		3532923719879F5D00149438 /* MKAnnotationView+WebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKAnnotationView+WebCache.h"; sourceTree = "<group>"; };
@@ -409,6 +418,8 @@
 				35A0CBAF197CF08D00D201D3 /* shopViewController.m */,
 				3532923319878DB000149438 /* adListCell.h */,
 				3532923419878DB000149438 /* adListCell.m */,
+				3390642619A38DF5003BA869 /* recommendCell.h */,
+				3390642719A38DF5003BA869 /* recommendCell.m */,
 			);
 			name = shop;
 			sourceTree = "<group>";
@@ -570,6 +581,8 @@
 			children = (
 				35A0CCA1197D14EC00D201D3 /* getShopAdList.h */,
 				35A0CCA2197D14EC00D201D3 /* getShopAdList.m */,
+				3390642019A38567003BA869 /* getShopTop.h */,
+				3390642119A38567003BA869 /* getShopTop.m */,
 			);
 			name = shop;
 			sourceTree = "<group>";
@@ -610,6 +623,8 @@
 			children = (
 				35A0CCCC197E449900D201D3 /* shopadDataSource.h */,
 				35A0CCCD197E449900D201D3 /* shopadDataSource.m */,
+				3390642319A386F1003BA869 /* shopTopDataSource.h */,
+				3390642419A386F1003BA869 /* shopTopDataSource.m */,
 			);
 			name = shop;
 			sourceTree = "<group>";
@@ -678,6 +693,9 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "___FULLUSERNAME___";
 				TargetAttributes = {
+					35A0CB70197CDEF400D201D3 = {
+						DevelopmentTeam = P98Q4NH53V;
+					};
 					35A0CB8B197CDEF400D201D3 = {
 						TestTargetID = 35A0CB70197CDEF400D201D3;
 					};
@@ -734,6 +752,7 @@
 				3532923519878DB000149438 /* adListCell.m in Sources */,
 				3532926519879F5D00149438 /* UIImageView+HighlightedWebCache.m in Sources */,
 				35A0CCA3197D14EC00D201D3 /* getShopAdList.m in Sources */,
+				3390642819A38DF5003BA869 /* recommendCell.m in Sources */,
 				3532925919879F5D00149438 /* NSData+ImageContentType.m in Sources */,
 				35A0CC9C197D123100D201D3 /* httpManager.m in Sources */,
 				35A0CCC8197E271700D201D3 /* SVProgressHUD.m in Sources */,
@@ -742,6 +761,7 @@
 				35A0CC51197D099E00D201D3 /* ASIS3BucketObject.m in Sources */,
 				35A0CC44197D099E00D201D3 /* ASIFormDataRequest.m in Sources */,
 				3532925B19879F5D00149438 /* SDWebImageCompat.m in Sources */,
+				3390642219A38567003BA869 /* getShopTop.m in Sources */,
 				3532925F19879F5D00149438 /* SDWebImageManager.m in Sources */,
 				35A0CC43197D099E00D201D3 /* ASIDownloadCache.m in Sources */,
 				3532925A19879F5D00149438 /* SDImageCache.m in Sources */,
@@ -758,6 +778,7 @@
 				3532926419879F5D00149438 /* UIImage+WebP.m in Sources */,
 				35A0CC4A197D099E00D201D3 /* ASICloudFilesContainer.m in Sources */,
 				35A0CC52197D099E00D201D3 /* ASIS3BucketRequest.m in Sources */,
+				3390642519A386F1003BA869 /* shopTopDataSource.m in Sources */,
 				35A0CCC2197E0A9400D201D3 /* JSONKit.m in Sources */,
 				353DFBC919A1E1F30098EC0F /* BaseCell.m in Sources */,
 				35A0CBA6197CE9CA00D201D3 /* viewStart.m in Sources */,
@@ -901,6 +922,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "todayios/todayios-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
@@ -910,6 +932,7 @@
 				);
 				INFOPLIST_FILE = "todayios/todayios-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -919,6 +942,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "todayios/todayios-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
@@ -928,6 +952,7 @@
 				);
 				INFOPLIST_FILE = "todayios/todayios-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

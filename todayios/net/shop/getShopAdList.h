@@ -6,8 +6,6 @@
 //  Copyright (c) 2014年 lishiming. All rights reserved.
 //
 
-#import "baseRequest.h"
-
 @interface getShopAdList : baseRequest
 {
 }

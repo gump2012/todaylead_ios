@@ -9,6 +9,7 @@
 #import "shopViewController.h"
 #import "getShopAdList.h"
 #import "adListCell.h"
+#import "shopTopDataSource.h"
 
 @interface shopViewController ()
 
@@ -24,6 +25,11 @@
         [center addObserver:self
                    selector:@selector(refreshAdlist:)
                        name:NotifyRefreshShopAd
+                     object:nil];
+        
+        [center addObserver:self
+                   selector:@selector(refreshToplist:)
+                       name:NotifyRefreshShopTop
                      object:nil];
         
         _tableview = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, [CP shareInstance].w, [CP shareInstance].h)];
@@ -42,6 +48,7 @@
 {
     [super viewDidLoad];
     [self.view addSubview:_tableview];
+    self.title = @"今日头牌";
     
     [[httpManager shareInstance].getshopad request];
 }
@@ -57,9 +64,16 @@
     [_tableview reloadData];
 }
 
+-(void)refreshToplist:(id)sender
+{
+    [_tableview reloadData];
+}
+
 #pragma mark ----------tableview dataSource-----------
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    int itopcount = 0;
+    
     return 1;
 }
 
@@ -80,6 +94,11 @@
             [adcell refreshCell];
             
             return adcell;
+        }
+            break;
+        case 1:
+        {
+            identifier = [NSString stringWithFormat:@"recommendcell"];
         }
             break;
             
@@ -103,13 +122,22 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     CGFloat iheight = 44.0f;
-    switch (indexPath.section) {
+    switch (indexPath.row) {
         case 0:
         {
             iheight = 140.0f;
         }
             break;
-            
+        case 1:
+        {
+            iheight = 60.0f + [CP shareInstance].w / 3;
+        }
+            break;
+        case 2:
+        {
+            iheight = 0.0f;
+        }
+            break;
         default:
             break;
     }

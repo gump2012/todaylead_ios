@@ -11,5 +11,6 @@
 
 #define NotifyHttpRequestError           @"HttpRequestError"   //网页错误通知
 #define NotifyRefreshShopAd              @"RefreshShopAd"      //刷新商城广告列表
+#define NotifyRefreshShopTop             @"RefreshShopTop"     //刷新top列表
 
 #endif

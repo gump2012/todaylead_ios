@@ -22,3 +22,4 @@
 #import "stringdef.h"
 #import "CP.h"
 #import "BaseCell.h"
+#import "baseRequest.h"

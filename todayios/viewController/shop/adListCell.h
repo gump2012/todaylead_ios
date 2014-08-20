@@ -11,5 +11,6 @@
     UIScrollView        *_scrollview;
     NSMutableArray      *_slideImages;
     UIPageControl       *_pageControl;
+    NSMutableArray      *_imageViewArr;
 }
 @end
