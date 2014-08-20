@@ -10,6 +10,8 @@
 #import "getShopAdList.h"
 #import "adListCell.h"
 #import "shopTopDataSource.h"
+#import "getShopTop.h"
+#import "recommendCell.h"
 
 @interface shopViewController ()
 
@@ -51,6 +53,7 @@
     self.title = @"今日头牌";
     
     [[httpManager shareInstance].getshopad request];
+    [[httpManager shareInstance].getshoptop request];
 }
 
 - (void)didReceiveMemoryWarning
@@ -73,8 +76,11 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     int itopcount = 0;
-    
-    return 1;
+    NSArray *listarr = [[shopTopDataSource shareInstance] getToplist];
+    if (listarr) {
+        itopcount += listarr.count;
+    }
+    return 2 + itopcount;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -82,7 +88,7 @@
     NSString *identifier = [NSString stringWithFormat:@"commoncell"];
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
     
-    switch (indexPath.section) {
+    switch (indexPath.row) {
         case 0:
         {
             identifier = [NSString stringWithFormat:@"adlistcell"];
@@ -99,6 +105,13 @@
         case 1:
         {
             identifier = [NSString stringWithFormat:@"recommendcell"];
+            recommendCell *recomcell = [tableView dequeueReusableCellWithIdentifier:identifier];
+            if (recomcell == nil) {
+                recomcell = [[recommendCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+            }
+            
+            [recomcell refreshCell];
+            return recomcell;
         }
             break;
             
@@ -139,6 +152,9 @@
         }
             break;
         default:
+        {
+            iheight = 0.0f;
+        }
             break;
     }
     return iheight;

@@ -8,13 +8,16 @@
 
 #import <Foundation/Foundation.h>
 @class getShopAdList;
+@class getShopTop;
 
 @interface httpManager : NSObject
 {
     getShopAdList *_getshopad;
+    getShopTop  *_getshoptop;
 }
 
 @property(nonatomic,strong) getShopAdList *getshopad;
+@property(nonatomic,strong) getShopTop *getshoptop;
 
 + (httpManager *)shareInstance;
 

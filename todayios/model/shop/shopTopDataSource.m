@@ -35,7 +35,10 @@ static shopTopDataSource * shareins = nil;
     NSArray *arr = nil;
     NSDictionary *infoDic = [_shopTopDic objectForKey:@"info"];
     if (infoDic) {
-        
+        NSDictionary *dataDic = [infoDic objectForKey:@"data"];
+        if (dataDic) {
+            arr = [dataDic objectForKey:@"topic_list"];
+        }
     }
     return arr;
 }

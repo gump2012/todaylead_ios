@@ -8,6 +8,7 @@
 
 #import "recommendCell.h"
 #import "shopTopDataSource.h"
+#import "UIImageView+WebCache.h"
 
 @implementation recommendCell
 
@@ -20,7 +21,9 @@
         _moreBtn = [[UIButton alloc] initWithFrame:CGRectMake([CP shareInstance].w - 100.0f,
                                                              10.0f,
                                                               100.0f, 40.0f)];
-        _moreBtn.titleLabel.text = @"显示更多>>";
+        [_moreBtn setTitle:@"显示更多>>" forState:UIControlStateNormal];
+        [_moreBtn setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+        [self.contentView addSubview:_moreBtn];
         _imageArr = [[NSMutableArray alloc] init];
     }
     return self;
@@ -60,6 +63,10 @@
                                                                                                        60.0f,
                                                                                                        interval,
                                                                                                        interval)];
+                                NSString *strimage = [imageitme objectForKey:@"picture"];
+                                if (strimage) {
+                                    [imageview sd_setImageWithURL:[NSURL URLWithString:strimage]];
+                                }
                                 [self.contentView addSubview:imageview];
                                 [_imageArr addObject:imageview];
                             }
