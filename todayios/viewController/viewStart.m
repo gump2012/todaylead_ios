@@ -28,11 +28,12 @@ static viewStart * shareins = nil;
 - (void)start:(UIWindow *)window
 {
     shopViewController *shopview = [[shopViewController alloc] init];
-    shopview.title = @"商城";
+    shopview.title = @"今日头牌";
     UITabBarItem *item = [[UITabBarItem alloc] initWithTitle:@"商城" image:nil tag:1];
     shopview.tabBarItem = item;
     shopview.navigationController.navigationBar.hidden = NO;
     UINavigationController *navshop = [[UINavigationController alloc] initWithRootViewController:shopview];
+    navshop.tabBarItem.title = @"商城";
     
     categoryViewController *categoryview = [[categoryViewController alloc] init];
     categoryview.title = @"分类";

@@ -12,6 +12,7 @@
 #import "shopTopDataSource.h"
 #import "getShopTop.h"
 #import "recommendCell.h"
+#import "shopTopCell.h"
 
 @interface shopViewController ()
 
@@ -50,7 +51,6 @@
 {
     [super viewDidLoad];
     [self.view addSubview:_tableview];
-    self.title = @"今日头牌";
     
     [[httpManager shareInstance].getshopad request];
     [[httpManager shareInstance].getshoptop request];
@@ -116,6 +116,18 @@
             break;
             
         default:
+        {
+            identifier = [NSString stringWithFormat:@"topcell"];
+            shopTopCell *topcell = [tableView dequeueReusableCellWithIdentifier:identifier];
+            if (topcell == nil) {
+                topcell = [[shopTopCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+            }
+            if (indexPath.row > 1) {
+                topcell.iindex = indexPath.row - 2;
+            }
+            [topcell refreshCell];
+            return topcell;
+        }
             break;
     }
     
@@ -146,14 +158,9 @@
             iheight = 60.0f + [CP shareInstance].w / 3;
         }
             break;
-        case 2:
-        {
-            iheight = 0.0f;
-        }
-            break;
         default:
         {
-            iheight = 0.0f;
+            iheight = 60.0f + [CP shareInstance].w;
         }
             break;
     }
