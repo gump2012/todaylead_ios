@@ -10,7 +10,11 @@
 #define todayios_notificationdef_h
 
 #define NotifyHttpRequestError           @"HttpRequestError"   //网页错误通知
+//shop
 #define NotifyRefreshShopAd              @"RefreshShopAd"      //刷新商城广告列表
 #define NotifyRefreshShopTop             @"RefreshShopTop"     //刷新top列表
 
+//product
+#define NotifyProductDetail              @"ProductDetail"       //得到商品详情
+#define NotifyProductPromotion           @"PromotionList"       //得到推荐列表
 #endif

@@ -6,8 +6,6 @@
 //  Copyright (c) 2014年 lishiming. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-
 @interface CP : NSObject
 {
     float   _h;//屏幕高
@@ -16,6 +14,8 @@
 
 @property(nonatomic,assign) float h;
 @property(nonatomic,assign) float w;
+@property(nonatomic,assign) UIWindow *mywindow;
+@property(nonatomic,strong) UITabBarController *mytabbar;
 
 + (CP *)shareInstance;
 

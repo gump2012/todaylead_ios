@@ -9,6 +9,8 @@
 #import "shopTopCell.h"
 #import "shopTopDataSource.h"
 #import "UIImageView+WebCache.h"
+#import "productDetailViewController.h"
+#import "BaseViewController.h"
 
 @implementation shopTopCell
 
@@ -20,6 +22,7 @@
         _titleLabel.adjustsFontSizeToFitWidth = YES;
         _imageArr = [[NSMutableArray alloc] init];
         _iindex = -1;
+        self.selfctl = nil;
         [self.contentView addSubview:_titleLabel];
     }
     return self;
@@ -33,6 +36,10 @@
     }
     
     [_imageArr removeAllObjects];
+    
+    if (self.selfctl) {
+        self.selfctl = nil;
+    }
 }
 
 -(void)refreshCell
@@ -81,6 +88,12 @@
                                 [self.contentView addSubview:firstview];
                                 [_imageArr addObject:firstview];
                             }
+                            NSString *strpid = [item objectForKey:@"product_id"];
+                            firstview.tag = [strpid integerValue];
+                            
+                            firstview.userInteractionEnabled=YES;
+                            UITapGestureRecognizer *singleTap =[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(onClickImage:)];
+                            [firstview addGestureRecognizer:singleTap];
                         }
                         
                         item = [toplist objectAtIndex:1];
@@ -95,6 +108,12 @@
                                 [self.contentView addSubview:firstview];
                                 [_imageArr addObject:firstview];
                             }
+                            NSString *strpid = [item objectForKey:@"product_id"];
+                            firstview.tag = [strpid integerValue];
+                            
+                            firstview.userInteractionEnabled=YES;
+                            UITapGestureRecognizer *singleTap =[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(onClickImage:)];
+                            [firstview addGestureRecognizer:singleTap];
                         }
                         
                         for (int i = 2; i < toplist.count; ++i) {
@@ -110,12 +129,29 @@
                                     [self.contentView addSubview:firstview];
                                     [_imageArr addObject:firstview];
                                 }
+                                NSString *strpid = [item objectForKey:@"product_id"];
+                                firstview.tag = [strpid integerValue];
+                                
+                                firstview.userInteractionEnabled=YES;
+                                UITapGestureRecognizer *singleTap =[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(onClickImage:)];
+                                [firstview addGestureRecognizer:singleTap];
                             }
                         }
                     }
                 }
             }
         }
+    }
+}
+
+-(void)onClickImage:(id)sender
+{
+    UITapGestureRecognizer *tap = (UITapGestureRecognizer*)sender;
+    UIView *view = (UIView*) tap.view;
+    if(self.selfctl){
+        productDetailViewController *detailview = [[productDetailViewController alloc] init];
+        detailview.pid = view.tag;
+        [self.selfctl.navigationController pushViewController:detailview animated:YES];
     }
 }
 

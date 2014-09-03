@@ -29,6 +29,8 @@ static CP * shareins = nil;
         CGRect tScreenRect = [[UIScreen mainScreen] bounds];
 		_h = tScreenRect.size.height;
 		_w = tScreenRect.size.width;
+        self.mywindow = nil;
+        self.mytabbar = nil;
     }
     return self;
 }

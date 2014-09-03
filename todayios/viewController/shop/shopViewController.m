@@ -56,6 +56,14 @@
     [[httpManager shareInstance].getshoptop request];
 }
 
+-(void)viewWillAppear:(BOOL)animated{
+    [[CP shareInstance].mytabbar.tabBar setHidden:NO];
+}
+
+-(void)viewWillDisappear:(BOOL)animated{
+    
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -121,10 +129,12 @@
             shopTopCell *topcell = [tableView dequeueReusableCellWithIdentifier:identifier];
             if (topcell == nil) {
                 topcell = [[shopTopCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+                topcell.selfctl = self;
             }
             if (indexPath.row > 1) {
                 topcell.iindex = indexPath.row - 2;
             }
+            
             [topcell refreshCell];
             return topcell;
         }

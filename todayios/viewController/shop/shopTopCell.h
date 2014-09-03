@@ -5,7 +5,7 @@
 //  Created by gump on 8/21/14.
 //  Copyright (c) 2014 gump. All rights reserved.
 //
-
+@class BaseViewController;
 #import "BaseCell.h"
 
 @interface shopTopCell : BaseCell
@@ -15,5 +15,6 @@
 }
 
 @property(assign,nonatomic) int iindex;
+@property(assign,nonatomic) BaseViewController* selfctl;
 
 @end

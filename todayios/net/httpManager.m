@@ -9,12 +9,16 @@
 #import "httpManager.h"
 #import "getShopAdList.h"
 #import "getShopTop.h"
+#import "getProductDetail.h"
+#import "getPromotionList.h"
 
 static httpManager * shareins = nil;
 
 @implementation httpManager
 @synthesize getshopad = _getshopad;
 @synthesize getshoptop = _getshoptop;
+@synthesize ProductDetail = _ProductDetail;
+@synthesize promotionlist = _promotionlist;
 
 + (httpManager *)shareInstance
 {
@@ -30,6 +34,8 @@ static httpManager * shareins = nil;
     if(self){
         _getshopad = [[getShopAdList alloc] init];
         _getshoptop = [[getShopTop alloc] init];
+        _ProductDetail = [[getProductDetail alloc] init];
+        _promotionlist = [[getPromotionList alloc] init];
     }
     return self;
 }

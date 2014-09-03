@@ -17,7 +17,7 @@
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     
-    [CP shareInstance];
+    [CP shareInstance].mywindow = self.window;
     [[viewStart shareInstance] start:self.window];
     return YES;
 }

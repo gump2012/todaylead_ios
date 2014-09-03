@@ -31,7 +31,6 @@ static viewStart * shareins = nil;
     shopview.title = @"今日头牌";
     UITabBarItem *item = [[UITabBarItem alloc] initWithTitle:@"商城" image:nil tag:1];
     shopview.tabBarItem = item;
-    shopview.navigationController.navigationBar.hidden = NO;
     UINavigationController *navshop = [[UINavigationController alloc] initWithRootViewController:shopview];
     navshop.tabBarItem.title = @"商城";
     
@@ -55,6 +54,7 @@ static viewStart * shareins = nil;
     
     UITabBarController *tabview = [[UITabBarController alloc] init];
     tabview.viewControllers = [NSArray arrayWithObjects:navshop, navcategory,navpayment,navme,nil];
+    [CP shareInstance].mytabbar = tabview;
     window.rootViewController = tabview;
     [window makeKeyAndVisible];
 }

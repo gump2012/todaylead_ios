@@ -67,6 +67,16 @@
     return self;
 }
 
+-(void)dealloc
+{
+    for (int i = 0; i < _imageViewArr.count; ++i) {
+        UIImageView *imgview = [_imageViewArr objectAtIndex:i];
+        [imgview removeFromSuperview];
+    }
+    
+    [_imageViewArr removeAllObjects];
+}
+
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
     [super setSelected:selected animated:animated];
