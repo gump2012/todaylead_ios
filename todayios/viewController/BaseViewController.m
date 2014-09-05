@@ -37,6 +37,16 @@
     [super viewDidLoad];
 }
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    if([[[UIDevice currentDevice] systemVersion] floatValue] < 7.0)
+    {
+        self.view.frame = CGRectMake(0.0, 0.0, 320.0f, 480.0f);
+    }
+
+    [self.navigationController setToolbarHidden:YES animated:NO];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

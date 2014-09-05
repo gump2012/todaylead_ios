@@ -25,6 +25,7 @@ UITableViewDataSource, UITableViewDelegate
     UIImageView     *_yuexiaoliangView;
     UILabel         *_yuexiaoliangLabel;
     UILabel         *_7dayLabel;
+    UIImageView     *_7dayView;
 }
 
 @property(nonatomic,assign) int pid;

@@ -11,6 +11,8 @@
 #import "getShopTop.h"
 #import "getProductDetail.h"
 #import "getPromotionList.h"
+#import "getProductHtml.h"
+#import "getProductReport.h"
 
 static httpManager * shareins = nil;
 
@@ -19,6 +21,8 @@ static httpManager * shareins = nil;
 @synthesize getshoptop = _getshoptop;
 @synthesize ProductDetail = _ProductDetail;
 @synthesize promotionlist = _promotionlist;
+@synthesize productHtml = _productHtml;
+@synthesize proReport = _proReport;
 
 + (httpManager *)shareInstance
 {
@@ -36,6 +40,8 @@ static httpManager * shareins = nil;
         _getshoptop = [[getShopTop alloc] init];
         _ProductDetail = [[getProductDetail alloc] init];
         _promotionlist = [[getPromotionList alloc] init];
+        _productHtml = [[getProductHtml alloc] init];
+        _proReport = [[getProductReport alloc] init];
     }
     return self;
 }

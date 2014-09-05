@@ -17,4 +17,6 @@
 //product
 #define NotifyProductDetail              @"ProductDetail"       //得到商品详情
 #define NotifyProductPromotion           @"PromotionList"       //得到推荐列表
+#define NotifyProductHtml                @"productHtml"         //得到商品图文详情
+#define NotifyProductReport              @"productReport"       //得到商品体验报告
 #endif

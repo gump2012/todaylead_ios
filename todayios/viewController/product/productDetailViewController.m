@@ -12,6 +12,9 @@
 #import "productDetailDataSource.h"
 #import "productPromotionDataSource.h"
 #import "getPromotionList.h"
+#import "UIImageView+WebCache.h"
+#import "productWebViewController.h"
+#import "reportWebViewController.h"
 
 @interface productDetailViewController ()
 
@@ -64,8 +67,9 @@
         _yuexiaoliangLabel = [[UILabel alloc] initWithFrame:CGRectMake(50.0f, 10.0f, 150.0f, 20.0f)];
         _yuexiaoliangLabel.textColor = [UIColor grayColor];
         
-        _7dayLabel = [[UILabel alloc] initWithFrame:CGRectMake(160.0f, 10.0f, 150.0f, 20.0f)];
+        _7dayLabel = [[UILabel alloc] initWithFrame:CGRectMake(176.0f, 10.0f, 150.0f, 20.0f)];
         _7dayLabel.textColor = [UIColor grayColor];
+        _7dayView = [[UIImageView alloc] initWithFrame:CGRectMake(150.0f, 8.0f, 24.0f, 24.0f)];
     }
     return self;
 }
@@ -87,7 +91,9 @@
 }
 
 -(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
     [[CP shareInstance].mytabbar.tabBar setHidden:YES];
+    //LOG_Test(@"view frame %@",NSStringFromCGRect(self.view.frame));
 }
 
 - (void)didReceiveMemoryWarning
@@ -115,6 +121,11 @@
            case 1:
         {
             itopcount = 2;
+        }
+            break;
+        case 2:
+        {
+            itopcount = 5;
         }
             break;
         default:
@@ -149,6 +160,7 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
                                       reuseIdentifier:identifier];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     
     switch (indexPath.section) {
@@ -232,16 +244,58 @@
                     [cell.contentView addSubview:_yuexiaoliangLabel];
                     
                     [_7dayLabel removeFromSuperview];
+                    [_7dayView removeFromSuperview];
                     NSArray *arr = [[productPromotionDataSource shareInstance] getPromotionList];
                     if (arr) {
                         if (1 < arr.count) {
                             NSDictionary *dic = [arr objectAtIndex:0];
                             if (dic && [dic isKindOfClass:[NSDictionary class]]) {
                                 _7dayLabel.text = [dic objectForKey:@"name"];
+                                NSString *strurl = [dic objectForKey:@"picture"];
+                                if (strurl) {
+                                    [_7dayView sd_setImageWithURL:[NSURL URLWithString:strurl]];
+                                }
                             }
                         }
                     }
                     [cell.contentView addSubview:_7dayLabel];
+                    [cell.contentView addSubview:_7dayView];
+                }
+                    break;
+                default:
+                    break;
+            }
+        }
+            break;
+            case 2:
+        {
+            switch (indexPath.row) {
+                case 0:
+                {
+                    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+                    cell.imageView.image = [UIImage imageNamed:@"icon_cod_webdetail.png"];
+                    cell.textLabel.text = @"图文详情";
+                }
+                    break;
+                case 1:
+                {
+                    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+                    cell.imageView.image = [UIImage imageNamed:@"icon_pratice_report.png"];
+                    cell.textLabel.text = @"体验报告";
+                }
+                    break;
+                case 2:
+                {
+                    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+                    cell.imageView.image = [UIImage imageNamed:@"icon_cod_review.png"];
+                    cell.textLabel.text = @"商品评价";
+                }
+                    break;
+                case 3:
+                {
+                    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+                    cell.imageView.image = [UIImage imageNamed:@"icon_cod_commonparam.png"];
+                    cell.textLabel.text = @"基本参数";
                 }
                     break;
                 default:
@@ -258,7 +312,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 2;
+    return 3;
 }
 
 #pragma mark ---------tableview delegate---------------
@@ -285,5 +339,35 @@
             break;
     }
     return iheight;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    switch (indexPath.section) {
+        case 2:
+        {
+            switch (indexPath.row) {
+                case 0:
+                {
+                    productWebViewController *webview = [[productWebViewController alloc] init];
+                    webview.ipid = self.pid;
+                    [self.navigationController pushViewController:webview animated:YES];
+                }
+                    break;
+                case 1:
+                {
+                    reportWebViewController *reportview = [[reportWebViewController alloc] init];
+                    reportview.ipid = self.pid;
+                    [self.navigationController pushViewController:reportview animated:YES];
+                }
+                    break;
+                default:
+                    break;
+            }
+        }
+            break;
+            
+        default:
+            break;
+    }
 }
 @end
