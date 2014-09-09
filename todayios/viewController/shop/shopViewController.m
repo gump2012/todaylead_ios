@@ -133,7 +133,7 @@
                 topcell.selfctl = self;
             }
             if (indexPath.row > 1) {
-                topcell.iindex = indexPath.row - 2;
+                topcell.iindex = (int)indexPath.row - 2;
             }
             
             [topcell refreshCell];

@@ -13,6 +13,7 @@
 #import "getPromotionList.h"
 #import "getProductHtml.h"
 #import "getProductReport.h"
+#import "getProComment.h"
 
 static httpManager * shareins = nil;
 
@@ -23,6 +24,7 @@ static httpManager * shareins = nil;
 @synthesize promotionlist = _promotionlist;
 @synthesize productHtml = _productHtml;
 @synthesize proReport = _proReport;
+@synthesize proComment = _proComment;
 
 + (httpManager *)shareInstance
 {
@@ -42,6 +44,7 @@ static httpManager * shareins = nil;
         _promotionlist = [[getPromotionList alloc] init];
         _productHtml = [[getProductHtml alloc] init];
         _proReport = [[getProductReport alloc] init];
+        _proComment = [[getProComment alloc] init];
     }
     return self;
 }

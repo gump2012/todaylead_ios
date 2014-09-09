@@ -91,7 +91,7 @@ static productDetailDataSource * shareins = nil;
         if (data) {
             NSString *str = [data objectForKey:@"volume"];
             if (str) {
-                ibuy = [str integerValue];
+                ibuy = (int)[str integerValue];
             }
         }
     }
@@ -106,7 +106,7 @@ static productDetailDataSource * shareins = nil;
         if (data) {
             NSString *str = [data objectForKey:@"recent_volume"];
             if(str){
-                iv = [str integerValue];
+                iv = (int)[str integerValue];
             }
         }
     }

@@ -150,7 +150,7 @@
     UIView *view = (UIView*) tap.view;
     if(self.selfctl){
         productDetailViewController *detailview = [[productDetailViewController alloc] init];
-        detailview.pid = view.tag;
+        detailview.pid = (int)view.tag;
         [self.selfctl.navigationController pushViewController:detailview animated:YES];
     }
 }
