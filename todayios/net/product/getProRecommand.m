@@ -1,21 +1,22 @@
 //
-//  getProductDetail.m
+//  getProRecommand.m
 //  todayios
 //
-//  Created by gump on 8/23/14.
+//  Created by gump on 9/9/14.
 //  Copyright (c) 2014 gump. All rights reserved.
 //
 
-#import "getProductDetail.h"
+#import "getProRecommand.h"
 #import "ASIHTTPRequest.h"
 #import "JSONKit.h"
-#import "productDetailDataSource.h"
+#import "proRecommandDataSource.h"
 
-@implementation getProductDetail
+@implementation getProRecommand
 
 -(void)request:(int)ipid{
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@:%@/?m=shop&a=getProductDetail&product_id=%d",MAIN_DOMAIN,MAIN_PORT,ipid]];
-    LOG_Test(@"%@",url);
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:
+                                       @"%@:%@/?m=shop&a=getRecommandProductList&product_id=%d",MAIN_DOMAIN,MAIN_PORT,ipid]];
+    LOG_Test(@"%@ pid:%d",url,ipid);
     ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
     
     [request setDelegate:self];
@@ -29,9 +30,9 @@
     NSString *responseString = [request responseString];
     NSDictionary *jsondic = [responseString objectFromJSONString];
     if (jsondic) {
-        [[productDetailDataSource shareInstance].dataDic removeAllObjects];
-        [[productDetailDataSource shareInstance].dataDic setDictionary:jsondic];
-        [[NSNotificationCenter defaultCenter] postNotificationName:NotifyProductDetail object:nil];
+        [[proRecommandDataSource shareInstance].dataDic removeAllObjects];
+        [[proRecommandDataSource shareInstance].dataDic setDictionary:jsondic];
+        [[NSNotificationCenter defaultCenter] postNotificationName:NotifyProductRecommand object:nil];
     }
 }
 

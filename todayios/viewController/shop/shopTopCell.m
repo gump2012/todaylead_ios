@@ -149,8 +149,7 @@
     UITapGestureRecognizer *tap = (UITapGestureRecognizer*)sender;
     UIView *view = (UIView*) tap.view;
     if(self.selfctl){
-        productDetailViewController *detailview = [[productDetailViewController alloc] init];
-        detailview.pid = (int)view.tag;
+        productDetailViewController *detailview = [[productDetailViewController alloc] initWithPid:(int)view.tag];
         [self.selfctl.navigationController pushViewController:detailview animated:YES];
     }
 }

@@ -6,12 +6,17 @@
 //  Copyright (c) 2014 gump. All rights reserved.
 //
 
-@interface productDetailDataSource : NSObject
-{
-    NSMutableDictionary *_detailDic;
-}
+#import "baseDataSource.h"
 
-@property(nonatomic,strong) NSMutableDictionary *detailDic;
+enum{
+    BASEATTR_HIDE,
+    BASEATTR_SHOW,
+};
+
+@interface productDetailDataSource : baseDataSource
+{
+}
+@property(nonatomic,assign) int ibaseAttr;
 
 + (productDetailDataSource *)shareInstance;
 -(NSString *)getTitle;
@@ -19,4 +24,5 @@
 -(float)getOldPrice;
 -(int)getAlreadyBuy;
 -(int)getrecentvolume;
+-(NSArray *)getAttrList;
 @end

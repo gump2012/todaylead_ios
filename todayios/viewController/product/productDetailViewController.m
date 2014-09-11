@@ -20,6 +20,11 @@
 #import "proCommentCellTableViewCell.h"
 #import "yuexiaoliangCell.h"
 #import "proNameCell.h"
+#import "AllSeeCell.h"
+#import "baseParameterCell.h"
+#import "getProRecommand.h"
+#import "priceCell.h"
+#import "payButtonView.h"
 
 @interface productDetailViewController ()
 
@@ -27,7 +32,7 @@
 
 @implementation productDetailViewController
 
-- (id)init
+- (id)initWithPid:(int)ipid
 {
     self = [super init];
     if (self) {
@@ -47,14 +52,15 @@
                        name:NotifyProductComment
                      object:nil];
         
+        [center addObserver:self
+                   selector:@selector(refreshProduct:)
+                       name:NotifyProductRecommand
+                     object:nil];
+        
         _tableview = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, [CP shareInstance].w, [CP shareInstance].h)];
         _tableview.dataSource = self;
         _tableview.delegate = self;
         _tableview.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
-        
-        _priceLabel = [[proiceLabel alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 44.0f, 160.0f)];
-        _alreadySeeLabel = [[UILabel alloc] initWithFrame:CGRectMake(200.0f, 0.0f, 120.0f, 40.0f)];
-        _alreadySeeLabel.font = [UIFont systemFontOfSize:12.0f];
         
         _baoyouLabel = [[UILabel alloc] initWithFrame:CGRectMake(20.0, 10.0f, 50.0f, 20.0f)];
         _baoyouLabel.text = @"包邮";
@@ -65,6 +71,11 @@
         _baoyouTextLabel = [[UILabel alloc] initWithFrame:CGRectMake(80.0f, 10.0f, 200.0f, 20.0f)];
         _baoyouTextLabel.textColor = [UIColor grayColor];
         _baoyouTextLabel.adjustsFontSizeToFitWidth = YES;
+        
+        _paybtnview = [[payButtonView alloc] initWithFrame:CGRectMake(0.0f, [CP shareInstance].h - 50.0f,
+                                                                      [CP shareInstance].w,
+                                                                      50.0f)];
+        self.pid = ipid;
     }
     return self;
 }
@@ -78,11 +89,14 @@
     self.title = @"商品详情";
     [super viewDidLoad];
     [self.view addSubview:_tableview];
+    [self.view addSubview:_paybtnview];
     [[httpManager shareInstance].ProductDetail request:self.pid];
     
     if([[productPromotionDataSource shareInstance] getPromotionList] == nil){
         [[httpManager shareInstance].promotionlist request];
     }
+    
+    [[httpManager shareInstance].proRecommand request:self.pid];
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -104,7 +118,10 @@
 
 -(void)getComment:(id)sender
 {
-    [proCommentDataSource shareInstance].commentType = COMMENT_SHOW;
+    if ([proCommentDataSource shareInstance].commentType == COMMENT_READYSHOW) {
+        [proCommentDataSource shareInstance].commentType = COMMENT_SHOW;
+    }
+    
     [_tableview reloadData];
 }
 
@@ -126,6 +143,10 @@
         case 2:
         {
             itopcount = 4;
+        }
+            break;
+        case 3:{
+            itopcount = 1;
         }
             break;
         default:
@@ -195,21 +216,16 @@
                     break;
                     case 2:
                 {
-                    [_priceLabel removeFromSuperview];
-                    [_priceLabel setProic:
-                     [[productDetailDataSource shareInstance] getPrice]
-                             withOldPrice:
-                     [[productDetailDataSource shareInstance] getOldPrice]];
-                    [cell.contentView addSubview:_priceLabel];
+                    identifier = [NSString stringWithFormat:@"pricecell"];
+                    priceCell *price = [tableView dequeueReusableCellWithIdentifier:identifier];
                     
-                    [_alreadySeeLabel removeFromSuperview];
-                    int isee = [[productDetailDataSource shareInstance] getAlreadyBuy];
-                    _alreadySeeLabel.text = [NSString stringWithFormat:@"%d人已经购买",isee];
+                    if (price == nil) {
+                        price = [[priceCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+                    }
                     
-                    cell.textLabel.text = @"";
-                    cell.imageView.image = nil;
-                    cell.accessoryType = UITableViewCellAccessoryNone;
-                    [cell.contentView addSubview:_alreadySeeLabel];
+                    [price refreshCell];
+                    
+                    return price;
                 }
                     break;
                 default:
@@ -316,14 +332,43 @@
                         break;
                     case 3:
                     {
-                        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-                        cell.imageView.image = [UIImage imageNamed:@"icon_cod_commonparam.png"];
-                        cell.textLabel.text = @"基本参数";
+                        identifier = [NSString stringWithFormat:@"baseParacell"];
+                        baseParameterCell *paracell = [tableView dequeueReusableCellWithIdentifier:identifier];
+                        if (paracell == nil) {
+                            paracell = [[baseParameterCell alloc] initWithStyle:UITableViewCellStyleDefault
+                                                                reuseIdentifier:identifier];
+                            paracell.clickblock = ^{
+                                if ([productDetailDataSource shareInstance].ibaseAttr == BASEATTR_HIDE) {
+                                    [productDetailDataSource shareInstance].ibaseAttr = BASEATTR_SHOW;
+                                }else if([productDetailDataSource shareInstance].ibaseAttr == BASEATTR_SHOW){
+                                    [productDetailDataSource shareInstance].ibaseAttr = BASEATTR_HIDE;
+                                }
+                                
+                                [_tableview reloadData];
+                            };
+                        }
+                        
+                        [paracell refreshCell];
+                        
+                        return paracell;
                     }
                         break;
                     default:
                         break;
                 }
+        }
+            break;
+        case 3:{
+            identifier = [NSString stringWithFormat:@"allseecell"];
+            AllSeeCell *allsee = [tableView dequeueReusableCellWithIdentifier:identifier];
+            if (allsee == nil) {
+                allsee = [[AllSeeCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+                allsee.selfctl = self;
+            }
+            
+            [allsee refreshCell];
+            
+            return allsee;
         }
             break;
         default:
@@ -335,7 +380,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 3;
+    return 4;
 }
 
 #pragma mark ---------tableview delegate---------------
@@ -379,10 +424,25 @@
                     }
                 }
                     break;
-                    
+                case 3:{
+                    switch ([productDetailDataSource shareInstance].ibaseAttr) {
+                        case BASEATTR_SHOW:{
+                            iheight += 60.0f;
+                        }
+                            break;
+                        default:
+                            break;
+                    }
+                }
+                    break;
                 default:
                     break;
             }
+        }
+            break;
+            case 3:
+        {
+            iheight = 160.0f;
         }
             break;
         default:

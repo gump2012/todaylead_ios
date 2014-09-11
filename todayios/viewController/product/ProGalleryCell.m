@@ -80,12 +80,7 @@
 
 -(void)refreshCell
 {
-    NSMutableDictionary *detailDic = [productDetailDataSource shareInstance].detailDic;
-    
-    if (detailDic) {
-        NSDictionary *datainfo = [detailDic objectForKey:@"info"];
-        if (datainfo) {
-            NSDictionary *datadic = [datainfo objectForKey:@"data"];
+            NSDictionary *datadic = [[productDetailDataSource shareInstance] getDicData];
             if (datadic && [datadic isKindOfClass:[NSDictionary class]]) {
                 
                 NSArray *galleryarr = [datadic objectForKey:@"gallery"];
@@ -129,8 +124,6 @@
                     }
                 }
             }
-        }
-    }
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)sender

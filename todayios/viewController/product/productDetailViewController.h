@@ -7,20 +7,20 @@
 //
 
 #import "BaseViewController.h"
-#import "proiceLabel.h"
+
+@class payButtonView;
 
 @interface productDetailViewController : BaseViewController<
 UITableViewDataSource, UITableViewDelegate
 >
 {
     UITableView     *_tableview;
-    
-    proiceLabel     *_priceLabel;
-    UILabel         *_alreadySeeLabel;
-    
     UILabel         *_baoyouLabel;
     UILabel         *_baoyouTextLabel;
+    payButtonView   *_paybtnview;
 }
+
+-(id)initWithPid:(int)ipid;
 
 @property(nonatomic,assign) int pid;
 

@@ -25,6 +25,10 @@
         [_activeBg addSubview:_ActivityView];
         [self.contentView addSubview:_activeBg];
         
+        UIImageView *arror = [[UIImageView alloc] initWithFrame:CGRectMake(294.0f, 12.0f, 15.0f, 18.0f)];
+        arror.image = [UIImage imageNamed:@"btn_arrow.png"];
+        [self.contentView addSubview:arror];
+        
         UIImageView *imageview = [[UIImageView alloc] initWithFrame:CGRectMake(20.0f, 7.0f, 30.0f, 30.0f)];
         imageview.image = [UIImage imageNamed:@"icon_cod_review.png"];
         [self.contentView addSubview:imageview];
@@ -99,8 +103,6 @@
 }
 
 -(void)clickcell{
-    
-    
     if (self.clickblock) {
         self.clickblock();
     }
