@@ -25,6 +25,7 @@
 #import "getProRecommand.h"
 #import "priceCell.h"
 #import "payButtonView.h"
+#import "AttrView.h"
 
 @interface productDetailViewController ()
 
@@ -75,7 +76,28 @@
         _paybtnview = [[payButtonView alloc] initWithFrame:CGRectMake(0.0f, [CP shareInstance].h - 50.0f,
                                                                       [CP shareInstance].w,
                                                                       50.0f)];
+        __block typeof (self) bself = self;
+        _paybtnview.immediateBlock = ^{
+            [bself immediateClick];
+        };
+        
+        _paybtnview.addBlock = ^{
+            [bself addClick];
+        };
         self.pid = ipid;
+        
+        _attrview = [[AttrView alloc] initWithFrame:CGRectMake(0.0f,
+                                                               [CP shareInstance].h,
+                                                               [CP shareInstance].w, [CP shareInstance].h)];
+        [self.view addSubview:_attrview];
+        _attrview.disappearBlock = ^{
+            [bself hideAttrView];
+        };
+        
+        _attrview.sureBlock = ^{
+            [bself sureAttrView];
+        };
+        
     }
     return self;
 }
@@ -123,6 +145,50 @@
     }
     
     [_tableview reloadData];
+}
+
+-(void)immediateClick{
+    [_attrview refreshView];
+    [UIView beginAnimations:nil context:nil];
+    
+    [UIView setAnimationDuration:0.5];
+    [self.navigationController setNavigationBarHidden:YES];
+    
+    [_attrview setFrame:CGRectMake(0.0,
+                                   0.0f,
+                                   [CP shareInstance].w, [CP shareInstance].h)];
+    
+    [UIView commitAnimations];
+}
+
+-(void)addClick{
+    [_attrview refreshView];
+    [UIView beginAnimations:nil context:nil];
+    
+    [UIView setAnimationDuration:0.5];
+    [self.navigationController setNavigationBarHidden:YES];
+    
+    [_attrview setFrame:CGRectMake(0.0,
+                                   0.0f,
+                                   [CP shareInstance].w, [CP shareInstance].h)];
+    
+    [UIView commitAnimations];
+}
+
+-(void)hideAttrView{
+    [UIView beginAnimations:nil context:nil];
+    
+    [UIView setAnimationDuration:0.5];
+    [self.navigationController setNavigationBarHidden:NO];
+    [_attrview setFrame:CGRectMake(0.0f,
+                                   [CP shareInstance].h,
+                                   [CP shareInstance].w, [CP shareInstance].h)];
+    
+    [UIView commitAnimations];
+}
+
+-(void)sureAttrView{
+    
 }
 
 #pragma mark ----------tableview dataSource-----------

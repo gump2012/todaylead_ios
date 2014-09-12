@@ -12,4 +12,7 @@
     UIButton *_addBtn;
     UIImageView *_cartView;
 }
+
+@property(nonatomic,copy) void(^immediateBlock)(void);
+@property(nonatomic,copy) void(^addBlock)(void);
 @end

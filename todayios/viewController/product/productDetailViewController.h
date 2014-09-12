@@ -9,6 +9,7 @@
 #import "BaseViewController.h"
 
 @class payButtonView;
+@class AttrView;
 
 @interface productDetailViewController : BaseViewController<
 UITableViewDataSource, UITableViewDelegate
@@ -18,6 +19,7 @@ UITableViewDataSource, UITableViewDelegate
     UILabel         *_baoyouLabel;
     UILabel         *_baoyouTextLabel;
     payButtonView   *_paybtnview;
+    AttrView        *_attrview;
 }
 
 -(id)initWithPid:(int)ipid;
