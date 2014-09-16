@@ -5,13 +5,11 @@
 //  Created by lishiming on 14-7-22.
 //  Copyright (c) 2014年 lishiming. All rights reserved.
 //
+#import "baseDataSource.h"
 
-@interface shopadDataSource : NSObject
+@interface shopadDataSource : baseDataSource
 {
-    NSMutableDictionary *_shopadDic;
 }
-
-@property(nonatomic,strong) NSMutableDictionary *shopadDic;
 
 + (shopadDataSource *)shareInstance;
 

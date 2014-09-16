@@ -104,6 +104,7 @@
             adListCell *adcell = [tableView dequeueReusableCellWithIdentifier:identifier];
             if (adcell == nil) {
                 adcell = [[adListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+                adcell.selfctl = self;
             }
             
             [adcell refreshCell];

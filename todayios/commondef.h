@@ -12,5 +12,6 @@
 #define MAIN_DOMAIN @"http://www.toupai360.com"
 #define MAIN_PORT   @"10080"
 #define LOCAL_DOMAIN @"http://127.0.0.1"
+#define LATEST_DOMAIN @"http://latest.toupai360.com"
 
 #endif

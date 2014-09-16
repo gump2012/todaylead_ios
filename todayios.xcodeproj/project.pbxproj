@@ -59,6 +59,7 @@
 		33B8FEBC19B706710068F4F5 /* productPromotionDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 33B8FEBB19B706710068F4F5 /* productPromotionDataSource.m */; };
 		33B8FEBF19B70A040068F4F5 /* getPromotionList.m in Sources */ = {isa = PBXBuildFile; fileRef = 33B8FEBE19B70A040068F4F5 /* getPromotionList.m */; };
 		33B8FEC219B72E690068F4F5 /* icon_cod_volume.png in Resources */ = {isa = PBXBuildFile; fileRef = 33B8FEC119B72E690068F4F5 /* icon_cod_volume.png */; };
+		33C8DD1F19C6E52A00E02BAB /* adWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33C8DD1E19C6E52A00E02BAB /* adWebViewController.m */; };
 		33F9747119C13987004DAE54 /* payButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = 33F9747019C13987004DAE54 /* payButtonView.m */; };
 		33F9747419C149E0004DAE54 /* cart.png in Resources */ = {isa = PBXBuildFile; fileRef = 33F9747319C149E0004DAE54 /* cart.png */; };
 		33F9747719C1CE53004DAE54 /* AttrView.m in Sources */ = {isa = PBXBuildFile; fileRef = 33F9747619C1CE53004DAE54 /* AttrView.m */; };
@@ -230,6 +231,8 @@
 		33B8FEBD19B70A040068F4F5 /* getPromotionList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = getPromotionList.h; path = net/product/getPromotionList.h; sourceTree = "<group>"; };
 		33B8FEBE19B70A040068F4F5 /* getPromotionList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = getPromotionList.m; path = net/product/getPromotionList.m; sourceTree = "<group>"; };
 		33B8FEC119B72E690068F4F5 /* icon_cod_volume.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_cod_volume.png; path = resource/product/icon_cod_volume.png; sourceTree = "<group>"; };
+		33C8DD1D19C6E52A00E02BAB /* adWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = adWebViewController.h; path = viewController/webview/adWebViewController.h; sourceTree = "<group>"; };
+		33C8DD1E19C6E52A00E02BAB /* adWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = adWebViewController.m; path = viewController/webview/adWebViewController.m; sourceTree = "<group>"; };
 		33F9746F19C13987004DAE54 /* payButtonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = payButtonView.h; path = viewController/product/payButtonView.h; sourceTree = "<group>"; };
 		33F9747019C13987004DAE54 /* payButtonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = payButtonView.m; path = viewController/product/payButtonView.m; sourceTree = "<group>"; };
 		33F9747319C149E0004DAE54 /* cart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = cart.png; path = resource/pay/cart.png; sourceTree = "<group>"; };
@@ -510,6 +513,8 @@
 				3370599519B9A6010077ACF2 /* productWebViewController.m */,
 				337059A019B9C95F0077ACF2 /* reportWebViewController.h */,
 				337059A119B9C95F0077ACF2 /* reportWebViewController.m */,
+				33C8DD1D19C6E52A00E02BAB /* adWebViewController.h */,
+				33C8DD1E19C6E52A00E02BAB /* adWebViewController.m */,
 			);
 			name = webview;
 			sourceTree = "<group>";
@@ -1109,6 +1114,7 @@
 				35A0CB85197CDEF400D201D3 /* AppDelegate.m in Sources */,
 				3390642B19A58EBE003BA869 /* shopTopCell.m in Sources */,
 				3532925C19879F5D00149438 /* SDWebImageDecoder.m in Sources */,
+				33C8DD1F19C6E52A00E02BAB /* adWebViewController.m in Sources */,
 				35A0CBAD197CEF9700D201D3 /* BaseViewController.m in Sources */,
 				35A0CBB6197CF26B00D201D3 /* paymentViewController.m in Sources */,
 				3532925D19879F5D00149438 /* SDWebImageDownloader.m in Sources */,

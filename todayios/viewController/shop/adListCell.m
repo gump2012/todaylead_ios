@@ -9,6 +9,7 @@
 #import "adListCell.h"
 #import "UIImageView+WebCache.h"
 #import "shopadDataSource.h"
+#import "adWebViewController.h"
 
 #define ADCELL_H    140.0f
 
@@ -38,31 +39,11 @@
         _pageControl.currentPage = 0;
         [_pageControl addTarget:self action:@selector(turnPage) forControlEvents:UIControlEventValueChanged]; // 触摸mypagecontrol触发change这个方法事件
         [self.contentView addSubview:_pageControl];
-        // 创建四个图片 imageview
-        for (int i = 0;i<[_slideImages count];i++)
-        {
-            UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake((320 * i) + 320, 0, [CP shareInstance].w, ADCELL_H)];
-            [imageView sd_setImageWithURL:[NSURL URLWithString:[_slideImages objectAtIndex:i]]];
-            [_scrollview addSubview:imageView]; // 首页是第0页,默认从第1页开始的。所以+320。。。
-            [_imageViewArr addObject:imageView];
-        }
-        // 取数组最后一张图片 放在第0页
-        if (_slideImages.count > 0) {
-            UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, [CP shareInstance].w, ADCELL_H)];
-            [imageView sd_setImageWithURL:[NSURL URLWithString:[_slideImages objectAtIndex:([_slideImages count]-1)]]];
-            [_scrollview addSubview:imageView];
-            [_imageViewArr addObject:imageView];
-            // 取数组第一张图片 放在最后1页
-            imageView = [[UIImageView alloc] initWithFrame:CGRectMake((320 * ([_slideImages count] + 1)) , 0, [CP shareInstance].w, ADCELL_H)];
-            [imageView sd_setImageWithURL:[NSURL URLWithString:[_slideImages objectAtIndex:0]]];
-            [_scrollview addSubview:imageView];
-            [_imageViewArr addObject:imageView];
-            
-            [_scrollview setContentSize:CGSizeMake(320 * ([_slideImages count] + 2), ADCELL_H)]; //  +上第1页和第4页  原理：4-[1-2-3-4]-1
-        }
         
         [_scrollview setContentOffset:CGPointMake(0, 0)];
         [_scrollview scrollRectToVisible:CGRectMake(320,0,[CP shareInstance].w, ADCELL_H) animated:NO];
+        
+        self.selfctl = nil;
     }
     return self;
 }
@@ -126,10 +107,8 @@
 
 -(void)refreshCell
 {
-    if ([shopadDataSource shareInstance].shopadDic) {
-        NSDictionary *datainfo = [[shopadDataSource shareInstance].shopadDic objectForKey:@"info"];
-        if (datainfo) {
-            NSArray *dataarr = [datainfo objectForKey:@"data"];
+    NSArray *dataarr = [[shopadDataSource shareInstance] getArrData];
+    
             if (dataarr && [dataarr isKindOfClass:[NSArray class]]) {
                 
                 [_slideImages removeAllObjects];
@@ -153,12 +132,21 @@
                     UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake((320 * i) + 320, 0, [CP shareInstance].w, ADCELL_H)];
                     [imageView sd_setImageWithURL:[NSURL URLWithString:[_slideImages objectAtIndex:i]]];
                     [_scrollview addSubview:imageView]; // 首页是第0页,默认从第1页开始的。所以+320。。。
+                    
+                    UITapGestureRecognizer *singleTap =[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(onClickImage:)];
+                    [imageView addGestureRecognizer:singleTap];
+                    imageView.tag = i;
+                    imageView.userInteractionEnabled = YES;
                     [_imageViewArr addObject:imageView];
                 }
                 // 取数组最后一张图片 放在第0页
                 if (_slideImages.count > 0) {
                     UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, [CP shareInstance].w, ADCELL_H)];
                     [imageView sd_setImageWithURL:[NSURL URLWithString:[_slideImages objectAtIndex:([_slideImages count]-1)]]];
+                    UITapGestureRecognizer *singleTap =[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(onClickImage:)];
+                    [imageView addGestureRecognizer:singleTap];
+                    imageView.tag = [_slideImages count]-1;
+                    imageView.userInteractionEnabled = YES;
                     [_scrollview addSubview:imageView];
                     [_imageViewArr addObject:imageView];
                     // 取数组第一张图片 放在最后1页
@@ -167,14 +155,43 @@
                                                                               [CP shareInstance].w,
                                                                               ADCELL_H)];
                     [imageView sd_setImageWithURL:[NSURL URLWithString:[_slideImages objectAtIndex:0]]];
+                    imageView.userInteractionEnabled = YES;
+                    singleTap =[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(onClickImage:)];
+                    [imageView addGestureRecognizer:singleTap];
+                    imageView.tag = 0;
                     [_scrollview addSubview:imageView];
                     [_imageViewArr addObject:imageView];
                     
                     [_scrollview setContentSize:CGSizeMake(320 * ([_slideImages count] + 2), ADCELL_H)]; //  +上第1页和第4页  原理：4-[1-2-3-4]-1
                 }
             }
+}
+
+-(void)onClickImage:(id)sender
+{
+    UITapGestureRecognizer *tap = (UITapGestureRecognizer*)sender;
+    UIView *view = (UIView*) tap.view;
+    NSArray *dataarr = [[shopadDataSource shareInstance] getArrData];
+    if (dataarr && [dataarr isKindOfClass:[NSArray class]]) {
+        int iindex = (int)view.tag;
+        if (iindex < dataarr.count) {
+            NSDictionary *dic = [dataarr objectAtIndex:iindex];
+            if (dic) {
+                NSString *strtype = [dic objectForKey:@"type"];
+                if (strtype) {
+                    int itype = [strtype intValue];
+                    if (itype == 2 || itype == 3) {
+                        if(self.selfctl){
+                            adWebViewController *adview = [[adWebViewController alloc] init];
+                            [adview.dataDic setDictionary:dic];
+                            [self.selfctl.navigationController pushViewController:adview animated:YES];
+                        }
+                    }
+                }
+            }
         }
     }
+    
 }
 
 @end

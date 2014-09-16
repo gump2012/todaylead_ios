@@ -14,7 +14,7 @@
 @implementation getShopAdList
 
 -(void)request{
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@:%@/?m=shop&a=getAdvertList",MAIN_DOMAIN,MAIN_PORT]];
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@:%@/?m=shop&a=getAdvertList",LATEST_DOMAIN,MAIN_PORT]];
     LOG_Test(@"%@",url);
     ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
     
@@ -29,8 +29,8 @@
     NSString *responseString = [request responseString];
     NSDictionary *jsondic = [responseString objectFromJSONString];
     if (jsondic) {
-        [[shopadDataSource shareInstance].shopadDic removeAllObjects];
-        [[shopadDataSource shareInstance].shopadDic setDictionary:jsondic];
+        [[shopadDataSource shareInstance].dataDic removeAllObjects];
+        [[shopadDataSource shareInstance].dataDic setDictionary:jsondic];
         
         [[NSNotificationCenter defaultCenter] postNotificationName:NotifyRefreshShopAd object:nil];
     }

@@ -11,7 +11,6 @@
 static shopadDataSource * shareins = nil;
 
 @implementation shopadDataSource
-@synthesize shopadDic = _shopadDic;
 
 + (shopadDataSource *)shareInstance
 {
@@ -20,14 +19,6 @@ static shopadDataSource * shareins = nil;
 		shareins = [[shopadDataSource alloc] init];
 	}
 	return shareins;
-}
-
--(id)init{
-    self = [super init];
-    if(self){
-        _shopadDic = [[NSMutableDictionary alloc] init];
-    }
-    return self;
 }
 
 @end
