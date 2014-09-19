@@ -11,6 +11,7 @@
 #import "UIImageView+WebCache.h"
 #import "productDetailViewController.h"
 #import "BaseViewController.h"
+#import "topicListViewController.h"
 
 @implementation shopTopCell
 
@@ -23,6 +24,7 @@
         _imageArr = [[NSMutableArray alloc] init];
         _iindex = -1;
         self.selfctl = nil;
+        self.itopicid = 0;
         [self.contentView addSubview:_titleLabel];
     }
     return self;
@@ -59,6 +61,7 @@
                 NSString *strtitle = [topitem objectForKey:@"name"];
                 if (strtitle) {
                     _titleLabel.text = strtitle;
+                    _title = strtitle;
                 }
                 
                 NSString *strtopimage = [topitem objectForKey:@"picture"];
@@ -68,8 +71,18 @@
                                                                                           [CP shareInstance].w / 3 * 2,
                                                                                         [CP shareInstance].w / 3 * 2)];
                     [topimage sd_setImageWithURL:[NSURL URLWithString:strtopimage]];
+                    topimage.userInteractionEnabled = YES;
+                    UITapGestureRecognizer *singleTap =[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(onClickTopic:)];
+                    [topimage addGestureRecognizer:singleTap];
+                    
                     [self.contentView addSubview:topimage];
                     [_imageArr addObject:topimage];
+                }
+                
+                NSString *strtopicid = [topitem objectForKey:@"topic_id"];
+                if (strtopicid) {
+                    int itopic = [strtopicid intValue];
+                    self.itopicid = itopic;
                 }
                 
                 NSArray *toplist = [topitem objectForKey:@"product_list"];
@@ -150,6 +163,15 @@
     UIView *view = (UIView*) tap.view;
     if(self.selfctl){
         productDetailViewController *detailview = [[productDetailViewController alloc] initWithPid:(int)view.tag];
+        [self.selfctl.navigationController pushViewController:detailview animated:YES];
+    }
+}
+
+-(void)onClickTopic:(id)sender
+{
+    if(self.selfctl && self.itopicid != 0){
+        topicListViewController *detailview = [[topicListViewController alloc] initWithTopicID:_itopicid];
+        detailview.title = _title;
         [self.selfctl.navigationController pushViewController:detailview animated:YES];
     }
 }

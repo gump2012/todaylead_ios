@@ -10,6 +10,7 @@
 #import "UIImageView+WebCache.h"
 #import "shopadDataSource.h"
 #import "adWebViewController.h"
+#import "searchListViewController.h"
 
 #define ADCELL_H    140.0f
 
@@ -185,6 +186,20 @@
                             adWebViewController *adview = [[adWebViewController alloc] init];
                             [adview.dataDic setDictionary:dic];
                             [self.selfctl.navigationController pushViewController:adview animated:YES];
+                        }
+                    }
+                    else if(itype == 1){
+                        if(self.selfctl){
+                            searchListViewController *searchview = [[searchListViewController alloc] init];
+                            NSDictionary *prarm = [dic objectForKey:@"param"];
+                            if (prarm) {
+                                NSString *strkeyword = [prarm objectForKey:@"keyword"];
+                                if (strkeyword) {
+                                    searchview.strkeyword = strkeyword;
+                                }
+                            }
+                            
+                            [self.selfctl.navigationController pushViewController:searchview animated:YES];
                         }
                     }
                 }

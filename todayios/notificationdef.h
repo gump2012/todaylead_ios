@@ -13,6 +13,8 @@
 //shop
 #define NotifyRefreshShopAd              @"RefreshShopAd"      //刷新商城广告列表
 #define NotifyRefreshShopTop             @"RefreshShopTop"     //刷新top列表
+#define NotifyKeywordList                @"KeywordList"        //得到关键词列表
+#define NotifyTopicList                  @"TopicList"          //得到模块列表
 
 //product
 #define NotifyProductDetail              @"ProductDetail"       //得到商品详情

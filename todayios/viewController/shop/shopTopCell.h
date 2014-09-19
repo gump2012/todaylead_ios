@@ -12,9 +12,11 @@
 {
     UILabel *_titleLabel;
     NSMutableArray *_imageArr;
+    NSString *_title;
 }
 
 @property(assign,nonatomic) int iindex;
+@property(assign,nonatomic) int itopicid;
 @property(assign,nonatomic) BaseViewController* selfctl;
 
 @end

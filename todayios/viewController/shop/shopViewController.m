@@ -118,6 +118,7 @@
             recommendCell *recomcell = [tableView dequeueReusableCellWithIdentifier:identifier];
             if (recomcell == nil) {
                 recomcell = [[recommendCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+                recomcell.selfctl = self;
             }
             
             [recomcell refreshCell];

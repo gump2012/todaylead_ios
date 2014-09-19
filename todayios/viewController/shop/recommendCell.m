@@ -9,8 +9,11 @@
 #import "recommendCell.h"
 #import "shopTopDataSource.h"
 #import "UIImageView+WebCache.h"
+#import "searchListViewController.h"
 
 @implementation recommendCell
+
+@synthesize strkeyword = _strkeyword;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -23,6 +26,7 @@
                                                               100.0f, 40.0f)];
         [_moreBtn setTitle:@"显示更多>>" forState:UIControlStateNormal];
         [_moreBtn setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+        [_moreBtn addTarget:self action:@selector(moreClick) forControlEvents:UIControlEventTouchUpInside];
         [self.contentView addSubview:_moreBtn];
         _imageArr = [[NSMutableArray alloc] init];
     }
@@ -43,6 +47,7 @@
                 }
                 
                 NSString *strkey = [recommendDic objectForKey:@"keyword"];
+                _strkeyword = strkey;
                 
                 for (int i = 0; i < _imageArr.count; ++i) {
                     UIImageView *imgview = [_imageArr objectAtIndex:i];
@@ -75,6 +80,15 @@
                 }
             }
         }
+    }
+}
+
+-(void)moreClick{
+    if(self.selfctl){
+        searchListViewController *searchview = [[searchListViewController alloc] init];
+        searchview.strkeyword = _strkeyword;
+        
+        [self.selfctl.navigationController pushViewController:searchview animated:YES];
     }
 }
 
