@@ -15,6 +15,7 @@
     UIButton    *_moreBtn;
     NSMutableArray  *_imageArr;
     NSString    *_strkeyword;
+    NSMutableArray *_labelArr;
 }
 
 @property(nonatomic,strong) NSString *strkeyword;

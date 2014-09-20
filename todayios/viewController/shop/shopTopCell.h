@@ -13,6 +13,7 @@
     UILabel *_titleLabel;
     NSMutableArray *_imageArr;
     NSString *_title;
+    NSMutableArray *_labelArr;
 }
 
 @property(assign,nonatomic) int iindex;

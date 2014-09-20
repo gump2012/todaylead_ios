@@ -22,6 +22,7 @@
         _titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, 10.0f, 200.0f, 40.0f)];
         _titleLabel.adjustsFontSizeToFitWidth = YES;
         _imageArr = [[NSMutableArray alloc] init];
+        _labelArr = [[NSMutableArray alloc] init];
         _iindex = -1;
         self.selfctl = nil;
         self.itopicid = 0;
@@ -39,6 +40,13 @@
     
     [_imageArr removeAllObjects];
     
+    for (int i = 0; i < _labelArr.count; ++i) {
+        UILabel *imgview = [_labelArr objectAtIndex:i];
+        [imgview removeFromSuperview];
+    }
+    
+    [_labelArr removeAllObjects];
+    
     if (self.selfctl) {
         self.selfctl = nil;
     }
@@ -52,6 +60,13 @@
     }
     
     [_imageArr removeAllObjects];
+    
+    for (int i = 0; i < _labelArr.count; ++i) {
+        UILabel *imgview = [_labelArr objectAtIndex:i];
+        [imgview removeFromSuperview];
+    }
+    
+    [_labelArr removeAllObjects];
     
     NSArray *toparr = [[shopTopDataSource shareInstance] getToplist];
     if (toparr) {
@@ -107,6 +122,19 @@
                             firstview.userInteractionEnabled=YES;
                             UITapGestureRecognizer *singleTap =[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(onClickImage:)];
                             [firstview addGestureRecognizer:singleTap];
+                            
+                            strimage = [item objectForKey:@"name"];
+                            if (strimage) {
+                                UILabel *namelabel = [[UILabel alloc] initWithFrame:CGRectMake([CP shareInstance].w / 3 * 2,
+                                                                                              130.0f,
+                                                                                              [CP shareInstance].w / 3,
+                                                                                               40.0f)];
+                                namelabel.textColor = [UIColor darkGrayColor];
+                                namelabel.textAlignment = NSTextAlignmentCenter;
+                                namelabel.text = strimage;
+                                [self.contentView addSubview:namelabel];
+                                [_labelArr addObject:namelabel];
+                            }
                         }
                         
                         item = [toplist objectAtIndex:1];
@@ -127,6 +155,19 @@
                             firstview.userInteractionEnabled=YES;
                             UITapGestureRecognizer *singleTap =[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(onClickImage:)];
                             [firstview addGestureRecognizer:singleTap];
+                            
+                            strimage = [item objectForKey:@"name"];
+                            if (strimage) {
+                                UILabel *namelabel = [[UILabel alloc] initWithFrame:CGRectMake([CP shareInstance].w / 3 * 2,
+                                                                                               130.0f + [CP shareInstance].w / 3,
+                                                                                               [CP shareInstance].w / 3,
+                                                                                               40.0f)];
+                                namelabel.textColor = [UIColor darkGrayColor];
+                                namelabel.textAlignment = NSTextAlignmentCenter;
+                                namelabel.text = strimage;
+                                [self.contentView addSubview:namelabel];
+                                [_labelArr addObject:namelabel];
+                            }
                         }
                         
                         for (int i = 2; i < toplist.count; ++i) {
@@ -148,6 +189,19 @@
                                 firstview.userInteractionEnabled=YES;
                                 UITapGestureRecognizer *singleTap =[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(onClickImage:)];
                                 [firstview addGestureRecognizer:singleTap];
+                                
+                                strimage = [item objectForKey:@"name"];
+                                if (strimage) {
+                                    UILabel *namelabel = [[UILabel alloc] initWithFrame:CGRectMake((i-2)*[CP shareInstance].w / 3,
+                                                                                                   130.0f + [CP shareInstance].w / 3*2,
+                                                                                                   [CP shareInstance].w / 3,
+                                                                                                   40.0f)];
+                                    namelabel.textColor = [UIColor darkGrayColor];
+                                    namelabel.textAlignment = NSTextAlignmentCenter;
+                                    namelabel.text = strimage;
+                                    [self.contentView addSubview:namelabel];
+                                    [_labelArr addObject:namelabel];
+                                }
                             }
                         }
                     }

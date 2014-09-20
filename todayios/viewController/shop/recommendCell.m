@@ -10,7 +10,7 @@
 #import "shopTopDataSource.h"
 #import "UIImageView+WebCache.h"
 #import "searchListViewController.h"
-
+#import "productDetailViewController.h"
 @implementation recommendCell
 
 @synthesize strkeyword = _strkeyword;
@@ -29,6 +29,7 @@
         [_moreBtn addTarget:self action:@selector(moreClick) forControlEvents:UIControlEventTouchUpInside];
         [self.contentView addSubview:_moreBtn];
         _imageArr = [[NSMutableArray alloc] init];
+        _labelArr = [[NSMutableArray alloc] init];
     }
     return self;
 }
@@ -56,6 +57,13 @@
                 
                 [_imageArr removeAllObjects];
                 
+                for (int i = 0; i < _labelArr.count; ++i) {
+                    UILabel *imgview = [_labelArr objectAtIndex:i];
+                    [imgview removeFromSuperview];
+                }
+                
+                [_labelArr removeAllObjects];
+                
                 NSArray *imagearr = [recommendDic objectForKey:@"product_list"];
                 if (imagearr && [imagearr isKindOfClass:[NSArray class]]) {
                     if (imagearr.count > 0) {
@@ -72,8 +80,28 @@
                                 if (strimage) {
                                     [imageview sd_setImageWithURL:[NSURL URLWithString:strimage]];
                                 }
+                                
+                                strimage = [imageitme objectForKey:@"product_id"];
+                                if (strimage) {
+                                    imageview.tag = [strimage intValue];
+                                    imageview.userInteractionEnabled=YES;
+                                    UITapGestureRecognizer *singleTap =
+                                    [[UITapGestureRecognizer alloc]initWithTarget:self
+                                                                   action:@selector(onClickImage:)];
+                                    [imageview addGestureRecognizer:singleTap];
+                                }
                                 [self.contentView addSubview:imageview];
                                 [_imageArr addObject:imageview];
+                                
+                                UILabel *namelabel = [[UILabel alloc] initWithFrame:CGRectMake(i * interval, 130.0f, interval, 40.0f)];
+                                namelabel.textAlignment = NSTextAlignmentCenter;
+                                strimage = [imageitme objectForKey:@"name"];
+                                if (strimage) {
+                                    namelabel.text = strimage;
+                                }
+                                namelabel.textColor = [UIColor darkGrayColor];
+                                [self.contentView addSubview:namelabel];
+                                [_labelArr addObject:namelabel];
                             }
                         }
                     }
@@ -89,6 +117,16 @@
         searchview.strkeyword = _strkeyword;
         
         [self.selfctl.navigationController pushViewController:searchview animated:YES];
+    }
+}
+
+-(void)onClickImage:(id)sender
+{
+    UITapGestureRecognizer *tap = (UITapGestureRecognizer*)sender;
+    UIView *view = (UIView*) tap.view;
+    if(self.selfctl){
+        productDetailViewController *detailview = [[productDetailViewController alloc] initWithPid:(int)view.tag];
+        [self.selfctl.navigationController pushViewController:detailview animated:YES];
     }
 }
 
