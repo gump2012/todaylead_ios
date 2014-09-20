@@ -7,13 +7,16 @@
 //
 
 #import "BaseViewController.h"
-
-@interface topicListViewController : BaseViewController<UITableViewDataSource, UITableViewDelegate>
+#import "EGORefreshTableFooterView.h"
+@interface topicListViewController : BaseViewController<UITableViewDataSource, UITableViewDelegate,
+EGORefreshTableDelegate>
 {
     int _itopic;
     UITableView *_tableview;
     int _ilimit;
     int _ipage;
+    EGORefreshTableFooterView *_refreshFooterView;
+    BOOL _reloading;
 }
 
 @property(nonatomic,assign) int itopic;

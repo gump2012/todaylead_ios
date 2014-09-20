@@ -10,6 +10,7 @@
 
 @interface getKeywordList : baseRequest
 {
+    int _ipage;
 }
 
 -(void)requestWithLimit:(int)ilimit withPage:(int)ipage withKeyword:(NSString *)strkey;

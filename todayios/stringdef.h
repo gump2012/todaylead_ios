@@ -10,5 +10,6 @@
 #define todayios_stringdef_h
 
 #define STR_HTTP_ERROR  @"网络不给力耶"
+#define STR_LOGDALL     @"商品全部加载了哦"
 
 #endif

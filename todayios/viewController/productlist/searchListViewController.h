@@ -7,12 +7,16 @@
 //
 
 #import "BaseViewController.h"
-
-@interface searchListViewController : BaseViewController<UITableViewDataSource, UITableViewDelegate>
+#import "EGORefreshTableFooterView.h"
+@interface searchListViewController : BaseViewController<UITableViewDataSource, UITableViewDelegate,
+EGORefreshTableDelegate>
 {
     UITableView *_tableview;
     int _ipage;
     NSString *_strkeyword;
+    BOOL _isLoadAll;
+    EGORefreshTableFooterView *_refreshFooterView;
+    BOOL _reloading;
 }
 
 @property(nonatomic,strong) NSString *strkeyword;

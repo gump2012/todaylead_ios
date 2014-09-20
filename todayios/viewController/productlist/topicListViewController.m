@@ -10,6 +10,7 @@
 #import "getTopicList.h"
 #import "listDataSource.h"
 #import "listProductCell.h"
+#import "SVProgressHUD.h"
 
 @interface topicListViewController ()
 
@@ -33,7 +34,9 @@
                        name:NotifyTopicList
                      object:nil];
         
-        _tableview = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, [CP shareInstance].w, [CP shareInstance].h)];
+        _tableview = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 0.0f,
+                                                                   [CP shareInstance].w,
+                                                                   [CP shareInstance].h - NAVIGATION_HEIGHT)];
         _tableview.dataSource = self;
         _tableview.delegate = self;
         _tableview.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -43,6 +46,7 @@
 
 -(void)dealloc{
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [self removeFooterView];
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -53,9 +57,18 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    if ([self respondsToSelector:@selector(edgesForExtendedLayout)])
+    {
+        self.edgesForExtendedLayout = UIRectEdgeNone;
+    
+}
+    
     [[listDataSource shareInstance].dataDic removeAllObjects];
     [[httpManager shareInstance].topicList requestWithLimit:_ilimit withPage:_ipage withTopic:_itopic];
     [self.view addSubview:_tableview];
+    
+    [self setFooterView];
 }
 
 - (void)didReceiveMemoryWarning
@@ -65,7 +78,46 @@
 }
 
 -(void)refreshlist:(id)sender{
-    [_tableview reloadData];
+    
+    NSString *strresault = [[listDataSource shareInstance].dataDic objectForKey:@"response_status"];
+    if ([strresault isEqualToString:@"true"]) {
+        [_tableview reloadData];
+        [self removeFooterView];
+        [self finishReloadingData];
+    }
+    else{
+        [self removeFooterView];
+        [self finishReloadingData];
+        [SVProgressHUD showSuccessWithStatus:STR_LOGDALL];
+        _tableview.contentInset = UIEdgeInsetsZero;
+    }
+}
+
+-(void)setFooterView{
+	//    UIEdgeInsets test = self.aoView.contentInset;
+    // if the footerView is nil, then create it, reset the position of the footer
+    CGFloat height = MAX(_tableview.contentSize.height, _tableview.frame.size.height);
+    if (_refreshFooterView && [_refreshFooterView superview])
+	{
+        // reset position
+        _refreshFooterView.frame = CGRectMake(0.0f,
+                                              height,
+                                              _tableview.frame.size.width,
+                                              self.view.bounds.size.height);
+    }else
+	{
+        // create the footerView
+        _refreshFooterView = [[EGORefreshTableFooterView alloc] initWithFrame:
+                              CGRectMake(0.0f, height,
+                                         _tableview.frame.size.width, self.view.bounds.size.height)];
+        _refreshFooterView.delegate = self;
+        [_tableview addSubview:_refreshFooterView];
+    }
+    
+    if (_refreshFooterView)
+	{
+        [_refreshFooterView refreshLastUpdatedDate];
+    }
 }
 
 #pragma mark ----------tableview dataSource-----------
@@ -89,6 +141,7 @@
     
     if (listcell == nil) {
         listcell = [[listProductCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+        listcell.selfctl = self;
     }
     
     NSArray *arr = [[listDataSource shareInstance] getArrData];
@@ -126,4 +179,85 @@
     return iheight;
 }
 
+#pragma mark -----------EGO deletegate-------------------
+#pragma mark EGORefreshTableDelegate Methods
+
+- (void)egoRefreshTableDidTriggerRefresh:(EGORefreshPos)aRefreshPos
+{
+	
+	[self beginToReloadData:aRefreshPos];
+	
+}
+
+- (BOOL)egoRefreshTableDataSourceIsLoading:(UIView*)view{
+	
+	return _reloading; // should return if data source model is reloading
+	
+}
+
+
+// if we don't realize this method, it won't display the refresh timestamp
+- (NSDate*)egoRefreshTableDataSourceLastUpdated:(UIView*)view
+{
+	
+	return [NSDate date]; // should return date data source was last changed
+	
+}
+
+-(void)beginToReloadData:(EGORefreshPos)aRefreshPos{
+	
+	//  should be calling your tableviews data source model to reload
+	_reloading = YES;
+    
+    if(aRefreshPos == EGORefreshFooter)
+	{
+        _ipage++;
+        [[httpManager shareInstance].topicList requestWithLimit:_ilimit withPage:_ipage withTopic:_itopic];
+    }
+	
+	// overide, the actual loading data operation is done in the subclass
+}
+
+- (void)finishReloadingData{
+	
+	//  model should call this when its done loading
+	_reloading = NO;
+    
+    if (_refreshFooterView) {
+        [_refreshFooterView egoRefreshScrollViewDataSourceDidFinishedLoading:_tableview];
+    }
+    [self setFooterView];
+    
+    // overide, the actula reloading tableView operation and reseting position operation is done in the subclass
+}
+
+-(void)removeFooterView
+{
+    if (_refreshFooterView && [_refreshFooterView superview])
+	{
+        [_refreshFooterView removeFromSuperview];
+    }
+    _refreshFooterView = nil;
+}
+
+#pragma mark UIScrollViewDelegate Methods
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+	
+	if (_refreshFooterView)
+	{
+        [_refreshFooterView egoRefreshScrollViewDidScroll:scrollView];
+    }
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
+	
+	if (_refreshFooterView)
+	{
+        [_refreshFooterView egoRefreshScrollViewDidEndDragging:scrollView];
+        LOG_Test(@"end tabel%@",NSStringFromCGRect(_tableview.frame));
+        LOG_Test(@"end view%@",NSStringFromCGRect(self.view.frame));
+        
+    }
+}
 @end

@@ -9,7 +9,13 @@
 #import "baseDataSource.h"
 
 @interface listDataSource : baseDataSource
+{
+    NSMutableArray *_listArr;
+}
+
+@property(nonatomic,strong) NSMutableArray *listArr;
 
 + (listDataSource *)shareInstance;
+-(void)addArrFromArr:(NSArray *)arr;
 
 @end

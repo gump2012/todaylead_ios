@@ -8,6 +8,7 @@
 
 #import "listProductCell.h"
 #import "UIImageView+WebCache.h"
+#import "productDetailViewController.h"
 
 @implementation listProductCell
 
@@ -16,9 +17,15 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         _image1 = [[UIImageView alloc] initWithFrame:CGRectMake(10.0f, 10.0f, 140.0f, 140.0f)];
+        _image1.userInteractionEnabled = YES;
+        UITapGestureRecognizer *singleTap =[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(onClickImage:)];
+        [_image1 addGestureRecognizer:singleTap];
         [self.contentView addSubview:_image1];
         
         _image2 = [[UIImageView alloc] initWithFrame:CGRectMake(170.0f, 10.0f, 140.0f, 140.0f)];
+        _image2.userInteractionEnabled = YES;
+        singleTap =[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(onClickImage:)];
+        [_image2 addGestureRecognizer:singleTap];
         [self.contentView addSubview:_image2];
         
         _label1 = [[UILabel alloc] initWithFrame:CGRectMake(10.0f, 160.0f, 150.0f, 20.0f)];
@@ -52,6 +59,8 @@
         UIImageView *bottomline = [[UIImageView alloc] initWithFrame:CGRectMake(0.0f, 220.0f, [CP shareInstance].w, 0.5f)];
         bottomline.backgroundColor = [UIColor grayColor];
         [self.contentView addSubview:bottomline];
+        
+        self.selfctl = nil;
      }
     return self;
 }
@@ -61,6 +70,11 @@
     
     if (str) {
         [_image1 sd_setImageWithURL:[NSURL URLWithString:str]];
+    }
+    
+    str = [dic1 objectForKey:@"product_id"];
+    if (str) {
+        _image1.tag = [str intValue];
     }
     
     str = [dic1 objectForKey:@"name"];
@@ -96,6 +110,11 @@
             [_image2 sd_setImageWithURL:[NSURL URLWithString:str]];
         }
         
+        str = [dic2 objectForKey:@"product_id"];
+        if (str) {
+            _image2.tag = [str intValue];
+        }
+        
         str = [dic2 objectForKey:@"name"];
         if (str) {
             _label2.text = str;
@@ -110,6 +129,16 @@
         if (str) {
             _volume2.text = [NSString stringWithFormat:@"月销量 %d",[str intValue]];
         }
+    }
+}
+
+-(void)onClickImage:(id)sender
+{
+    UITapGestureRecognizer *tap = (UITapGestureRecognizer*)sender;
+    UIView *view = (UIView*) tap.view;
+    if(self.selfctl){
+        productDetailViewController *detailview = [[productDetailViewController alloc] initWithPid:(int)view.tag];
+        [self.selfctl.navigationController pushViewController:detailview animated:YES];
     }
 }
 

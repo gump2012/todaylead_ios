@@ -7,6 +7,7 @@
 //
 
 #import "BaseCell.h"
+@class BaseViewController;
 
 @interface listProductCell : BaseCell
 {
@@ -19,6 +20,8 @@
     UILabel     *_volume1;
     UILabel     *_volume2;
 }
+
+@property(assign,nonatomic) BaseViewController* selfctl;
 
 -(void)refreshCellWithDic1:(NSDictionary *)dic1 withDic2:(NSDictionary *)dic2;
 @end

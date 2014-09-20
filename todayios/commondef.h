@@ -14,4 +14,6 @@
 #define LOCAL_DOMAIN @"http://127.0.0.1"
 #define LATEST_DOMAIN @"http://latest.toupai360.com"
 
+#define NAVIGATION_HEIGHT   64.0f
+
 #endif

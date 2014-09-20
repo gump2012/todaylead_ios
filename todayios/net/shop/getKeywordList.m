@@ -24,7 +24,7 @@
     NSURL *url = [NSURL URLWithString:[str stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
     LOG_Test(@"%@",url);
     ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
-    
+    _ipage = ipage;
     [request setDelegate:self];
     
     [request startAsynchronous];
@@ -36,8 +36,18 @@
     NSString *responseString = [request responseString];
     NSDictionary *jsondic = [responseString objectFromJSONString];
     if (jsondic) {
-        [[listDataSource shareInstance].dataDic removeAllObjects];
-        [[listDataSource shareInstance].dataDic setDictionary:jsondic];
+        if (_ipage == 1) {
+            [[listDataSource shareInstance].listArr removeAllObjects];
+            [[listDataSource shareInstance].dataDic removeAllObjects];
+            [[listDataSource shareInstance].dataDic setDictionary:jsondic];
+            [[listDataSource shareInstance] addArrFromArr:[[listDataSource shareInstance] getArrData]];
+        }
+        else if(_ipage > 1){
+            [[listDataSource shareInstance].dataDic removeAllObjects];
+            [[listDataSource shareInstance].dataDic setDictionary:jsondic];
+            [[listDataSource shareInstance] addArrFromArr:[[listDataSource shareInstance] getArrData]];
+        }
+        
         [[NSNotificationCenter defaultCenter] postNotificationName:NotifyKeywordList object:nil];
     }
 }
