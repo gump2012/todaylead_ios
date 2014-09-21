@@ -17,6 +17,8 @@
 @class getProRecommand;
 @class getKeywordList;
 @class getTopicList;
+@class getCategoryList;
+@class getCategoryProducts;
 
 @interface httpManager : NSObject
 {
@@ -30,6 +32,8 @@
     getProRecommand *_proRecommand;
     getKeywordList *_keywordList;
     getTopicList    *_topicList;
+    getCategoryList *_categoryList;
+    getCategoryProducts *_categoryPros;
 }
 
 @property(nonatomic,strong) getShopAdList *getshopad;
@@ -42,6 +46,8 @@
 @property(nonatomic,strong) getProRecommand *proRecommand;
 @property(nonatomic,strong) getKeywordList *keywordList;
 @property(nonatomic,strong) getTopicList *topicList;
+@property(nonatomic,strong) getCategoryList *categoryList;
+@property(nonatomic,strong) getCategoryProducts *categoryPros;
 
 + (httpManager *)shareInstance;
 

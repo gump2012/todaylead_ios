@@ -17,7 +17,8 @@
 #import "getProRecommand.h"
 #import "getKeywordList.h"
 #import "getTopicList.h"
-
+#import "getCategoryList.h"
+#import "getCategoryProducts.h"
 static httpManager * shareins = nil;
 
 @implementation httpManager
@@ -31,6 +32,8 @@ static httpManager * shareins = nil;
 @synthesize proRecommand = _proRecommand;
 @synthesize keywordList = _keywordList;
 @synthesize topicList = _topicList;
+@synthesize categoryList = _categoryList;
+@synthesize categoryPros = _categoryPros;
 
 + (httpManager *)shareInstance
 {
@@ -54,6 +57,8 @@ static httpManager * shareins = nil;
         _proRecommand = [[getProRecommand alloc] init];
         _keywordList = [[getKeywordList alloc] init];
         _topicList = [[getTopicList alloc] init];
+        _categoryList = [[getCategoryList alloc] init];
+        _categoryPros = [[getCategoryProducts alloc] init];
     }
     return self;
 }

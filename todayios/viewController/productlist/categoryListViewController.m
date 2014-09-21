@@ -1,37 +1,37 @@
 //
-//  topicListViewController.m
+//  categoryListViewController.m
 //  todayios
 //
-//  Created by gump on 9/19/14.
+//  Created by gump on 9/21/14.
 //  Copyright (c) 2014 gump. All rights reserved.
 //
 
-#import "topicListViewController.h"
-#import "getTopicList.h"
+#import "categoryListViewController.h"
 #import "listDataSource.h"
 #import "listProductCell.h"
 #import "SVProgressHUD.h"
+#import "getCategoryProducts.h"
 
-@interface topicListViewController ()
+@interface categoryListViewController ()
 
 @end
 
-@implementation topicListViewController
+@implementation categoryListViewController
 
-@synthesize itopic = _itopic;
+@synthesize icid = _icid;
 
-- (id)initWithTopicID:(int)itopic
+- (id)initWithCategoryID:(int)icid
 {
     self = [super init];
     if (self) {
-        _itopic = itopic;
+        _icid = icid;
         _ilimit = 10;
         _ipage = 1;
         
         NSNotificationCenter *center=[NSNotificationCenter defaultCenter];
         [center addObserver:self
                    selector:@selector(refreshlist:)
-                       name:NotifyTopicList
+                       name:NotifyCategoryProducts
                      object:nil];
         
         _tableview = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 0.0f,
@@ -61,11 +61,11 @@
     if ([self respondsToSelector:@selector(edgesForExtendedLayout)])
     {
         self.edgesForExtendedLayout = UIRectEdgeNone;
-    
-}
+        
+    }
     
     [[listDataSource shareInstance].dataDic removeAllObjects];
-    [[httpManager shareInstance].topicList requestWithLimit:_ilimit withPage:_ipage withTopic:_itopic];
+    [[httpManager shareInstance].categoryPros requestWithLimit:_ilimit withPage:_ipage withCid:_icid];
     [self.view addSubview:_tableview];
     
     [self setFooterView];
@@ -212,7 +212,7 @@
     if(aRefreshPos == EGORefreshFooter)
 	{
         _ipage++;
-        [[httpManager shareInstance].topicList requestWithLimit:_ilimit withPage:_ipage withTopic:_itopic];
+        [[httpManager shareInstance].categoryPros requestWithLimit:_ilimit withPage:_ipage withCid:_icid];
     }
 	
 	// overide, the actual loading data operation is done in the subclass
@@ -260,4 +260,5 @@
         
     }
 }
+
 @end

@@ -8,6 +8,8 @@
 
 #import "BaseViewController.h"
 
-@interface categoryViewController : BaseViewController
-
+@interface categoryViewController : BaseViewController<UITableViewDataSource, UITableViewDelegate>
+{
+    UITableView *_tableview;
+}
 @end

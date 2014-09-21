@@ -9,7 +9,9 @@
 #import "baseRequest.h"
 
 @interface getTopicList : baseRequest
-
+{
+    int _ipage;
+}
 -(void)requestWithLimit:(int)ilimit withPage:(int)ipage withTopic:(int)itopic;
 
 @end

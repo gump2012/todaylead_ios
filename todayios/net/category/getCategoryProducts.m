@@ -1,25 +1,26 @@
 //
-//  getTopicList.m
+//  getCategoryProducts.m
 //  todayios
 //
-//  Created by gump on 9/19/14.
+//  Created by gump on 9/21/14.
 //  Copyright (c) 2014 gump. All rights reserved.
 //
 
-#import "getTopicList.h"
+#import "getCategoryProducts.h"
 #import "ASIHTTPRequest.h"
 #import "JSONKit.h"
 #import "listDataSource.h"
 
-@implementation getTopicList
--(void)requestWithLimit:(int)ilimit withPage:(int)ipage withTopic:(int)itopic{
+@implementation getCategoryProducts
+
+-(void)requestWithLimit:(int)ilimit withPage:(int)ipage withCid:(int)icid{
     NSString *str = [NSString stringWithFormat:
-                     @"%@:%@/?m=shop&a=getTopicProductList&count=%d&page=%d&topic_id=%d",
+                     @"%@:%@/?m=category&a=getCategoryProductList&count=%d&page=%d&category_id=%d",
                      LATEST_DOMAIN,
                      MAIN_PORT,
                      ilimit,
                      ipage,
-                     itopic];
+                     icid];
     NSURL *url = [NSURL URLWithString:str];
     LOG_Test(@"%@",url);
     _ipage = ipage;
@@ -47,7 +48,7 @@
             [[listDataSource shareInstance].dataDic setDictionary:jsondic];
             [[listDataSource shareInstance] addArrFromArr:[[listDataSource shareInstance] getArrData]];
         }
-        [[NSNotificationCenter defaultCenter] postNotificationName:NotifyTopicList object:nil];
+        [[NSNotificationCenter defaultCenter] postNotificationName:NotifyCategoryProducts object:nil];
     }
 }
 
@@ -59,4 +60,5 @@
         LOG_Error(@"%@",error);
     }
 }
+
 @end

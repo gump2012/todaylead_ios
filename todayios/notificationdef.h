@@ -23,4 +23,9 @@
 #define NotifyProductReport              @"productReport"       //得到商品体验报告
 #define NotifyProductComment             @"proComment"          //得到商品评论
 #define NotifyProductRecommand           @"proRecommand"        //得到商品推荐
+
+//category
+#define NotifyCategoryList               @"categoryList"        //分类列表
+#define NotifyCategoryProducts           @"CategoryProducts"    //分类商品
+
 #endif
