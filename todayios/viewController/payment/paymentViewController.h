@@ -7,7 +7,10 @@
 //
 
 #import "BaseViewController.h"
+#import "cartEmptyView.h"
 
 @interface paymentViewController : BaseViewController
-
+{
+    cartEmptyView *_emptyView;
+}
 @end

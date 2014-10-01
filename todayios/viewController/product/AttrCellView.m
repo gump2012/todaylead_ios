@@ -8,6 +8,7 @@
 
 #import "AttrCellView.h"
 @implementation AttrCellView
+@synthesize dic = _dic;
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -23,14 +24,15 @@
         UITapGestureRecognizer *singleTap =[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(onClick:)];
         [_textLabel addGestureRecognizer:singleTap];
         [self addSubview:_textLabel];
-        
+        _dic = [[NSMutableDictionary alloc] init];
         self.clickblock = nil;
     }
     return self;
 }
 
 -(void)setDic:(NSDictionary *)dic{
-    _dic = dic;
+    [_dic removeAllObjects];
+    [_dic setDictionary:dic];
     if (dic) {
         NSString *strvalue = [_dic objectForKey:@"value"];
         if (strvalue) {

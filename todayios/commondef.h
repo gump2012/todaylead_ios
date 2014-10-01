@@ -16,4 +16,11 @@
 
 #define NAVIGATION_HEIGHT   64.0f
 
+enum TabbarEnum{
+    TABBAR_SHOP = 0,
+    TABBAR_CATEGORY,
+    TABBAR_CART,
+    TABBAR_ME,
+};
+
 #endif

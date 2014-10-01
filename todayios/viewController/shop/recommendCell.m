@@ -93,7 +93,7 @@
                                 [self.contentView addSubview:imageview];
                                 [_imageArr addObject:imageview];
                                 
-                                UILabel *namelabel = [[UILabel alloc] initWithFrame:CGRectMake(i * interval, 130.0f, interval, 40.0f)];
+                                baseLabel *namelabel = [[baseLabel alloc] initWithFrame:CGRectMake(i * interval, 130.0f, interval, 40.0f)];
                                 namelabel.textAlignment = NSTextAlignmentCenter;
                                 strimage = [imageitme objectForKey:@"name"];
                                 if (strimage) {

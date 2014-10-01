@@ -31,6 +31,7 @@ static CP * shareins = nil;
 		_w = tScreenRect.size.width;
         self.mywindow = nil;
         self.mytabbar = nil;
+        self.idfv = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
     }
     return self;
 }

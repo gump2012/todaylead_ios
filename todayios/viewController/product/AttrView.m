@@ -134,12 +134,6 @@
         
         NSArray *arr = [[productDetailDataSource shareInstance] getAttrList];
         if (arr) {
-            if (arr.count == 1) {
-                NSDictionary *dic = [arr objectAtIndex:0];
-                if (dic) {
-                    _attrLabel.text = [dic objectForKey:@"value"];
-                }
-            }
             
             for (int i = 0; i < _arrView.count; ++i) {
                 UIView *view = [_arrView objectAtIndex:i];
@@ -173,6 +167,23 @@
                     }
                 }
             }
+            
+            if (_arrView.count == 1) {
+                AttrCellView *view = [_arrView objectAtIndex:0];
+                [view selectCell:YES];
+                NSString *strvalue = [view.dic objectForKey:@"value"];
+                if (strvalue) {
+                    _attrLabel.text = strvalue;
+                }
+                
+                NSString *strprice = [view.dic objectForKey:@"price"];
+                if (strprice) {
+                    float fprice = [[productDetailDataSource shareInstance] getPrice] + [strprice floatValue];
+                    _priceLabel.text = [NSString stringWithFormat:@"¥%0.2f",fprice];
+                }
+                
+            }
+            
             
             [_numView removeFromSuperview];
             _numView.frame = CGRectMake(0.0f, 44.0f * icount, [CP shareInstance].w, 80.0f);
@@ -211,6 +222,12 @@
                     NSString *strvalue = [dic objectForKey:@"value"];
                     if (strvalue) {
                          _attrLabel.text = strvalue;
+                    }
+                    
+                    NSString *strprice = [dic objectForKey:@"price"];
+                    if (strprice) {
+                        float fprice = [[productDetailDataSource shareInstance] getPrice] + [strprice floatValue];
+                        _priceLabel.text = [NSString stringWithFormat:@"¥%0.2f",fprice];
                     }
                 }
             }

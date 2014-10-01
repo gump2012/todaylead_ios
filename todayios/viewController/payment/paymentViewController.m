@@ -7,6 +7,7 @@
 //
 
 #import "paymentViewController.h"
+#import "cartDataSource.h"
 
 @interface paymentViewController ()
 
@@ -17,7 +18,7 @@
 - (id)init{
     self = [super init];
     if (self) {
-        // Custom initialization
+        _emptyView = [[cartEmptyView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, [CP shareInstance].w, [CP shareInstance].h)];
     }
     return self;
 }
@@ -25,7 +26,18 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    [self.view addSubview:_emptyView];
+    
+    if ([cartDataSource shareInstance].cartArr.count == 0) {
+        _emptyView.hidden = NO;
+    }else{
+        _emptyView.hidden = YES;
+    }
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [[CP shareInstance].mytabbar.tabBar setHidden:NO];
 }
 
 - (void)didReceiveMemoryWarning

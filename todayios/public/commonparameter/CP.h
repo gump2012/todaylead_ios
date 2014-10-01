@@ -16,6 +16,7 @@
 @property(nonatomic,assign) float w;
 @property(nonatomic,assign) UIWindow *mywindow;
 @property(nonatomic,strong) UITabBarController *mytabbar;
+@property(nonatomic,strong) NSString *idfv;
 
 + (CP *)shareInstance;
 

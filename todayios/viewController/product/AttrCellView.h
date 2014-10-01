@@ -11,10 +11,11 @@
 @interface AttrCellView : UIView
 {
     UILabel *_textLabel;
-    NSDictionary *_dic;
+    NSMutableDictionary *_dic;
 }
 
 @property (nonatomic,copy) void (^clickblock)(NSDictionary *,int);
+@property (nonatomic,strong) NSMutableDictionary *dic;
 
 -(void)setDic:(NSDictionary *)dic;
 -(void)selectCell:(BOOL)bselect;

@@ -125,7 +125,7 @@
                             
                             strimage = [item objectForKey:@"name"];
                             if (strimage) {
-                                UILabel *namelabel = [[UILabel alloc] initWithFrame:CGRectMake([CP shareInstance].w / 3 * 2,
+                                baseLabel *namelabel = [[baseLabel alloc] initWithFrame:CGRectMake([CP shareInstance].w / 3 * 2,
                                                                                               130.0f,
                                                                                               [CP shareInstance].w / 3,
                                                                                                40.0f)];
@@ -158,7 +158,7 @@
                             
                             strimage = [item objectForKey:@"name"];
                             if (strimage) {
-                                UILabel *namelabel = [[UILabel alloc] initWithFrame:CGRectMake([CP shareInstance].w / 3 * 2,
+                                baseLabel *namelabel = [[baseLabel alloc] initWithFrame:CGRectMake([CP shareInstance].w / 3 * 2,
                                                                                                130.0f + [CP shareInstance].w / 3,
                                                                                                [CP shareInstance].w / 3,
                                                                                                40.0f)];
@@ -192,7 +192,7 @@
                                 
                                 strimage = [item objectForKey:@"name"];
                                 if (strimage) {
-                                    UILabel *namelabel = [[UILabel alloc] initWithFrame:CGRectMake((i-2)*[CP shareInstance].w / 3,
+                                    baseLabel *namelabel = [[baseLabel alloc] initWithFrame:CGRectMake((i-2)*[CP shareInstance].w / 3,
                                                                                                    130.0f + [CP shareInstance].w / 3*2,
                                                                                                    [CP shareInstance].w / 3,
                                                                                                    40.0f)];
