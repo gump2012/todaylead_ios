@@ -49,10 +49,13 @@
 		3375307919BD93080044664F /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3375307619BD93080044664F /* Default-568h@2x.png */; };
 		3375307A19BD93080044664F /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 3375307719BD93080044664F /* Default.png */; };
 		3375307B19BD93080044664F /* Default~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 3375307819BD93080044664F /* Default~iphone.png */; };
+		338A96B319E02C96008EA648 /* icon_unread.png in Resources */ = {isa = PBXBuildFile; fileRef = 338A96B219E02C96008EA648 /* icon_unread.png */; };
 		3390642219A38567003BA869 /* getShopTop.m in Sources */ = {isa = PBXBuildFile; fileRef = 3390642119A38567003BA869 /* getShopTop.m */; };
 		3390642519A386F1003BA869 /* shopTopDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 3390642419A386F1003BA869 /* shopTopDataSource.m */; };
 		3390642819A38DF5003BA869 /* recommendCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3390642719A38DF5003BA869 /* recommendCell.m */; };
 		3390642B19A58EBE003BA869 /* shopTopCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3390642A19A58EBE003BA869 /* shopTopCell.m */; };
+		33B8959A19E821EC00C43A52 /* cartUpdate.m in Sources */ = {isa = PBXBuildFile; fileRef = 33B8959919E821EC00C43A52 /* cartUpdate.m */; };
+		33B8959D19E833DC00C43A52 /* cartUpdateDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 33B8959C19E833DC00C43A52 /* cartUpdateDataSource.m */; };
 		33B8FE7F19B5B8CC0068F4F5 /* ProGalleryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 33B8FE7E19B5B8CC0068F4F5 /* ProGalleryCell.m */; };
 		33B8FE9A19B6C3FB0068F4F5 /* proiceLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 33B8FE9919B6C3FB0068F4F5 /* proiceLabel.m */; };
 		33B8FEA819B6FC180068F4F5 /* icon57.png in Resources */ = {isa = PBXBuildFile; fileRef = 33B8FEA719B6FC180068F4F5 /* icon57.png */; };
@@ -243,6 +246,7 @@
 		3375307619BD93080044664F /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "resource/launch/Default-568h@2x.png"; sourceTree = "<group>"; };
 		3375307719BD93080044664F /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = resource/launch/Default.png; sourceTree = "<group>"; };
 		3375307819BD93080044664F /* Default~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default~iphone.png"; path = "resource/launch/Default~iphone.png"; sourceTree = "<group>"; };
+		338A96B219E02C96008EA648 /* icon_unread.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_unread.png; path = resource/cart/icon_unread.png; sourceTree = "<group>"; };
 		3390642019A38567003BA869 /* getShopTop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = getShopTop.h; path = net/shop/getShopTop.h; sourceTree = "<group>"; };
 		3390642119A38567003BA869 /* getShopTop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = getShopTop.m; path = net/shop/getShopTop.m; sourceTree = "<group>"; };
 		3390642319A386F1003BA869 /* shopTopDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = shopTopDataSource.h; path = model/shop/shopTopDataSource.h; sourceTree = "<group>"; };
@@ -251,6 +255,10 @@
 		3390642719A38DF5003BA869 /* recommendCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = recommendCell.m; path = viewController/shop/recommendCell.m; sourceTree = "<group>"; };
 		3390642919A58EBE003BA869 /* shopTopCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = shopTopCell.h; path = viewController/shop/shopTopCell.h; sourceTree = "<group>"; };
 		3390642A19A58EBE003BA869 /* shopTopCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = shopTopCell.m; path = viewController/shop/shopTopCell.m; sourceTree = "<group>"; };
+		33B8959819E821EC00C43A52 /* cartUpdate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = cartUpdate.h; path = net/cart/cartUpdate.h; sourceTree = "<group>"; };
+		33B8959919E821EC00C43A52 /* cartUpdate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = cartUpdate.m; path = net/cart/cartUpdate.m; sourceTree = "<group>"; };
+		33B8959B19E833DC00C43A52 /* cartUpdateDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = cartUpdateDataSource.h; path = model/cart/cartUpdateDataSource.h; sourceTree = "<group>"; };
+		33B8959C19E833DC00C43A52 /* cartUpdateDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = cartUpdateDataSource.m; path = model/cart/cartUpdateDataSource.m; sourceTree = "<group>"; };
 		33B8FE7D19B5B8CC0068F4F5 /* ProGalleryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProGalleryCell.h; path = viewController/product/ProGalleryCell.h; sourceTree = "<group>"; };
 		33B8FE7E19B5B8CC0068F4F5 /* ProGalleryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProGalleryCell.m; path = viewController/product/ProGalleryCell.m; sourceTree = "<group>"; };
 		33B8FE9819B6C3FB0068F4F5 /* proiceLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = proiceLabel.h; path = viewController/product/proiceLabel.h; sourceTree = "<group>"; };
@@ -571,6 +579,7 @@
 		3335160019D54B1400E25C36 /* cart */ = {
 			isa = PBXGroup;
 			children = (
+				338A96B219E02C96008EA648 /* icon_unread.png */,
 				3335160119D54B1F00E25C36 /* icon_shopcar_none.png */,
 			);
 			name = cart;
@@ -608,6 +617,15 @@
 				33C8DD1E19C6E52A00E02BAB /* adWebViewController.m */,
 			);
 			name = webview;
+			sourceTree = "<group>";
+		};
+		33B8959719E821B000C43A52 /* cart */ = {
+			isa = PBXGroup;
+			children = (
+				33B8959819E821EC00C43A52 /* cartUpdate.h */,
+				33B8959919E821EC00C43A52 /* cartUpdate.m */,
+			);
+			name = cart;
 			sourceTree = "<group>";
 		};
 		33B8FE9B19B6F8150068F4F5 /* resource */ = {
@@ -691,6 +709,8 @@
 				33CC267719DA9BE80076372C /* cartDataSource.m */,
 				33CC267919DAA3590076372C /* cartModel.h */,
 				33CC267A19DAA3590076372C /* cartModel.m */,
+				33B8959B19E833DC00C43A52 /* cartUpdateDataSource.h */,
+				33B8959C19E833DC00C43A52 /* cartUpdateDataSource.m */,
 			);
 			name = cart;
 			sourceTree = "<group>";
@@ -1046,6 +1066,7 @@
 		35A0CC98197D105B00D201D3 /* net */ = {
 			isa = PBXGroup;
 			children = (
+				33B8959719E821B000C43A52 /* cart */,
 				33D69D1919CEAF3600EF332B /* category */,
 				3322B59819A897BB00DE26EA /* product */,
 				35A0CC9D197D145C00D201D3 /* shop */,
@@ -1250,6 +1271,7 @@
 				33B8FEAE19B6FD4D0068F4F5 /* icon29.png in Resources */,
 				331A798019B9E42500B22346 /* icon_bottom_category_n.png in Resources */,
 				33F9747919C29209004DAE54 /* icon_clear_n.png in Resources */,
+				338A96B319E02C96008EA648 /* icon_unread.png in Resources */,
 				336B8A2519BE9F3000D65642 /* btn_arrow.png in Resources */,
 				3375307919BD93080044664F /* Default-568h@2x.png in Resources */,
 				3370598F19B9A40A0077ACF2 /* icon_cod_commonparam.png in Resources */,
@@ -1284,8 +1306,10 @@
 				33B8FE9A19B6C3FB0068F4F5 /* proiceLabel.m in Sources */,
 				35A0CC54197D099E00D201D3 /* ASIS3Request.m in Sources */,
 				35A0CC48197D099E00D201D3 /* ASIWebPageRequest.m in Sources */,
+				33B8959A19E821EC00C43A52 /* cartUpdate.m in Sources */,
 				3532923519878DB000149438 /* adListCell.m in Sources */,
 				337059A819B9CADE0077ACF2 /* proReportDataSource.m in Sources */,
+				33B8959D19E833DC00C43A52 /* cartUpdateDataSource.m in Sources */,
 				3532926519879F5D00149438 /* UIImageView+HighlightedWebCache.m in Sources */,
 				35A0CCA3197D14EC00D201D3 /* getShopAdList.m in Sources */,
 				3390642819A38DF5003BA869 /* recommendCell.m in Sources */,
@@ -1512,7 +1536,7 @@
 				INFOPLIST_FILE = "todayios/todayios-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "eb55de77-a93e-4bcc-948c-b74102e54f93";
+				PROVISIONING_PROFILE = "f2851ee4-38b6-4d19-8def-273e20525bd2";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -1533,7 +1557,7 @@
 				INFOPLIST_FILE = "todayios/todayios-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "eb55de77-a93e-4bcc-948c-b74102e54f93";
+				PROVISIONING_PROFILE = "f2851ee4-38b6-4d19-8def-273e20525bd2";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};

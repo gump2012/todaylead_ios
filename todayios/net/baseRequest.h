@@ -11,5 +11,6 @@
 @interface baseRequest : NSObject
 
 -(void)request;
+-(NSString *)getDefaultValue;
 
 @end

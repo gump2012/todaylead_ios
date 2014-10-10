@@ -20,6 +20,7 @@ UITableViewDataSource, UITableViewDelegate
     UILabel         *_baoyouTextLabel;
     payButtonView   *_paybtnview;
     AttrView        *_attrview;
+    int             *_iBtnType;
 }
 
 -(id)initWithPid:(int)ipid;

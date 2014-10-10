@@ -16,7 +16,7 @@
     int      _number;
     float    _price;
     int      _pid;
-    int      _attrid;
+    NSArray *_attrarr;
 }
 
 @property(nonatomic,strong) NSString *strurl;
@@ -25,6 +25,6 @@
 @property(nonatomic,assign) int number;
 @property(nonatomic,assign) float price;
 @property(nonatomic,assign) int pid;
-@property(nonatomic,assign) int attrid;
+@property(nonatomic,strong) NSArray *attrarr;
 
 @end

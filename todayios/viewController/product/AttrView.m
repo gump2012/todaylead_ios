@@ -8,6 +8,7 @@
 
 #import "AttrView.h"
 #import "productDetailDataSource.h"
+#import "cartDataSource.h"
 #import "UIImageView+WebCache.h"
 #import "AttrCellView.h"
 
@@ -92,6 +93,7 @@
         
         UIImageView *bottombg = [[UIImageView alloc] initWithFrame:CGRectMake(0.0f, 370.0, [CP shareInstance].w, 50.0f)];
         bottomline.backgroundColor = [UIColor colorWithRed:229/255.0 green:229/255.0 blue:231/255.0 alpha:1];
+        bottombg.userInteractionEnabled = YES;
         [bgview addSubview:bottombg];
         
         UIButton *surebtn = [[UIButton alloc] initWithFrame:CGRectMake(106, 5.0f, 110.0, 40.0f)];
@@ -103,6 +105,8 @@
         [bottombg addSubview:surebtn];
         
         [self refreshView];
+        
+        _transitionLayer = [[CALayer alloc] init];
     }
     return self;
 }
@@ -114,12 +118,23 @@
     }
     
     [_arrView removeAllObjects];
+    
+    _transitionLayer = nil;
 }
 
 -(void)bgclick{
+    
     if (self.disappearBlock) {
         self.disappearBlock();
     }
+}
+
+- (void)animationDidStop:(CAAnimation *)theAnimation finished:(BOOL)flag
+{
+	if ([theAnimation isEqual:[_transitionLayer animationForKey:@"move"]]) {
+		[_transitionLayer removeFromSuperlayer];
+		[_transitionLayer removeAllAnimations];
+	}
 }
 
 -(void)refreshView{
@@ -148,7 +163,7 @@
                 if (attdic && [attdic isKindOfClass:[NSDictionary class]]) {
                     NSString *strtype = [attdic objectForKey:@"type"];
                     if (strtype) {
-                        int itype = [strtype integerValue];
+                        int itype = [strtype intValue];
                         if (itype == 1) {
                             AttrCellView *attview = [[AttrCellView alloc] initWithFrame:CGRectMake(0.0f,
                                                                                                    44.0f * icount,
@@ -207,9 +222,50 @@
 }
 
 -(void)sureclick{
+    if ([cartDataSource shareInstance].ibuyBtnType == BUYBTNTP_ADD) {
+        [self productAnimation];
+    }
+    
     if (self.sureBlock) {
         self.sureBlock();
     }
+}
+
+-(void)productAnimation{
+    [CATransaction begin];
+	[CATransaction setValue:(id)kCFBooleanTrue forKey:kCATransactionDisableActions];
+	_transitionLayer.opacity = 1.0;
+	_transitionLayer.contents = (id)_productView.image.CGImage;
+	_transitionLayer.frame = [[UIApplication sharedApplication].keyWindow convertRect:_productView.bounds fromView:_productView];
+	[[UIApplication sharedApplication].keyWindow.layer addSublayer:_transitionLayer];
+	[CATransaction commit];
+	
+	CABasicAnimation *positionAnimation = [CABasicAnimation animationWithKeyPath:@"position"];
+	positionAnimation.fromValue = [NSValue valueWithCGPoint:_transitionLayer.position];
+	positionAnimation.toValue = [NSValue valueWithCGPoint:CGPointMake([CP shareInstance].w, [CP shareInstance].h)];
+    
+	CABasicAnimation *boundsAnimation = [CABasicAnimation animationWithKeyPath:@"bounds"];
+	boundsAnimation.fromValue = [NSValue valueWithCGRect:_transitionLayer.bounds];
+	boundsAnimation.toValue = [NSValue valueWithCGRect:CGRectZero];
+    
+	CABasicAnimation *opacityAnimation = [CABasicAnimation animationWithKeyPath:@"opacity"];
+	opacityAnimation.fromValue = [NSNumber numberWithFloat:1.0];
+	opacityAnimation.toValue = [NSNumber numberWithFloat:0.5];
+	
+	CABasicAnimation *rotateAnimation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
+	rotateAnimation.fromValue = [NSNumber numberWithFloat:0 * M_PI];
+	rotateAnimation.toValue = [NSNumber numberWithFloat:2 * M_PI];
+	
+	
+	CAAnimationGroup *group = [CAAnimationGroup animation];
+	group.beginTime = CACurrentMediaTime() + 0.25;
+	group.duration = 0.5;
+	group.animations = [NSArray arrayWithObjects:positionAnimation, boundsAnimation, opacityAnimation, rotateAnimation, nil];
+	group.delegate = self;
+	group.fillMode = kCAFillModeForwards;
+	group.removedOnCompletion = NO;
+	
+	[_transitionLayer addAnimation:group forKey:@"move"];
 }
 
 -(void)clickcellWithDic:(NSDictionary *)dic wihtIndex:(int)iindex{

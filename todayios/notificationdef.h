@@ -28,4 +28,7 @@
 #define NotifyCategoryList               @"categoryList"        //分类列表
 #define NotifyCategoryProducts           @"CategoryProducts"    //分类商品
 
+//cart
+#define NotifyCartUpdate                 @"CartUpdate"          //购物车更新
+
 #endif

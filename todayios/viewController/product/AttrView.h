@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 gump. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import <QuartzCore/QuartzCore.h>
 
 @interface AttrView : UIView
 {
@@ -18,6 +18,7 @@
     UIView      *_numView;
     UILabel     *_numLabel;
     int         _buynum;
+    CALayer     *_transitionLayer;
 }
 
 @property(nonatomic,copy) void(^disappearBlock)(void);

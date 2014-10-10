@@ -26,6 +26,7 @@
 #import "priceCell.h"
 #import "payButtonView.h"
 #import "AttrView.h"
+#import "cartDataSource.h"
 
 @interface productDetailViewController ()
 
@@ -148,6 +149,8 @@
 }
 
 -(void)immediateClick{
+    [cartDataSource shareInstance].ibuyBtnType = BUYBTNTP_IM;
+    
     [_attrview refreshView];
     [UIView beginAnimations:nil context:nil];
     
@@ -162,6 +165,8 @@
 }
 
 -(void)addClick{
+    [cartDataSource shareInstance].ibuyBtnType = BUYBTNTP_ADD;
+    
     [_attrview refreshView];
     [UIView beginAnimations:nil context:nil];
     
@@ -188,7 +193,19 @@
 }
 
 -(void)sureAttrView{
+    [UIView beginAnimations:nil context:nil];
     
+    [UIView setAnimationDuration:0.5];
+    [self.navigationController setNavigationBarHidden:NO];
+    [_attrview setFrame:CGRectMake(0.0f,
+                                   [CP shareInstance].h,
+                                   [CP shareInstance].w, [CP shareInstance].h)];
+    
+    [UIView commitAnimations];
+    
+    if ([cartDataSource shareInstance].ibuyBtnType == BUYBTNTP_ADD) {
+        
+    }
 }
 
 #pragma mark ----------tableview dataSource-----------

@@ -7,13 +7,23 @@
 //
 
 #import "baseDataSource.h"
+@class cartModel;
+
+enum{
+    BUYBTNTP_IM,
+    BUYBTNTP_ADD,
+};
 
 @interface cartDataSource : baseDataSource
 {
     NSMutableArray *_cartArr;
 }
+
 + (cartDataSource *)shareInstance;
 
 @property(nonatomic,strong) NSMutableArray *cartArr;
+@property(nonatomic,assign) int ibuyBtnType;
+
+-(void)addCart:(cartModel*)cartmodel;
 
 @end
