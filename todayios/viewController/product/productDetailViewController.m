@@ -27,6 +27,8 @@
 #import "payButtonView.h"
 #import "AttrView.h"
 #import "cartDataSource.h"
+#import "JSONKit.h"
+#import "cartUpdate.h"
 
 @interface productDetailViewController ()
 
@@ -178,6 +180,8 @@
                                    [CP shareInstance].w, [CP shareInstance].h)];
     
     [UIView commitAnimations];
+    
+    
 }
 
 -(void)hideAttrView{
@@ -204,7 +208,20 @@
     [UIView commitAnimations];
     
     if ([cartDataSource shareInstance].ibuyBtnType == BUYBTNTP_ADD) {
+        NSMutableDictionary *cartdic = [[NSMutableDictionary alloc] init];
+        [cartdic setObject:@"1" forKey:@"activity_type"];
+        [cartdic setObject:@"0" forKey:@"is_activity"];
+        NSMutableArray *cartAttrArr = [[NSMutableArray alloc] init];
+        NSMutableDictionary *AttrDic = [[NSMutableDictionary alloc] init];
+        [AttrDic setObject:[productDetailDataSource shareInstance].SelectAttrId forKey:@"goods_attr_id"];
+        [cartAttrArr addObject:AttrDic];
+        [cartdic setObject:cartAttrArr forKey:@"attr_list"];
+        [cartdic setObject:[NSString stringWithFormat:@"%d",self.pid] forKey:@"product_id"];
+        [cartdic setObject:[NSString stringWithFormat:@"%d",[productDetailDataSource shareInstance].iSelectNum] forKey:@"quantity"];
+        NSMutableArray *cartArr = [[NSMutableArray alloc] init];
+        [cartArr addObject:cartdic];
         
+        [[httpManager shareInstance].cartUp requestWithList:[cartArr JSONString] withType:@"add"];
     }
 }
 

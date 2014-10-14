@@ -14,7 +14,7 @@
 @implementation getCategoryList
 
 -(void)request{
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@:%@/?m=category&a=getCategoryList",LATEST_DOMAIN,MAIN_PORT]];
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@/?m=category&a=getCategoryList",[self getDoMain]]];
     LOG_Test(@"%@",url);
     ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
     

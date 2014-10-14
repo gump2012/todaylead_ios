@@ -15,9 +15,8 @@
 @implementation getKeywordList
 -(void)requestWithLimit:(int)ilimit withPage:(int)ipage withKeyword:(NSString *)strkey{
     NSString *str = [NSString stringWithFormat:
-                     @"%@:%@/?m=shop&a=getSearchProductList&count=%d&page=%d&keyword=%@",
-                     LATEST_DOMAIN,
-                     MAIN_PORT,
+                     @"%@/?m=shop&a=getSearchProductList&count=%d&page=%d&keyword=%@",
+                     [self getDoMain],
                      ilimit,
                      ipage,
                      strkey];

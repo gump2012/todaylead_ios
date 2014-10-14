@@ -19,6 +19,7 @@
 #import "getTopicList.h"
 #import "getCategoryList.h"
 #import "getCategoryProducts.h"
+#import "cartUpdate.h"
 static httpManager * shareins = nil;
 
 @implementation httpManager
@@ -34,6 +35,7 @@ static httpManager * shareins = nil;
 @synthesize topicList = _topicList;
 @synthesize categoryList = _categoryList;
 @synthesize categoryPros = _categoryPros;
+@synthesize cartUp = _cartUp;
 
 + (httpManager *)shareInstance
 {
@@ -59,6 +61,7 @@ static httpManager * shareins = nil;
         _topicList = [[getTopicList alloc] init];
         _categoryList = [[getCategoryList alloc] init];
         _categoryPros = [[getCategoryProducts alloc] init];
+        _cartUp = [[cartUpdate alloc] init];
     }
     return self;
 }

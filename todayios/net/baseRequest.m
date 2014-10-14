@@ -31,4 +31,9 @@
     return str;
 }
 
+-(NSString *)getDoMain{
+    NSString *str = [NSString stringWithFormat:@"%@:%@",@"http://192.168.1.102",MAIN_PORT];
+    return str;
+}
+
 @end

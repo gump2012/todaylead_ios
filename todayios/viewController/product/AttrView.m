@@ -83,7 +83,7 @@
         _numLabel.adjustsFontSizeToFitWidth = YES;
         [_numView addSubview:_numLabel];
         
-        _buynum = 1;
+        [productDetailDataSource shareInstance].iSelectNum = 1;
         
         UIButton *addbtn = [[UIButton alloc] initWithFrame:CGRectMake(260.0, 10.0, 45.0, 50.0)];
         [addbtn setTitle:@"+" forState:UIControlStateNormal];
@@ -197,6 +197,11 @@
                     _priceLabel.text = [NSString stringWithFormat:@"¥%0.2f",fprice];
                 }
                 
+                NSString *strattrid = [view.dic objectForKey:@"product_attr_id"];
+                if (strattrid) {
+                    [productDetailDataSource shareInstance].SelectAttrId = [NSString stringWithFormat:@"%@",strattrid];
+                }
+                
             }
             
             
@@ -210,14 +215,14 @@
 }
 
 -(void)addnum{
-        _buynum++;
-        _numLabel.text = [NSString stringWithFormat:@"%d",_buynum];
+        [productDetailDataSource shareInstance].iSelectNum++;
+        _numLabel.text = [NSString stringWithFormat:@"%d",[productDetailDataSource shareInstance].iSelectNum];
 }
 
 -(void)subnum{
-    if (_buynum > 1) {
-        _buynum--;
-        _numLabel.text = [NSString stringWithFormat:@"%d",_buynum];
+    if ([productDetailDataSource shareInstance].iSelectNum > 1) {
+        [productDetailDataSource shareInstance].iSelectNum--;
+        _numLabel.text = [NSString stringWithFormat:@"%d",[productDetailDataSource shareInstance].iSelectNum];
     }
 }
 
@@ -285,6 +290,12 @@
                         float fprice = [[productDetailDataSource shareInstance] getPrice] + [strprice floatValue];
                         _priceLabel.text = [NSString stringWithFormat:@"¥%0.2f",fprice];
                     }
+                    
+                    NSString *strattrid = [dic objectForKey:@"product_attr_id"];
+                    if (strattrid) {
+                        [productDetailDataSource shareInstance].SelectAttrId = [NSString stringWithFormat:@"%@",strattrid];
+                    }
+                    
                 }
             }
             else{

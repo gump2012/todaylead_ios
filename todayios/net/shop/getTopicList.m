@@ -14,9 +14,8 @@
 @implementation getTopicList
 -(void)requestWithLimit:(int)ilimit withPage:(int)ipage withTopic:(int)itopic{
     NSString *str = [NSString stringWithFormat:
-                     @"%@:%@/?m=shop&a=getTopicProductList&count=%d&page=%d&topic_id=%d",
-                     LATEST_DOMAIN,
-                     MAIN_PORT,
+                     @"%@/?m=shop&a=getTopicProductList&count=%d&page=%d&topic_id=%d",
+                     [self getDoMain],
                      ilimit,
                      ipage,
                      itopic];

@@ -23,6 +23,7 @@ enum{
 
 @property(nonatomic,strong) NSMutableArray *cartArr;
 @property(nonatomic,assign) int ibuyBtnType;
+//@property(nonatomic,strong) NSMutableDictionary *cartDic;
 
 -(void)addCart:(cartModel*)cartmodel;
 

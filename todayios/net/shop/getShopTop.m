@@ -14,7 +14,7 @@
 @implementation getShopTop
 
 -(void)request{
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@:%@/?m=shop&a=getTopicList",LATEST_DOMAIN,MAIN_PORT]];
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@/?m=shop&a=getTopicList",[self getDoMain]]];
     LOG_Test(@"%@",url);
     ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
     

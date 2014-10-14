@@ -15,9 +15,8 @@
 
 -(void)requestWithLimit:(int)ilimit withPage:(int)ipage withCid:(int)icid{
     NSString *str = [NSString stringWithFormat:
-                     @"%@:%@/?m=category&a=getCategoryProductList&count=%d&page=%d&category_id=%d",
-                     LATEST_DOMAIN,
-                     MAIN_PORT,
+                     @"%@/?m=category&a=getCategoryProductList&count=%d&page=%d&category_id=%d",
+                     [self getDoMain],
                      ilimit,
                      ipage,
                      icid];

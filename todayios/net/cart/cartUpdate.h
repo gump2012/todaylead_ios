@@ -10,4 +10,6 @@
 
 @interface cartUpdate : baseRequest
 
+-(void)requestWithList:(NSString *)strlist withType:(NSString *)strtype;
+
 @end

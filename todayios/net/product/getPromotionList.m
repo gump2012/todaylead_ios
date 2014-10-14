@@ -14,7 +14,7 @@
 @implementation getPromotionList
 
 -(void)request{
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@:%@/?m=shop&a=getPromotionList",LATEST_DOMAIN,MAIN_PORT]];
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@/?m=shop&a=getPromotionList",[self getDoMain]]];
     LOG_Test(@"%@",url);
     ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
     

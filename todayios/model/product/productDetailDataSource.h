@@ -17,6 +17,8 @@ enum{
 {
 }
 @property(nonatomic,assign) int ibaseAttr;
+@property(nonatomic,assign) int iSelectNum;
+@property(nonatomic,strong) NSString *SelectAttrId;
 
 + (productDetailDataSource *)shareInstance;
 -(NSString *)getTitle;

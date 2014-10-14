@@ -15,7 +15,7 @@
 
 -(void)request:(int)ipid{
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:
-                                       @"%@:%@/?m=product&a=getProductExperience&product_id=%d",LATEST_DOMAIN,MAIN_PORT,ipid]];
+                                       @"%@/?m=product&a=getProductExperience&product_id=%d",[self getDoMain],ipid]];
     LOG_Test(@"%@ pid:%d",url,ipid);
     ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
     

@@ -12,5 +12,6 @@
 
 -(void)request;
 -(NSString *)getDefaultValue;
+-(NSString *)getDoMain;
 
 @end

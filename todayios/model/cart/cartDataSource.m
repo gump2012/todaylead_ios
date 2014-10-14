@@ -21,6 +21,7 @@ static cartDataSource * shareins = nil;
 		shareins = [[cartDataSource alloc] init];
         shareins.cartArr = [[NSMutableArray alloc] init];
         shareins.ibuyBtnType = BUYBTNTP_IM;
+        
 	}
 	return shareins;
 }

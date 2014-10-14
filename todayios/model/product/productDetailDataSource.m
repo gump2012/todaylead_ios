@@ -18,6 +18,8 @@ static productDetailDataSource * shareins = nil;
     {
 		shareins = [[productDetailDataSource alloc] init];
         shareins.ibaseAttr = BASEATTR_HIDE;
+        shareins.iSelectNum = 0;
+        shareins.SelectAttrId = @"";
 	}
 	return shareins;
 }

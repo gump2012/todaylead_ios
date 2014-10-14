@@ -7,21 +7,20 @@
 //
 
 #import "cartUpdate.h"
-#import "ASIHTTPRequest.h"
+#import "ASIFormDataRequest.h"
 #import "JSONKit.h"
 #import "cartUpdateDataSource.h"
 @implementation cartUpdate
 
 -(void)requestWithList:(NSString *)strlist withType:(NSString *)strtype{
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@:%@/?m=payment&a=cartUpdate%@",
-                                       LATEST_DOMAIN,
-                                       MAIN_PORT,
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@/?m=payment&a=cartUpdate%@",
+                                       [self getDoMain],
                                        [self getDefaultValue]]];
     LOG_Test(@"%@",url);
-    ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
+    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
     
-    [request setValue:strlist forKey:@"list"];
-    [request setValue:strtype forKey:@"type"];
+    [request setPostValue:strlist forKey:@"list"];
+    [request setPostValue:strtype forKey:@"type"];
     
     [request setDelegate:self];
     
