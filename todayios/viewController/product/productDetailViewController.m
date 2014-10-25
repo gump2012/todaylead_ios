@@ -29,6 +29,9 @@
 #import "cartDataSource.h"
 #import "JSONKit.h"
 #import "cartUpdate.h"
+#import "cartUpdateDataSource.h"
+#import "SVProgressHUD.h"
+#import "cartModel.h"
 
 @interface productDetailViewController ()
 
@@ -59,6 +62,11 @@
         [center addObserver:self
                    selector:@selector(refreshProduct:)
                        name:NotifyProductRecommand
+                     object:nil];
+        
+        [center addObserver:self
+                   selector:@selector(cartUpdate:)
+                       name:NotifyCartUpdate
                      object:nil];
         
         _tableview = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, [CP shareInstance].w, [CP shareInstance].h)];
@@ -122,6 +130,8 @@
     }
     
     [[httpManager shareInstance].proRecommand request:self.pid];
+    
+    [_paybtnview setUnReadNumber:[cartDataSource shareInstance].cartArr.count];
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -164,6 +174,12 @@
                                    [CP shareInstance].w, [CP shareInstance].h)];
     
     [UIView commitAnimations];
+    
+    NSNotificationCenter *center=[NSNotificationCenter defaultCenter];
+    [center addObserver:self
+               selector:@selector(cartUpdate:)
+                   name:NotifyCartUpdate
+                 object:nil];
 }
 
 -(void)addClick{
@@ -181,7 +197,11 @@
     
     [UIView commitAnimations];
     
-    
+    NSNotificationCenter *center=[NSNotificationCenter defaultCenter];
+    [center addObserver:self
+               selector:@selector(cartUpdate:)
+                   name:NotifyCartUpdate
+                 object:nil];
 }
 
 -(void)hideAttrView{
@@ -222,6 +242,20 @@
         [cartArr addObject:cartdic];
         
         [[httpManager shareInstance].cartUp requestWithList:[cartArr JSONString] withType:@"add"];
+    }
+}
+
+-(void)cartUpdate:(id)sender{
+    NSNotificationCenter *center=[NSNotificationCenter defaultCenter];
+    [center removeObserver:self name:NotifyCartUpdate object:nil];
+    NSString *strState = [[cartUpdateDataSource shareInstance] getResponseStatus];
+    if([strState isEqualToString:@"true"]){
+        [SVProgressHUD showSuccessWithStatus:@"成功添加到购物车"];
+        
+        cartModel *cart = [[cartModel alloc] init];
+        [[cartDataSource shareInstance].cartArr addObject:cart];
+        
+        [_paybtnview setUnReadNumber:[cartDataSource shareInstance].cartArr.count];
     }
 }
 

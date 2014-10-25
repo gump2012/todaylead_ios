@@ -44,6 +44,14 @@
         _cartView.image = [UIImage imageNamed:@"cart.png"];
         [self addSubview:_cartView];
         
+        _cartUnReadView = [[UIImageView alloc] initWithFrame:CGRectMake(282.0f, 4.0f, 22.0f, 15.0f)];
+        _cartUnReadView.image = [UIImage imageNamed:@"icon_unread.png"];
+        [self addSubview:_cartUnReadView];
+        
+        _numberLabel = [[UILabel alloc] initWithFrame:CGRectMake(288.0f, 4.0f, 20.0f, 15.0f)];
+        _numberLabel.textColor = [UIColor whiteColor];
+        [self addSubview:_numberLabel];
+        
         self.immediateBlock = nil;
         self.addBlock = nil;
     }
@@ -59,6 +67,18 @@
 -(void)clickAdd{
     if (self.addBlock) {
         self.addBlock();
+    }
+}
+
+-(void)setUnReadNumber:(int)inum{
+    if (inum > 0) {
+        _cartUnReadView.hidden = NO;
+        _numberLabel.hidden = NO;
+        
+        _numberLabel.text = [NSString stringWithFormat:@"%d",inum];
+    }else{
+        _cartUnReadView.hidden = YES;
+        _numberLabel.hidden = YES;
     }
 }
 

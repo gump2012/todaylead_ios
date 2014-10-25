@@ -58,4 +58,22 @@
     return dic;
 }
 
+-(NSString *)getMessage{
+    NSString *str = @"";
+    if(_dataDic){
+        str = [_dataDic objectForKey:@"msg"];
+    }
+    
+    return str;
+}
+
+-(NSString *)getResponseStatus{
+    NSString *str = @"";
+    if(_dataDic){
+        str = [_dataDic objectForKey:@"response_status"];
+    }
+    
+    return str;
+}
+
 @end

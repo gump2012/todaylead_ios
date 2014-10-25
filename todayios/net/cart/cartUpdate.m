@@ -35,7 +35,7 @@
     if (jsondic) {
         [[cartUpdateDataSource shareInstance].dataDic removeAllObjects];
         [[cartUpdateDataSource shareInstance].dataDic setDictionary:jsondic];
-        [[NSNotificationCenter defaultCenter] postNotificationName:NotifyCategoryList object:nil];
+        [[NSNotificationCenter defaultCenter] postNotificationName:NotifyCartUpdate object:nil];
     }
 }
 

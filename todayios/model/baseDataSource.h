@@ -17,5 +17,7 @@
 
 -(NSDictionary *)getDicData;
 -(NSArray *)getArrData;
+-(NSString *)getMessage;
+-(NSString *)getResponseStatus;
 
 @end
