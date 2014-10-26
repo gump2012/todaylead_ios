@@ -9,8 +9,11 @@
 #import "BaseViewController.h"
 #import "cartEmptyView.h"
 
-@interface paymentViewController : BaseViewController
+@interface paymentViewController : BaseViewController<
+UITableViewDataSource, UITableViewDelegate
+>
 {
     cartEmptyView *_emptyView;
+    UITableView   *_tableview;
 }
 @end

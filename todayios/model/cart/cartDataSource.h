@@ -25,5 +25,6 @@ enum{
 @property(nonatomic,assign) int ibuyBtnType;
 
 -(void)addCart:(cartModel*)cartmodel;
+-(void)getCartListFromData;
 
 @end

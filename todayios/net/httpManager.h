@@ -20,6 +20,7 @@
 @class getCategoryList;
 @class getCategoryProducts;
 @class cartUpdate;
+@class getCartProductList;
 
 @interface httpManager : NSObject
 {
@@ -36,6 +37,7 @@
     getCategoryList *_categoryList;
     getCategoryProducts *_categoryPros;
     cartUpdate *_cartUp;
+    getCartProductList *_cartProList;
 }
 
 @property(nonatomic,strong) getShopAdList *getshopad;
@@ -51,6 +53,7 @@
 @property(nonatomic,strong) getCategoryList *categoryList;
 @property(nonatomic,strong) getCategoryProducts *categoryPros;
 @property(nonatomic,strong) cartUpdate *cartUp;
+@property(nonatomic,strong) getCartProductList *cartProList;
 
 + (httpManager *)shareInstance;
 

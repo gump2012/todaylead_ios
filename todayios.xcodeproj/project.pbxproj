@@ -44,6 +44,10 @@
 		337059A219B9C95F0077ACF2 /* reportWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 337059A119B9C95F0077ACF2 /* reportWebViewController.m */; };
 		337059A519B9CA5B0077ACF2 /* getProductReport.m in Sources */ = {isa = PBXBuildFile; fileRef = 337059A419B9CA5B0077ACF2 /* getProductReport.m */; };
 		337059A819B9CADE0077ACF2 /* proReportDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 337059A719B9CADE0077ACF2 /* proReportDataSource.m */; };
+		3374F12419FCA23C000BDA91 /* getCartProductList.m in Sources */ = {isa = PBXBuildFile; fileRef = 3374F12319FCA23C000BDA91 /* getCartProductList.m */; };
+		3374F12719FD2E1A000BDA91 /* cb_circle_big_n.png in Resources */ = {isa = PBXBuildFile; fileRef = 3374F12519FD2E1A000BDA91 /* cb_circle_big_n.png */; };
+		3374F12819FD2E1A000BDA91 /* cb_circle_big_p.png in Resources */ = {isa = PBXBuildFile; fileRef = 3374F12619FD2E1A000BDA91 /* cb_circle_big_p.png */; };
+		3374F12B19FD3EDC000BDA91 /* cartCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3374F12A19FD3EDC000BDA91 /* cartCell.m */; };
 		3375306C19BD67A70044664F /* yuexiaoliangCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3375306B19BD67A70044664F /* yuexiaoliangCell.m */; };
 		3375306F19BD87970044664F /* commentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3375306E19BD87970044664F /* commentView.m */; };
 		3375307919BD93080044664F /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3375307619BD93080044664F /* Default-568h@2x.png */; };
@@ -239,6 +243,12 @@
 		337059A419B9CA5B0077ACF2 /* getProductReport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = getProductReport.m; path = net/product/getProductReport.m; sourceTree = "<group>"; };
 		337059A619B9CADE0077ACF2 /* proReportDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = proReportDataSource.h; path = model/product/proReportDataSource.h; sourceTree = "<group>"; };
 		337059A719B9CADE0077ACF2 /* proReportDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = proReportDataSource.m; path = model/product/proReportDataSource.m; sourceTree = "<group>"; };
+		3374F12219FCA23C000BDA91 /* getCartProductList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = getCartProductList.h; path = net/cart/getCartProductList.h; sourceTree = "<group>"; };
+		3374F12319FCA23C000BDA91 /* getCartProductList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = getCartProductList.m; path = net/cart/getCartProductList.m; sourceTree = "<group>"; };
+		3374F12519FD2E1A000BDA91 /* cb_circle_big_n.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = cb_circle_big_n.png; path = resource/cart/cb_circle_big_n.png; sourceTree = "<group>"; };
+		3374F12619FD2E1A000BDA91 /* cb_circle_big_p.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = cb_circle_big_p.png; path = resource/cart/cb_circle_big_p.png; sourceTree = "<group>"; };
+		3374F12919FD3EDC000BDA91 /* cartCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = cartCell.h; path = viewController/payment/cartCell.h; sourceTree = "<group>"; };
+		3374F12A19FD3EDC000BDA91 /* cartCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = cartCell.m; path = viewController/payment/cartCell.m; sourceTree = "<group>"; };
 		3375306A19BD67A70044664F /* yuexiaoliangCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = yuexiaoliangCell.h; path = viewController/product/yuexiaoliangCell.h; sourceTree = "<group>"; };
 		3375306B19BD67A70044664F /* yuexiaoliangCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = yuexiaoliangCell.m; path = viewController/product/yuexiaoliangCell.m; sourceTree = "<group>"; };
 		3375306D19BD87970044664F /* commentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = commentView.h; path = viewController/product/commentView.h; sourceTree = "<group>"; };
@@ -579,6 +589,8 @@
 		3335160019D54B1400E25C36 /* cart */ = {
 			isa = PBXGroup;
 			children = (
+				3374F12519FD2E1A000BDA91 /* cb_circle_big_n.png */,
+				3374F12619FD2E1A000BDA91 /* cb_circle_big_p.png */,
 				338A96B219E02C96008EA648 /* icon_unread.png */,
 				3335160119D54B1F00E25C36 /* icon_shopcar_none.png */,
 			);
@@ -624,6 +636,8 @@
 			children = (
 				33B8959819E821EC00C43A52 /* cartUpdate.h */,
 				33B8959919E821EC00C43A52 /* cartUpdate.m */,
+				3374F12219FCA23C000BDA91 /* getCartProductList.h */,
+				3374F12319FCA23C000BDA91 /* getCartProductList.m */,
 			);
 			name = cart;
 			sourceTree = "<group>";
@@ -944,6 +958,8 @@
 				35A0CBB5197CF26B00D201D3 /* paymentViewController.m */,
 				334459AD19DB97E9002DDE7A /* cartEmptyView.h */,
 				334459AE19DB97E9002DDE7A /* cartEmptyView.m */,
+				3374F12919FD3EDC000BDA91 /* cartCell.h */,
+				3374F12A19FD3EDC000BDA91 /* cartCell.m */,
 			);
 			name = payment;
 			sourceTree = "<group>";
@@ -1250,11 +1266,13 @@
 				35A0CB7F197CDEF400D201D3 /* InfoPlist.strings in Resources */,
 				33F9747419C149E0004DAE54 /* cart.png in Resources */,
 				35A0CCC7197E271700D201D3 /* SVProgressHUD.bundle in Resources */,
+				3374F12719FD2E1A000BDA91 /* cb_circle_big_n.png in Resources */,
 				33D69D0D19CC24F600EF332B /* grayArrow.png in Resources */,
 				3375307B19BD93080044664F /* Default~iphone.png in Resources */,
 				331A798319B9E42500B22346 /* icon_bottom_my_c.png in Resources */,
 				33B8FEC219B72E690068F4F5 /* icon_cod_volume.png in Resources */,
 				33D69D0A19CC24F600EF332B /* blackArrow@2x.png in Resources */,
+				3374F12819FD2E1A000BDA91 /* cb_circle_big_p.png in Resources */,
 				33D69D0B19CC24F600EF332B /* blueArrow.png in Resources */,
 				33B8FEA819B6FC180068F4F5 /* icon57.png in Resources */,
 				3370599119B9A40A0077ACF2 /* icon_cod_webdetail.png in Resources */,
@@ -1356,12 +1374,14 @@
 				3532926419879F5D00149438 /* UIImage+WebP.m in Sources */,
 				33C8DD2619C9B2EA00E02BAB /* getKeywordList.m in Sources */,
 				33F9747119C13987004DAE54 /* payButtonView.m in Sources */,
+				3374F12419FCA23C000BDA91 /* getCartProductList.m in Sources */,
 				35A0CC4A197D099E00D201D3 /* ASICloudFilesContainer.m in Sources */,
 				33D69D1719CC28FF00EF332B /* EGORefreshTableFooterView.m in Sources */,
 				3370599C19B9A9810077ACF2 /* baseDataSource.m in Sources */,
 				334459B519DBAB96002DDE7A /* BaseCell.m in Sources */,
 				336B8A2B19C05B7600D65642 /* priceCell.m in Sources */,
 				35A0CC52197D099E00D201D3 /* ASIS3BucketRequest.m in Sources */,
+				3374F12B19FD3EDC000BDA91 /* cartCell.m in Sources */,
 				337059A519B9CA5B0077ACF2 /* getProductReport.m in Sources */,
 				3390642519A386F1003BA869 /* shopTopDataSource.m in Sources */,
 				334459B619DBAB96002DDE7A /* BaseViewController.m in Sources */,
@@ -1524,7 +1544,7 @@
 		35A0CB9E197CDEF400D201D3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution: 3p Show (Beijing) Technology Co., Ltd. (3QJNJ2E382)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: gu tao (257323LB6C)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "todayios/todayios-Prefix.pch";
@@ -1536,7 +1556,7 @@
 				INFOPLIST_FILE = "todayios/todayios-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "d8a0105e-f295-4937-9deb-e26317e156be";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -1545,8 +1565,8 @@
 		35A0CB9F197CDEF400D201D3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: 3p Show (Beijing) Technology Co., Ltd. (3QJNJ2E382)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: gu tao (257323LB6C)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "todayios/todayios-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
@@ -1557,7 +1577,7 @@
 				INFOPLIST_FILE = "todayios/todayios-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "d8a0105e-f295-4937-9deb-e26317e156be";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};

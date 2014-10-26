@@ -32,4 +32,11 @@ static cartDataSource * shareins = nil;
     }
 }
 
+-(void)getCartListFromData{
+    if (_dataDic) {
+        [_cartArr removeAllObjects];
+        [_cartArr setArray:[self getArrData]];
+    }
+}
+
 @end

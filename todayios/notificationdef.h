@@ -30,5 +30,5 @@
 
 //cart
 #define NotifyCartUpdate                 @"CartUpdate"          //购物车更新
-
+#define NotifyCartProductList            @"CartProductList"     //购物车列表
 #endif
