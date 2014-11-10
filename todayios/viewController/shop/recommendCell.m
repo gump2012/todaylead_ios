@@ -19,12 +19,13 @@
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        _nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, 10.0f, 100.0f, 40.0f)];
+        _nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 100.0f, 40.0f)];
         [self.contentView addSubview:_nameLabel];
-        _moreBtn = [[UIButton alloc] initWithFrame:CGRectMake([CP shareInstance].w - 100.0f,
-                                                             10.0f,
+        _moreBtn = [[UIButton alloc] initWithFrame:CGRectMake([CP shareInstance].w - 80.0f,
+                                                             0.0f,
                                                               100.0f, 40.0f)];
-        [_moreBtn setTitle:@"显示更多>>" forState:UIControlStateNormal];
+        [_moreBtn setTitle:@"more >" forState:UIControlStateNormal];
+        _moreBtn.titleLabel.font = [UIFont systemFontOfSize:14.0f];
         [_moreBtn setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
         [_moreBtn addTarget:self action:@selector(moreClick) forControlEvents:UIControlEventTouchUpInside];
         [self.contentView addSubview:_moreBtn];
@@ -68,14 +69,15 @@
                 if (imagearr && [imagearr isKindOfClass:[NSArray class]]) {
                     if (imagearr.count > 0) {
                         float interval = [CP shareInstance].w / imagearr.count;
+                        float iimagewidth = interval - 4.0f;
                         for (int i = 0; i < imagearr.count; ++i) {
                             NSDictionary *imageitme = [imagearr objectAtIndex:i];
                             
                             if (imageitme) {
-                                UIImageView *imageview = [[UIImageView alloc] initWithFrame:CGRectMake(i * interval,
-                                                                                                       60.0f,
-                                                                                                       interval,
-                                                                                                       interval)];
+                                UIImageView *imageview = [[UIImageView alloc] initWithFrame:CGRectMake(i * interval + 2.0f,
+                                                                                                       40.0f,
+                                                                                                       iimagewidth,
+                                                                                                       iimagewidth)];
                                 NSString *strimage = [imageitme objectForKey:@"picture"];
                                 if (strimage) {
                                     [imageview sd_setImageWithURL:[NSURL URLWithString:strimage]];
@@ -93,13 +95,14 @@
                                 [self.contentView addSubview:imageview];
                                 [_imageArr addObject:imageview];
                                 
-                                baseLabel *namelabel = [[baseLabel alloc] initWithFrame:CGRectMake(i * interval, 130.0f, interval, 40.0f)];
+                                baseLabel *namelabel = [[baseLabel alloc] initWithFrame:CGRectMake(i * interval, 110.0f, interval, 40.0f)];
                                 namelabel.textAlignment = NSTextAlignmentCenter;
                                 strimage = [imageitme objectForKey:@"name"];
                                 if (strimage) {
                                     namelabel.text = strimage;
                                 }
                                 namelabel.textColor = [UIColor darkGrayColor];
+                                namelabel.font = [UIFont systemFontOfSize:14.0f];
                                 [self.contentView addSubview:namelabel];
                                 [_labelArr addObject:namelabel];
                             }

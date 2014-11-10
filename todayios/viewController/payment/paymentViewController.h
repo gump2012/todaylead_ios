@@ -8,12 +8,14 @@
 
 #import "BaseViewController.h"
 #import "cartEmptyView.h"
-
+@class calculateView;
 @interface paymentViewController : BaseViewController<
 UITableViewDataSource, UITableViewDelegate
 >
 {
     cartEmptyView *_emptyView;
     UITableView   *_tableview;
+    BOOL          _isEdit;
+    calculateView *_calcuView;
 }
 @end

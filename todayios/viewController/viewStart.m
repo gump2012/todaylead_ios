@@ -27,6 +27,7 @@ static viewStart * shareins = nil;
 
 - (void)start:(UIWindow *)window
 {
+    NSDictionary * dict = [NSDictionary dictionaryWithObject:[UIColor redColor] forKey:NSForegroundColorAttributeName];
     shopViewController *shopview = [[shopViewController alloc] init];
     shopview.title = @"今日头牌";
     UITabBarItem *item = [[UITabBarItem alloc] initWithTitle:@"商城" image:nil tag:1];
@@ -35,6 +36,7 @@ static viewStart * shareins = nil;
     navshop.tabBarItem.title = @"商城";
     [navshop.tabBarItem setImage:[UIImage imageNamed:@"icon_bottom_cod_n.png"]];
     [navshop.tabBarItem setSelectedImage:[UIImage imageNamed:@"icon_bottom_cod_c.png"]];
+    navshop.navigationBar.titleTextAttributes = dict;
     
     categoryViewController *categoryview = [[categoryViewController alloc] init];
     categoryview.title = @"分类";
@@ -43,14 +45,17 @@ static viewStart * shareins = nil;
     UINavigationController *navcategory = [[UINavigationController alloc] initWithRootViewController:categoryview];
     [navcategory.tabBarItem setImage:[UIImage imageNamed:@"icon_bottom_category_n.png"]];
     [navcategory.tabBarItem setSelectedImage:[UIImage imageNamed:@"icon_bottom_category_c.png"]];
+    navcategory.navigationBar.titleTextAttributes = dict;
     
     paymentViewController *paymentview = [[paymentViewController alloc] init];
     paymentview.title = @"购物车";
+    
     item = [[UITabBarItem alloc] initWithTitle:@"购物车" image:nil tag:3];
     paymentview.tabBarItem = item;
     UINavigationController *navpayment = [[UINavigationController alloc] initWithRootViewController:paymentview];
     [navpayment.tabBarItem setImage:[UIImage imageNamed:@"icon_bottom_shopcar_n.png"]];
     [navpayment.tabBarItem setSelectedImage:[UIImage imageNamed:@"icon_bottom_shopcar_c.png"]];
+    navpayment.navigationBar.titleTextAttributes = dict;
     
     meViewController *meview = [[meViewController alloc] init];
     meview.title = @"我";
@@ -59,6 +64,7 @@ static viewStart * shareins = nil;
     UINavigationController *navme = [[UINavigationController alloc] initWithRootViewController:meview];
     [navme.tabBarItem setImage:[UIImage imageNamed:@"icon_bottom_my_n.png"]];
     [navme.tabBarItem setSelectedImage:[UIImage imageNamed:@"icon_bottom_my_c.png"]];
+    navme.navigationBar.titleTextAttributes = dict;
     
     UITabBarController *tabview = [[UITabBarController alloc] init];
     tabview.viewControllers = [NSArray arrayWithObjects:navshop, navcategory,navpayment,navme,nil];

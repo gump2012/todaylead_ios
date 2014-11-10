@@ -19,7 +19,7 @@
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        _titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, 10.0f, 200.0f, 40.0f)];
+        _titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 200.0f, 40.0f)];
         _titleLabel.adjustsFontSizeToFitWidth = YES;
         _imageArr = [[NSMutableArray alloc] init];
         _labelArr = [[NSMutableArray alloc] init];
@@ -79,12 +79,13 @@
                     _title = strtitle;
                 }
                 
+                float imageinterval = 2.0f;
                 NSString *strtopimage = [topitem objectForKey:@"picture"];
                 if (strtopimage) {
-                    UIImageView *topimage = [[UIImageView alloc] initWithFrame:CGRectMake(0.0f,
-                                                                                          60.0f,
-                                                                                          [CP shareInstance].w / 3 * 2,
-                                                                                        [CP shareInstance].w / 3 * 2)];
+                    UIImageView *topimage = [[UIImageView alloc] initWithFrame:CGRectMake(0.0f + imageinterval,
+                                                                                          40.0f + imageinterval,
+                                                                                          [CP shareInstance].w / 3 * 2 - imageinterval,
+                                                                                        [CP shareInstance].w / 3 * 2 - imageinterval)];
                     [topimage sd_setImageWithURL:[NSURL URLWithString:strtopimage]];
                     topimage.userInteractionEnabled = YES;
                     UITapGestureRecognizer *singleTap =[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(onClickTopic:)];
@@ -106,10 +107,10 @@
                     if (toplist.count == 5) {
                         NSDictionary *item = [toplist objectAtIndex:0];
                         if (item) {
-                            UIImageView *firstview = [[UIImageView alloc] initWithFrame:CGRectMake([CP shareInstance].w / 3 * 2,
-                                                                                                   60.0f,
-                                                                                                   [CP shareInstance].w / 3,
-                                                                                                   [CP shareInstance].w / 3)];
+                            UIImageView *firstview = [[UIImageView alloc] initWithFrame:CGRectMake([CP shareInstance].w / 3 * 2 + imageinterval,
+                                                                                                   40.0f + imageinterval,
+                                                                                                   [CP shareInstance].w / 3 - imageinterval,
+                                                                                                   [CP shareInstance].w / 3 - imageinterval)];
                             NSString *strimage = [item objectForKey:@"picture"];
                             if (strimage) {
                                 [firstview sd_setImageWithURL:[NSURL URLWithString:strimage]];
@@ -125,13 +126,14 @@
                             
                             strimage = [item objectForKey:@"name"];
                             if (strimage) {
-                                baseLabel *namelabel = [[baseLabel alloc] initWithFrame:CGRectMake([CP shareInstance].w / 3 * 2,
-                                                                                              130.0f,
-                                                                                              [CP shareInstance].w / 3,
-                                                                                               40.0f)];
+                                baseLabel *namelabel = [[baseLabel alloc] initWithFrame:CGRectMake([CP shareInstance].w / 3 * 2 ,
+                                                                                              114.0f ,
+                                                                                              [CP shareInstance].w / 3 ,
+                                                                                               40.0f )];
                                 namelabel.textColor = [UIColor darkGrayColor];
                                 namelabel.textAlignment = NSTextAlignmentCenter;
                                 namelabel.text = strimage;
+                                namelabel.font = [UIFont systemFontOfSize:14.0f];
                                 [self.contentView addSubview:namelabel];
                                 [_labelArr addObject:namelabel];
                             }
@@ -139,10 +141,10 @@
                         
                         item = [toplist objectAtIndex:1];
                         if (item) {
-                            UIImageView *firstview = [[UIImageView alloc] initWithFrame:CGRectMake([CP shareInstance].w / 3 * 2,
-                                                                                                   60.0f + [CP shareInstance].w / 3,
-                                                                                                   [CP shareInstance].w / 3,
-                                                                                                   [CP shareInstance].w / 3)];
+                            UIImageView *firstview = [[UIImageView alloc] initWithFrame:CGRectMake([CP shareInstance].w / 3 * 2 + imageinterval,
+                                                                                                   40.0f + [CP shareInstance].w / 3 + imageinterval,
+                                                                                                   [CP shareInstance].w / 3 - imageinterval,
+                                                                                                   [CP shareInstance].w / 3 - imageinterval)];
                             NSString *strimage = [item objectForKey:@"picture"];
                             if (strimage) {
                                 [firstview sd_setImageWithURL:[NSURL URLWithString:strimage]];
@@ -158,13 +160,14 @@
                             
                             strimage = [item objectForKey:@"name"];
                             if (strimage) {
-                                baseLabel *namelabel = [[baseLabel alloc] initWithFrame:CGRectMake([CP shareInstance].w / 3 * 2,
-                                                                                               130.0f + [CP shareInstance].w / 3,
-                                                                                               [CP shareInstance].w / 3,
-                                                                                               40.0f)];
+                                baseLabel *namelabel = [[baseLabel alloc] initWithFrame:CGRectMake([CP shareInstance].w / 3 * 2 ,
+                                                                                               110.0f + [CP shareInstance].w / 3 + 4.0f,
+                                                                                               [CP shareInstance].w / 3 ,
+                                                                                               40.0f )];
                                 namelabel.textColor = [UIColor darkGrayColor];
                                 namelabel.textAlignment = NSTextAlignmentCenter;
                                 namelabel.text = strimage;
+                                namelabel.font = [UIFont systemFontOfSize:14.0f];
                                 [self.contentView addSubview:namelabel];
                                 [_labelArr addObject:namelabel];
                             }
@@ -173,10 +176,10 @@
                         for (int i = 2; i < toplist.count; ++i) {
                             item = [toplist objectAtIndex:i];
                             if (item) {
-                                UIImageView *firstview = [[UIImageView alloc] initWithFrame:CGRectMake((i-2)*[CP shareInstance].w / 3,
-                                                                                                       60.0f + [CP shareInstance].w / 3 *2,
-                                                                                                       [CP shareInstance].w / 3,
-                                                                                                       [CP shareInstance].w / 3)];
+                                UIImageView *firstview = [[UIImageView alloc] initWithFrame:CGRectMake((i-2)*[CP shareInstance].w / 3 + imageinterval,
+                                                                                                       40.0f + [CP shareInstance].w / 3 *2 + imageinterval,
+                                                                                                       [CP shareInstance].w / 3 - imageinterval,
+                                                                                                       [CP shareInstance].w / 3 - imageinterval)];
                                 NSString *strimage = [item objectForKey:@"picture"];
                                 if (strimage) {
                                     [firstview sd_setImageWithURL:[NSURL URLWithString:strimage]];
@@ -193,12 +196,13 @@
                                 strimage = [item objectForKey:@"name"];
                                 if (strimage) {
                                     baseLabel *namelabel = [[baseLabel alloc] initWithFrame:CGRectMake((i-2)*[CP shareInstance].w / 3,
-                                                                                                   130.0f + [CP shareInstance].w / 3*2,
+                                                                                                   110.0f + [CP shareInstance].w / 3*2 + 4.0,
                                                                                                    [CP shareInstance].w / 3,
                                                                                                    40.0f)];
                                     namelabel.textColor = [UIColor darkGrayColor];
                                     namelabel.textAlignment = NSTextAlignmentCenter;
                                     namelabel.text = strimage;
+                                    namelabel.font = [UIFont systemFontOfSize:14.0f];
                                     [self.contentView addSubview:namelabel];
                                     [_labelArr addObject:namelabel];
                                 }

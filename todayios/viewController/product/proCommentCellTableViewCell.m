@@ -29,12 +29,13 @@
         arror.image = [UIImage imageNamed:@"btn_arrow.png"];
         [self.contentView addSubview:arror];
         
-        UIImageView *imageview = [[UIImageView alloc] initWithFrame:CGRectMake(20.0f, 7.0f, 30.0f, 30.0f)];
+        UIImageView *imageview = [[UIImageView alloc] initWithFrame:CGRectMake(16.0f, 7.0f, 30.0f, 30.0f)];
         imageview.image = [UIImage imageNamed:@"icon_cod_review.png"];
         [self.contentView addSubview:imageview];
         
         UILabel *textlabel = [[UILabel alloc] initWithFrame:CGRectMake(60.0f, 10.0f, 200.0f, 20.0f)];
         textlabel.text = @"商品评价";
+        textlabel.textColor = [UIColor darkGrayColor];
         [self.contentView addSubview:textlabel];
         
         UIButton *clickbtn = [[UIButton alloc] initWithFrame:CGRectMake(0.0f, 0.0f, [CP shareInstance].w, 44.0f)];

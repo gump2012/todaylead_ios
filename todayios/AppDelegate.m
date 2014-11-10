@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "viewStart.h"
+#import "getCartProductList.h"
 
 @implementation AppDelegate
 
@@ -16,10 +17,16 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
-    
+    self.window.tintColor = [UIColor redColor];
     [CP shareInstance].mywindow = self.window;
     [[viewStart shareInstance] start:self.window];
+    [self getDataFromNet];
+    
     return YES;
+}
+
+-(void)getDataFromNet{
+    [[httpManager shareInstance].cartProList request];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

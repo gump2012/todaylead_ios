@@ -12,19 +12,23 @@
 {
     NSString *_strurl;
     NSString *_strname;
-    NSString *_strattrname;
     int      _number;
     float    _price;
     int      _pid;
-    NSArray *_attrarr;
+    NSMutableArray *_attrarr;
+    BOOL     _isSelect;
+    int      _editNumber;
 }
 
 @property(nonatomic,strong) NSString *strurl;
 @property(nonatomic,strong) NSString *strname;
-@property(nonatomic,strong) NSString *strattrname;
 @property(nonatomic,assign) int number;
 @property(nonatomic,assign) float price;
 @property(nonatomic,assign) int pid;
-@property(nonatomic,strong) NSArray *attrarr;
+@property(nonatomic,strong) NSMutableArray *attrarr;
+@property(nonatomic,assign) BOOL isSelect;
+@property(nonatomic,assign) int editNumber;
+
++(cartModel *)creatCartByDic:(NSDictionary *)dic;
 
 @end

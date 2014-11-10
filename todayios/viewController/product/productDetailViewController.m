@@ -84,9 +84,9 @@
         _baoyouTextLabel.textColor = [UIColor grayColor];
         _baoyouTextLabel.adjustsFontSizeToFitWidth = YES;
         
-        _paybtnview = [[payButtonView alloc] initWithFrame:CGRectMake(0.0f, [CP shareInstance].h - 50.0f,
+        _paybtnview = [[payButtonView alloc] initWithFrame:CGRectMake(0.0f, [CP shareInstance].h - 40.0f,
                                                                       [CP shareInstance].w,
-                                                                      50.0f)];
+                                                                      40.0f)];
         __block typeof (self) bself = self;
         _paybtnview.immediateBlock = ^{
             [bself immediateClick];
@@ -418,6 +418,7 @@
                         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                         cell.imageView.image = [UIImage imageNamed:@"icon_cod_webdetail.png"];
                         cell.textLabel.text = @"图文详情";
+                        cell.textLabel.textColor = [UIColor darkGrayColor];
                     }
                         break;
                     case 1:
@@ -425,6 +426,7 @@
                         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                         cell.imageView.image = [UIImage imageNamed:@"icon_pratice_report.png"];
                         cell.textLabel.text = @"体验报告";
+                        cell.textLabel.textColor = [UIColor darkGrayColor];
                     }
                         break;
                     case 2:

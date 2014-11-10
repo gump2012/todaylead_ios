@@ -168,12 +168,12 @@
             break;
         case 1:
         {
-            iheight = 60.0f + [CP shareInstance].w / 3;
+            iheight = 40.0f + [CP shareInstance].w / 3;
         }
             break;
         default:
         {
-            iheight = 60.0f + [CP shareInstance].w;
+            iheight = 40.0f + [CP shareInstance].w;
         }
             break;
     }

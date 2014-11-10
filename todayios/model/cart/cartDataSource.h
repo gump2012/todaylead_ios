@@ -26,5 +26,8 @@ enum{
 
 -(void)addCart:(cartModel*)cartmodel;
 -(void)getCartListFromData;
+-(float)getTotalPrice;
+-(int)getSelectCount;
+-(void)AllSelect:(BOOL)bAllSel;
 
 @end

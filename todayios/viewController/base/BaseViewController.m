@@ -24,6 +24,7 @@
                    selector:@selector(HttpError:)
                        name:NotifyHttpRequestError
                      object:nil];
+        
     }
     return self;
 }

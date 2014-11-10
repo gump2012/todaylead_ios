@@ -16,7 +16,9 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         _priceLabel = [[proiceLabel alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 44.0f, 160.0f)];
+        _priceLabel.backgroundColor = [UIColor clearColor];
         _alreadySeeLabel = [[UILabel alloc] initWithFrame:CGRectMake(200.0f, 0.0f, 120.0f, 40.0f)];
+        _alreadySeeLabel.backgroundColor = [UIColor clearColor];
         _alreadySeeLabel.font = [UIFont systemFontOfSize:12.0f];
         [self.contentView addSubview:_priceLabel];
         [self.contentView addSubview:_alreadySeeLabel];

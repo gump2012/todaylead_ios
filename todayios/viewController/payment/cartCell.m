@@ -8,6 +8,7 @@
 
 #import "cartCell.h"
 #import "UIImageView+WebCache.h"
+#import "cartModel.h"
 
 @implementation cartCell
 
@@ -17,6 +18,9 @@
     if (self) {
         _selectImage = [[UIImageView alloc] initWithFrame:CGRectMake(5.0f, 30.0f, 18.0f, 18.0f)];
         _selectImage.image = [UIImage imageNamed:@"cb_circle_big_p.png"];
+        _selectImage.userInteractionEnabled = YES;
+        UITapGestureRecognizer *singleTap =[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(onClickSelect:)];
+        [_selectImage addGestureRecognizer:singleTap];
         [self.contentView addSubview:_selectImage];
         
         _pictureImage = [[UIImageView alloc] initWithFrame:CGRectMake(28.0f, 10.0f, 60.0f, 60.0f)];
@@ -53,44 +57,122 @@
         _priceLabel.font = [UIFont systemFontOfSize:11.0f];
         _priceLabel.textColor = [UIColor redColor];
         [self.contentView addSubview:_priceLabel];
+        
+        _addview = [[UIImageView alloc] initWithFrame:CGRectMake(180.0f, 10.0f, 40.0f, 60.0f)];
+        _addview.backgroundColor = [UIColor colorWithRed:244.0/255.0 green:244.0/255.0 blue:242.0/255.0 alpha:1.0];
+        [self.contentView addSubview:_addview];
+        
+        _subview = [[UIImageView alloc] initWithFrame:CGRectMake(260.0f, 10.0f, 40.0f, 60.0f)];
+        _subview.backgroundColor = [UIColor colorWithRed:244.0/255.0 green:244.0/255.0 blue:242.0/255.0 alpha:1.0];
+        [self.contentView addSubview:_subview];
+        
+        _subLabel = [[UILabel alloc] initWithFrame:CGRectMake(180.0f, 30.0f, 40.0f, 20.0f)];
+        _subLabel.text = @"-";
+        _subLabel.textColor = [UIColor grayColor];
+        _subLabel.textAlignment = NSTextAlignmentCenter;
+        [self.contentView addSubview:_subLabel];
+        
+        _addLabel = [[UILabel alloc] initWithFrame:CGRectMake(260.0f, 30.0f, 40.0f, 20.0f)];
+        _addLabel.text = @"+";
+        _addLabel.textAlignment = NSTextAlignmentCenter;
+        _addLabel.textColor = [UIColor grayColor];
+        [self.contentView addSubview:_addLabel];
+        
+        _editnumberLabel = [[UILabel alloc] initWithFrame:CGRectMake(220.0f, 30.0f, 40.0f, 20.0f)];
+        _editnumberLabel.textAlignment = NSTextAlignmentCenter;
+        _editnumberLabel.textColor = [UIColor grayColor];
+        [self.contentView addSubview:_editnumberLabel];
+        
+        _mycart = nil;
+        self.cellselect = nil;
     }
     return self;
 }
 
--(void)refreshCellWithDic:(NSDictionary *)dic{
-    if (dic) {
-        NSString *str = [dic objectForKey:@"pic_url"];
-        if (str) {
-            [_pictureImage sd_setImageWithURL:[NSURL URLWithString:str]];
+-(void)refreshCellWithCart:(cartModel *)cart withIsEdit:(BOOL)bedit{
+    if (cart) {
+        [self showEdit:bedit];
+        _mycart = cart;
+        if (cart.isSelect) {
+            _selectImage.image = [UIImage imageNamed:@"cb_circle_big_p.png"];
+        }
+        else{
+            _selectImage.image = [UIImage imageNamed:@"cb_circle_big_n.png"];
         }
         
-        str = [dic objectForKey:@"title"];
-        if (str) {
-            _textLabel.text = str;
-        }
-        
-        NSArray *attrarr = [dic objectForKey:@"attr_list"];
-        if (attrarr && [attrarr isKindOfClass:[NSArray class]]) {
-            if (attrarr.count > 0) {
-                NSDictionary *attrdic = [attrarr objectAtIndex:0];
+        if (bedit) {
+            [_pictureImage sd_setImageWithURL:[NSURL URLWithString:cart.strurl]];
+            _textLabel.text = cart.strname;
+            
+            if (cart.attrarr.count > 0) {
+                NSDictionary *attrdic = [cart.attrarr objectAtIndex:0];
                 if (attrdic) {
                     NSString *strname = [attrdic objectForKey:@"attr_name"];
                     NSString *strvalue = [attrdic objectForKey:@"attr_value"];
                     _attrLabel.text = [NSString stringWithFormat:@"%@:%@",strname,strvalue];
                 }
             }
+            
+            _numberLabel.text = [NSString stringWithFormat:@"数量:%d",cart.number];
+            
+            _priceLabel.text = [NSString stringWithFormat:@"小计:  ¥%0.2f",cart.price];
+        }else{
+            _editnumberLabel.text = [NSString stringWithFormat:@"%d",cart.editNumber];
         }
+    }
+}
+
+-(void)showEdit:(BOOL)bedit{
+    if (bedit) {
+        _addview.hidden = YES;
+        _subview.hidden = YES;
+        _editnumberLabel.hidden = YES;
+        _addLabel.hidden = YES;
+        _subLabel.hidden = YES;
+        _topLine.hidden = YES;
+        _bottomLine.hidden = YES;
+        _line1.hidden = YES;
+        _line2.hidden = YES;
+        _line3.hidden = YES;
+        _line4.hidden = YES;
         
-        str = [dic objectForKey:@"quantity"];
-        if (str) {
-            _numberLabel.text = [NSString stringWithFormat:@"数量:%@",str];
-        }
+        _textLabel.hidden = NO;
+        _attrLabel.hidden = NO;
+        _numberLabel.hidden = NO;
+    }
+    else{
+        _addview.hidden = NO;
+        _subview.hidden = NO;
+        _editnumberLabel.hidden = NO;
+        _addLabel.hidden = NO;
+        _subLabel.hidden = NO;
+        _topLine.hidden = NO;
+        _bottomLine.hidden = NO;
+        _line1.hidden = NO;
+        _line2.hidden = NO;
+        _line3.hidden = NO;
+        _line4.hidden = NO;
         
-        str = [dic objectForKey:@"price"];
-        if (str) {
-            float price = [str floatValue];
-            _priceLabel.text = [NSString stringWithFormat:@"小计:  ¥%0.2f",price];
+        _textLabel.hidden = YES;
+        _attrLabel.hidden = YES;
+        _numberLabel.hidden = YES;
+    }
+}
+
+-(void)onClickSelect:(id)sender{
+    if (_mycart) {
+        if (_mycart.isSelect) {
+            _selectImage.image = [UIImage imageNamed:@"cb_circle_big_n.png"];
+            _mycart.isSelect = NO;
         }
+        else{
+            _selectImage.image = [UIImage imageNamed:@"cb_circle_big_p.png"];
+            _mycart.isSelect = YES;
+        }
+    }
+    
+    if (self.cellselect) {
+        self.cellselect();
     }
 }
 
