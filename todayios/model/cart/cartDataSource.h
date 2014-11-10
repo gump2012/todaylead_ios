@@ -17,11 +17,13 @@ enum{
 @interface cartDataSource : baseDataSource
 {
     NSMutableArray *_cartArr;
+    NSMutableArray *_updateArr;
 }
 
 + (cartDataSource *)shareInstance;
 
 @property(nonatomic,strong) NSMutableArray *cartArr;
+@property(nonatomic,strong) NSMutableArray *updateArr;
 @property(nonatomic,assign) int ibuyBtnType;
 
 -(void)addCart:(cartModel*)cartmodel;
@@ -29,5 +31,8 @@ enum{
 -(float)getTotalPrice;
 -(int)getSelectCount;
 -(void)AllSelect:(BOOL)bAllSel;
+-(void)cancelEdit;
+-(BOOL)saveCart;
+-(BOOL)deleteCart;
 
 @end

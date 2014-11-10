@@ -21,6 +21,7 @@
     
     [request setPostValue:strlist forKey:@"list"];
     [request setPostValue:strtype forKey:@"type"];
+    _strtype = strtype;
     
     [request setDelegate:self];
     
@@ -35,7 +36,14 @@
     if (jsondic) {
         [[cartUpdateDataSource shareInstance].dataDic removeAllObjects];
         [[cartUpdateDataSource shareInstance].dataDic setDictionary:jsondic];
-        [[NSNotificationCenter defaultCenter] postNotificationName:NotifyCartUpdate object:nil];
+        if ([_strtype isEqualToString:@"add"]) {
+            [[NSNotificationCenter defaultCenter] postNotificationName:NotifyCartUpdate object:nil];
+        }else if([_strtype isEqualToString:@"merge"]){
+            [[NSNotificationCenter defaultCenter] postNotificationName:NotifyCartSave object:nil];
+        }else if([_strtype isEqualToString:@"del"]){
+            [[NSNotificationCenter defaultCenter] postNotificationName:NotifyCartDelete object:nil];
+        }
+        
     }
 }
 

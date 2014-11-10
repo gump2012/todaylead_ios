@@ -36,6 +36,7 @@
         _accountBtn.backgroundColor = [UIColor redColor];
         _accountBtn.titleLabel.textColor = [UIColor whiteColor];
         _accountBtn.titleLabel.font = [UIFont systemFontOfSize:14.0f];
+        [_accountBtn addTarget:self action:@selector(clickAccount:) forControlEvents:UIControlEventTouchDragInside];
         [self addSubview:_accountBtn];
         
         _deleteView = [[UIImageView alloc] initWithFrame:CGRectMake([CP shareInstance].w - 95.0f,
@@ -45,6 +46,7 @@
         [self addSubview:_deleteView];
         _bAllSel = YES;
         self.selectAll = nil;
+        self.cartdelete = nil;
     }
     
     return self;
@@ -80,6 +82,14 @@
     }
     
     [self refreshUI:_bDelete];
+}
+
+-(void)clickAccount:(id)sender{
+    if (!_bDelete) {
+        if (self.cartdelete) {
+            self.cartdelete();
+        }
+    }
 }
 
 @end

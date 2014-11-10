@@ -31,4 +31,6 @@
 //cart
 #define NotifyCartUpdate                 @"CartUpdate"          //购物车更新
 #define NotifyCartProductList            @"CartProductList"     //购物车列表
+#define NotifyCartSave                   @"CartSave"            //购物车保存
+#define NotifyCartDelete                 @"CartDelete"          //购物车删除
 #endif

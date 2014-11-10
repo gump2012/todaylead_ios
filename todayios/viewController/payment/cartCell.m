@@ -58,12 +58,18 @@
         _priceLabel.textColor = [UIColor redColor];
         [self.contentView addSubview:_priceLabel];
         
-        _addview = [[UIImageView alloc] initWithFrame:CGRectMake(180.0f, 10.0f, 40.0f, 60.0f)];
+        _addview = [[UIImageView alloc] initWithFrame:CGRectMake(260.0f, 10.0f, 40.0f, 60.0f)];
         _addview.backgroundColor = [UIColor colorWithRed:244.0/255.0 green:244.0/255.0 blue:242.0/255.0 alpha:1.0];
+        _addview.userInteractionEnabled = YES;
+        singleTap =[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(onClickAdd:)];
+        [_addview addGestureRecognizer:singleTap];
         [self.contentView addSubview:_addview];
         
-        _subview = [[UIImageView alloc] initWithFrame:CGRectMake(260.0f, 10.0f, 40.0f, 60.0f)];
+        _subview = [[UIImageView alloc] initWithFrame:CGRectMake(180.0f, 10.0f, 40.0f, 60.0f)];
         _subview.backgroundColor = [UIColor colorWithRed:244.0/255.0 green:244.0/255.0 blue:242.0/255.0 alpha:1.0];
+        _subview.userInteractionEnabled = YES;
+        singleTap =[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(onClickSub:)];
+        [_subview addGestureRecognizer:singleTap];
         [self.contentView addSubview:_subview];
         
         _subLabel = [[UILabel alloc] initWithFrame:CGRectMake(180.0f, 30.0f, 40.0f, 20.0f)];
@@ -173,6 +179,24 @@
     
     if (self.cellselect) {
         self.cellselect();
+    }
+}
+
+-(void)onClickAdd:(id)sender{
+    if (_mycart) {
+        _mycart.editNumber++;
+        
+        _editnumberLabel.text = [NSString stringWithFormat:@"%d",_mycart.editNumber];
+    }
+}
+
+-(void)onClickSub:(id)sender{
+    if (_mycart) {
+        if (_mycart.editNumber > 1) {
+            _mycart.editNumber--;
+            
+            _editnumberLabel.text = [NSString stringWithFormat:@"%d",_mycart.editNumber];
+        }
     }
 }
 

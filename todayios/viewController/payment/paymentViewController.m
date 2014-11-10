@@ -11,6 +11,8 @@
 #import "getCartProductList.h"
 #import "cartCell.h"
 #import "calculateView.h"
+#import "SVProgressHUD.h"
+#import "cartUpdateDataSource.h"
 
 @interface paymentViewController ()
 
@@ -27,6 +29,16 @@
         [center addObserver:self
                    selector:@selector(refreshCart:)
                        name:NotifyCartProductList
+                     object:nil];
+        
+        [center addObserver:self
+                   selector:@selector(CartSave:)
+                       name:NotifyCartSave
+                     object:nil];
+        
+        [center addObserver:self
+                   selector:@selector(CartDelete:)
+                       name:NotifyCartDelete
                      object:nil];
         
         _tableview = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 60.0f,
@@ -57,6 +69,10 @@
         __block typeof (self) bself = self;
         _calcuView.selectAll = ^(BOOL ballSel){
             [bself clickAllSelect:ballSel];
+        };
+        
+        _calcuView.cartdelete = ^(){
+            [bself clickDeleteCart];
         };
     }
     return self;
@@ -94,6 +110,10 @@
         self.navigationItem.rightBarButtonItem.title = @"编辑";
         self.navigationItem.leftBarButtonItem = nil;
         
+        if([[cartDataSource shareInstance] saveCart]){
+            [SVProgressHUD showWithStatus:@"正在保存"];
+        }
+        
         [_calcuView refreshUI:_isEdit];
     }
     
@@ -105,6 +125,8 @@
     
     _isEdit = YES;
     self.navigationItem.rightBarButtonItem.title = @"编辑";
+    
+    [[cartDataSource shareInstance] cancelEdit];
     
     [_tableview reloadData];
 }
@@ -146,11 +168,43 @@
     [self refreshUI];
 }
 
+-(void)CartSave:(id)sender{
+    NSString *strState = [[cartUpdateDataSource shareInstance] getResponseStatus];
+    if([strState isEqualToString:@"true"]){
+        [SVProgressHUD showSuccessWithStatus:@"保存成功"];
+    }
+    else{
+        [SVProgressHUD showErrorWithStatus:@"保存失败"];
+        
+        [[httpManager shareInstance].cartProList request];
+    }
+    
+    [_tableview reloadData];
+}
+
+-(void)CartDelete:(id)sender{
+    NSString *strState = [[cartUpdateDataSource shareInstance] getResponseStatus];
+    if([strState isEqualToString:@"true"]){
+        [SVProgressHUD showSuccessWithStatus:@"删除成功"];
+        [self refreshUI];
+    }
+    else{
+        [SVProgressHUD showErrorWithStatus:@"删除失败"];
+        
+        [[httpManager shareInstance].cartProList request];
+    }
+}
+
 -(void)clickAllSelect:(BOOL)bAllSel{
     [[cartDataSource shareInstance] AllSelect:bAllSel];
     [_tableview reloadData];
 }
 
+-(void)clickDeleteCart{
+    if([[cartDataSource shareInstance] deleteCart]){
+        [SVProgressHUD showWithStatus:@"正在删除"];
+    }
+}
 
 #pragma mark ----------tableview dataSource-----------
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

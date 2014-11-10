@@ -9,7 +9,9 @@
 #import "baseRequest.h"
 
 @interface cartUpdate : baseRequest
-
+{
+    NSString *_strtype;
+}
 -(void)requestWithList:(NSString *)strlist withType:(NSString *)strtype;
 
 @end

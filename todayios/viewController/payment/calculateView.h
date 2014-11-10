@@ -19,7 +19,7 @@
 }
 
 @property (nonatomic,copy) void (^selectAll)(BOOL);
-
+@property (nonatomic,copy) void (^cartdelete)();
 -(void)refreshUI:(BOOL)bDel;
 
 @end
