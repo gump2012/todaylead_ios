@@ -10,7 +10,7 @@
 #import "cartEmptyView.h"
 @class calculateView;
 @interface paymentViewController : BaseViewController<
-UITableViewDataSource, UITableViewDelegate
+UITableViewDataSource, UITableViewDelegate,UIAlertViewDelegate
 >
 {
     cartEmptyView *_emptyView;

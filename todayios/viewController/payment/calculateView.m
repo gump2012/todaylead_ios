@@ -14,6 +14,8 @@
 -(id)initWithFrame:(CGRect)frame{
     self = [super initWithFrame:frame];
     if(self){
+        self.userInteractionEnabled = YES;
+        
         _selectView = [[UIImageView alloc] initWithFrame:CGRectMake(5.0f, (CALCUCELL_H - 18.0f)/2, 18.0f, 18.0f)];
         _selectView.image = [UIImage imageNamed:@"cb_circle_big_p.png"];
         _selectView.userInteractionEnabled = YES;
@@ -32,12 +34,21 @@
         _priceLabel.font = [UIFont systemFontOfSize:14.0f];
         [self addSubview:_priceLabel];
         
-        _accountBtn = [[UIButton alloc] initWithFrame:CGRectMake([CP shareInstance].w - 100.0f, 0.0f, 100.0f, CALCUCELL_H)];
-        _accountBtn.backgroundColor = [UIColor redColor];
-        _accountBtn.titleLabel.textColor = [UIColor whiteColor];
-        _accountBtn.titleLabel.font = [UIFont systemFontOfSize:14.0f];
-        [_accountBtn addTarget:self action:@selector(clickAccount:) forControlEvents:UIControlEventTouchDragInside];
-        [self addSubview:_accountBtn];
+        UIImageView *accountView = [[UIImageView alloc] initWithFrame:CGRectMake([CP shareInstance].w - 100.0f, 0.0f, 100.0f, CALCUCELL_H)];
+        accountView.backgroundColor = [UIColor redColor];
+        accountView.userInteractionEnabled = YES;
+        singleTap =[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(clickAccount:)];
+        [accountView addGestureRecognizer:singleTap];
+        [self addSubview:accountView];
+        
+        _accountLabel = [[UILabel alloc] initWithFrame:CGRectMake([CP shareInstance].w - 100.0f,
+                                                                  (CALCUCELL_H - 20.0f)/2,
+                                                                  100.0f, 20.0f)];
+        _accountLabel.backgroundColor = [UIColor clearColor];
+        _accountLabel.textColor = [UIColor whiteColor];
+        _accountLabel.textAlignment = NSTextAlignmentCenter;
+        _accountLabel.font = [UIFont systemFontOfSize:14.0f];
+        [self addSubview:_accountLabel];
         
         _deleteView = [[UIImageView alloc] initWithFrame:CGRectMake([CP shareInstance].w - 95.0f,
                                                                    (CALCUCELL_H - 20.0f)/2,
@@ -56,13 +67,11 @@
     _bDelete = bDel;
     _priceLabel.text = [NSString stringWithFormat:@"合计:%0.2f",[[cartDataSource shareInstance] getTotalPrice]];
     if (bDel) {
-        [_accountBtn setTitle:[NSString stringWithFormat:@"结算(%d)",[[cartDataSource shareInstance] getSelectCount]]
-                     forState:UIControlStateNormal];
+        _accountLabel.text = [NSString stringWithFormat:@"结算(%d)",[[cartDataSource shareInstance] getSelectCount]];
         _deleteView.hidden = YES;
     }
     else{
-        [_accountBtn setTitle:[NSString stringWithFormat:@"删除(%d)",[[cartDataSource shareInstance] getSelectCount]]
-                     forState:UIControlStateNormal];
+        _accountLabel.text = [NSString stringWithFormat:@"删除(%d)",[[cartDataSource shareInstance] getSelectCount]];
         _deleteView.hidden = NO;
     }
     

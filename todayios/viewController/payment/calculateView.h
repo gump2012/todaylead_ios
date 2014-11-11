@@ -12,7 +12,7 @@
 {
     UIImageView *_selectView;
     UILabel *_priceLabel;
-    UIButton *_accountBtn;
+    UILabel *_accountLabel;
     BOOL    _bDelete;
     UIImageView *_deleteView;
     BOOL    _bAllSel;

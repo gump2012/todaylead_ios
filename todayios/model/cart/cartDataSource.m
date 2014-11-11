@@ -127,7 +127,7 @@ static cartDataSource * shareins = nil;
                 }
                 
                 [dic setValue:attrlist forKey:@"attr_list"];
-                [dic setValue:[NSString stringWithFormat:@"%d",cart.pid] forKey:@"goods_id"];
+                [dic setValue:[NSString stringWithFormat:@"%d",cart.pid] forKey:@"product_id"];
                 [dic setValue:[NSString stringWithFormat:@"%d",cart.number] forKey:@"quantity"];
                 
                 [_updateArr addObject:dic];
@@ -152,7 +152,7 @@ static cartDataSource * shareins = nil;
         
         if (cart) {
             if (cart.isSelect) {
-                [delearr addObject:[NSNumber numberWithInt:i]];
+                [delearr addObject:cart];
                 
                 NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
                 [dic setValue:@"1" forKey:@"activity_type"];
@@ -177,7 +177,7 @@ static cartDataSource * shareins = nil;
                 }
                 
                 [dic setValue:attrlist forKey:@"attr_list"];
-                [dic setValue:[NSString stringWithFormat:@"%d",cart.pid] forKey:@"goods_id"];
+                [dic setValue:[NSString stringWithFormat:@"%d",cart.pid] forKey:@"product_id"];
                 [dic setValue:[NSString stringWithFormat:@"%d",cart.number] forKey:@"quantity"];
                 
                 [_updateArr addObject:dic];
@@ -189,12 +189,13 @@ static cartDataSource * shareins = nil;
         isSave = YES;
         
         for (int i = 0; i < delearr.count; ++i) {
-            int inum = [[delearr objectAtIndex:i] intValue];
-            [_cartArr removeObjectAtIndex:inum];
+            [_cartArr removeObject:[delearr objectAtIndex:i]];
         }
         
         [[httpManager shareInstance].cartUp requestWithList:[_updateArr JSONString] withType:@"del"];
     }
+    
+    [delearr removeAllObjects];
     
     return isSave;
 }

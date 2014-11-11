@@ -30,7 +30,7 @@
     cartModel *cart = nil;
     if (dic) {
         cart = [[cartModel alloc] init];
-        NSString *str = [dic objectForKey:@"goods_id"];
+        NSString *str = [dic objectForKey:@"product_id"];
         if (str) {
             cart.pid = [str intValue];
         }

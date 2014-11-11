@@ -47,18 +47,6 @@
         _tableview.dataSource = self;
         _tableview.delegate = self;
         _tableview.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
-        
-        UIBarButtonItem *anotherButton = [[UIBarButtonItem alloc] initWithTitle:@"编辑"
-                                                                          style:UIBarButtonItemStylePlain
-                                                                         target:self
-                                                                         action:@selector(rightButtonClick:)];
-        self.navigationItem.rightBarButtonItem = anotherButton;
-        
-        anotherButton = [[UIBarButtonItem alloc] initWithTitle:@"取消"
-                                                                          style:UIBarButtonItemStylePlain
-                                                                         target:self
-                                                                         action:@selector(leftButtonClick:)];
-        self.navigationItem.leftBarButtonItem = anotherButton;
         _isEdit = YES;
         
         _calcuView = [[calculateView alloc] initWithFrame:CGRectMake(0.0f,
@@ -127,7 +115,7 @@
     self.navigationItem.rightBarButtonItem.title = @"编辑";
     
     [[cartDataSource shareInstance] cancelEdit];
-    
+    [_calcuView refreshUI:_isEdit];
     [_tableview reloadData];
 }
 
@@ -137,6 +125,8 @@
         _tableview.hidden = YES;
         _calcuView.hidden = YES;
         self.navigationItem.rightBarButtonItem.customView.hidden = YES;
+        self.navigationItem.rightBarButtonItem = nil;
+        self.navigationItem.leftBarButtonItem = nil;
     }else{
         _isEdit = YES;
         _emptyView.hidden = YES;
@@ -144,8 +134,11 @@
         _calcuView.hidden = NO;
         [_tableview reloadData];
         [_calcuView refreshUI:_isEdit];
-        self.navigationItem.rightBarButtonItem.customView.hidden = NO;
-        self.navigationItem.rightBarButtonItem.title = @"编辑";
+        UIBarButtonItem *anotherButton = [[UIBarButtonItem alloc] initWithTitle:@"编辑"
+                                                                          style:UIBarButtonItemStylePlain
+                                                                         target:self
+                                                                         action:@selector(rightButtonClick:)];
+        self.navigationItem.rightBarButtonItem = anotherButton;
         self.navigationItem.leftBarButtonItem = nil;
     }
 }
@@ -201,9 +194,19 @@
 }
 
 -(void)clickDeleteCart{
-    if([[cartDataSource shareInstance] deleteCart]){
-        [SVProgressHUD showWithStatus:@"正在删除"];
+    NSString *str = @"您确定要删除这个商品咩?";
+    
+    if ([[cartDataSource shareInstance] getSelectCount] > 1) {
+        str = @"您确定要删除这些商品咩?";
     }
+    
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示"
+                                                        message:str
+                                                       delegate:self
+                                              cancelButtonTitle:@"取消"
+                                              otherButtonTitles:@"确定", nil];
+    
+    [alertView show];
 }
 
 #pragma mark ----------tableview dataSource-----------
@@ -247,5 +250,14 @@
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+}
+
+#pragma mark ------------UIAlertView Delegate--------------
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if (buttonIndex == 1) {
+        if([[cartDataSource shareInstance] deleteCart]){
+            [SVProgressHUD showWithStatus:@"正在删除"];
+        }
+    }
 }
 @end
