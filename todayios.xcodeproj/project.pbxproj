@@ -26,6 +26,8 @@
 		334459B519DBAB96002DDE7A /* BaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 334459B219DBAB96002DDE7A /* BaseCell.m */; };
 		334459B619DBAB96002DDE7A /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 334459B419DBAB96002DDE7A /* BaseViewController.m */; };
 		334459B919DBAC08002DDE7A /* baseLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 334459B819DBAC08002DDE7A /* baseLabel.m */; };
+		33447E0F1A16F95000987E48 /* confirmOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33447E0E1A16F95000987E48 /* confirmOrderViewController.m */; };
+		33447E121A16FBE300987E48 /* confirmLabelCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 33447E111A16FBE300987E48 /* confirmLabelCell.m */; };
 		336B8A1919BE891300D65642 /* proNameCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 336B8A1819BE891300D65642 /* proNameCell.m */; };
 		336B8A1C19BE906600D65642 /* AllSeeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 336B8A1B19BE906600D65642 /* AllSeeCell.m */; };
 		336B8A1F19BE981500D65642 /* getProRecommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 336B8A1E19BE981500D65642 /* getProRecommand.m */; };
@@ -214,6 +216,10 @@
 		334459B419DBAB96002DDE7A /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BaseViewController.m; path = viewController/base/BaseViewController.m; sourceTree = "<group>"; };
 		334459B719DBAC08002DDE7A /* baseLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = baseLabel.h; path = viewController/base/baseLabel.h; sourceTree = "<group>"; };
 		334459B819DBAC08002DDE7A /* baseLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = baseLabel.m; path = viewController/base/baseLabel.m; sourceTree = "<group>"; };
+		33447E0D1A16F95000987E48 /* confirmOrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = confirmOrderViewController.h; path = viewController/order/confirmOrderViewController.h; sourceTree = "<group>"; };
+		33447E0E1A16F95000987E48 /* confirmOrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = confirmOrderViewController.m; path = viewController/order/confirmOrderViewController.m; sourceTree = "<group>"; };
+		33447E101A16FBE300987E48 /* confirmLabelCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = confirmLabelCell.h; path = viewController/order/confirmLabelCell.h; sourceTree = "<group>"; };
+		33447E111A16FBE300987E48 /* confirmLabelCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = confirmLabelCell.m; path = viewController/order/confirmLabelCell.m; sourceTree = "<group>"; };
 		336B8A1719BE891300D65642 /* proNameCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = proNameCell.h; path = viewController/product/proNameCell.h; sourceTree = "<group>"; };
 		336B8A1819BE891300D65642 /* proNameCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = proNameCell.m; path = viewController/product/proNameCell.m; sourceTree = "<group>"; };
 		336B8A1A19BE906600D65642 /* AllSeeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AllSeeCell.h; path = viewController/product/AllSeeCell.h; sourceTree = "<group>"; };
@@ -616,6 +622,17 @@
 			name = base;
 			sourceTree = "<group>";
 		};
+		33447E0B1A16F86000987E48 /* order */ = {
+			isa = PBXGroup;
+			children = (
+				33447E0D1A16F95000987E48 /* confirmOrderViewController.h */,
+				33447E0E1A16F95000987E48 /* confirmOrderViewController.m */,
+				33447E101A16FBE300987E48 /* confirmLabelCell.h */,
+				33447E111A16FBE300987E48 /* confirmLabelCell.m */,
+			);
+			name = order;
+			sourceTree = "<group>";
+		};
 		336B8A2319BE9F2000D65642 /* public */ = {
 			isa = PBXGroup;
 			children = (
@@ -917,6 +934,7 @@
 		35A0CBA3197CE22100D201D3 /* viewController */ = {
 			isa = PBXGroup;
 			children = (
+				33447E0B1A16F86000987E48 /* order */,
 				334459B019DBAB50002DDE7A /* base */,
 				33C8DD2019C83E2E00E02BAB /* productlist */,
 				3370599319B9A5670077ACF2 /* webview */,
@@ -1338,6 +1356,7 @@
 				337059A819B9CADE0077ACF2 /* proReportDataSource.m in Sources */,
 				33B8959D19E833DC00C43A52 /* cartUpdateDataSource.m in Sources */,
 				3532926519879F5D00149438 /* UIImageView+HighlightedWebCache.m in Sources */,
+				33447E121A16FBE300987E48 /* confirmLabelCell.m in Sources */,
 				35A0CCA3197D14EC00D201D3 /* getShopAdList.m in Sources */,
 				3390642819A38DF5003BA869 /* recommendCell.m in Sources */,
 				3375306C19BD67A70044664F /* yuexiaoliangCell.m in Sources */,
@@ -1407,6 +1426,7 @@
 				35A0CC4C197D099E00D201D3 /* ASICloudFilesContainerXMLParserDelegate.m in Sources */,
 				33B8FE7F19B5B8CC0068F4F5 /* ProGalleryCell.m in Sources */,
 				35A0CC42197D099E00D201D3 /* ASIDataDecompressor.m in Sources */,
+				33447E0F1A16F95000987E48 /* confirmOrderViewController.m in Sources */,
 				3532926719879F5D00149438 /* UIView+WebCacheOperation.m in Sources */,
 				3532926019879F5D00149438 /* SDWebImagePrefetcher.m in Sources */,
 				35A0CCD3197E511500D201D3 /* CP.m in Sources */,

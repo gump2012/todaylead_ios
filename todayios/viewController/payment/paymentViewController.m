@@ -13,6 +13,7 @@
 #import "calculateView.h"
 #import "SVProgressHUD.h"
 #import "cartUpdateDataSource.h"
+#import "confirmOrderViewController.h"
 
 @interface paymentViewController ()
 
@@ -61,6 +62,10 @@
         
         _calcuView.cartdelete = ^(){
             [bself clickDeleteCart];
+        };
+        
+        _calcuView.cartAccount = ^(){
+            [bself clickAccount];
         };
     }
     return self;
@@ -207,6 +212,12 @@
                                               otherButtonTitles:@"确定", nil];
     
     [alertView show];
+}
+
+-(void)clickAccount{
+    confirmOrderViewController *conview = [[confirmOrderViewController alloc] init];
+    
+    [self.navigationController pushViewController:conview animated:YES];
 }
 
 #pragma mark ----------tableview dataSource-----------

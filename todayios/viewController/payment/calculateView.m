@@ -58,6 +58,7 @@
         _bAllSel = YES;
         self.selectAll = nil;
         self.cartdelete = nil;
+        self.cartAccount = nil;
     }
     
     return self;
@@ -97,6 +98,10 @@
     if (!_bDelete) {
         if (self.cartdelete) {
             self.cartdelete();
+        }
+    }else{
+        if (self.cartAccount) {
+            self.cartAccount();
         }
     }
 }
