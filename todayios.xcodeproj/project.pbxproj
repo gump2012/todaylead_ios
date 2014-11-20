@@ -28,6 +28,9 @@
 		334459B919DBAC08002DDE7A /* baseLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 334459B819DBAC08002DDE7A /* baseLabel.m */; };
 		33447E0F1A16F95000987E48 /* confirmOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33447E0E1A16F95000987E48 /* confirmOrderViewController.m */; };
 		33447E121A16FBE300987E48 /* confirmLabelCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 33447E111A16FBE300987E48 /* confirmLabelCell.m */; };
+		335422D61A1CCA2600AFA31F /* confirmTakeGoodCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 335422D51A1CCA2600AFA31F /* confirmTakeGoodCell.m */; };
+		335422DA1A1CCD9200AFA31F /* confirmAddressDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 335422D91A1CCD9200AFA31F /* confirmAddressDataSource.m */; };
+		335422DD1A1CEF4600AFA31F /* confirmPayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 335422DC1A1CEF4600AFA31F /* confirmPayCell.m */; };
 		336B8A1919BE891300D65642 /* proNameCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 336B8A1819BE891300D65642 /* proNameCell.m */; };
 		336B8A1C19BE906600D65642 /* AllSeeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 336B8A1B19BE906600D65642 /* AllSeeCell.m */; };
 		336B8A1F19BE981500D65642 /* getProRecommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 336B8A1E19BE981500D65642 /* getProRecommand.m */; };
@@ -220,6 +223,12 @@
 		33447E0E1A16F95000987E48 /* confirmOrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = confirmOrderViewController.m; path = viewController/order/confirmOrderViewController.m; sourceTree = "<group>"; };
 		33447E101A16FBE300987E48 /* confirmLabelCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = confirmLabelCell.h; path = viewController/order/confirmLabelCell.h; sourceTree = "<group>"; };
 		33447E111A16FBE300987E48 /* confirmLabelCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = confirmLabelCell.m; path = viewController/order/confirmLabelCell.m; sourceTree = "<group>"; };
+		335422D41A1CCA2600AFA31F /* confirmTakeGoodCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = confirmTakeGoodCell.h; path = viewController/order/confirmTakeGoodCell.h; sourceTree = "<group>"; };
+		335422D51A1CCA2600AFA31F /* confirmTakeGoodCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = confirmTakeGoodCell.m; path = viewController/order/confirmTakeGoodCell.m; sourceTree = "<group>"; };
+		335422D81A1CCD9200AFA31F /* confirmAddressDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = confirmAddressDataSource.h; path = model/confirm/confirmAddressDataSource.h; sourceTree = "<group>"; };
+		335422D91A1CCD9200AFA31F /* confirmAddressDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = confirmAddressDataSource.m; path = model/confirm/confirmAddressDataSource.m; sourceTree = "<group>"; };
+		335422DB1A1CEF4600AFA31F /* confirmPayCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = confirmPayCell.h; path = viewController/order/confirmPayCell.h; sourceTree = "<group>"; };
+		335422DC1A1CEF4600AFA31F /* confirmPayCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = confirmPayCell.m; path = viewController/order/confirmPayCell.m; sourceTree = "<group>"; };
 		336B8A1719BE891300D65642 /* proNameCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = proNameCell.h; path = viewController/product/proNameCell.h; sourceTree = "<group>"; };
 		336B8A1819BE891300D65642 /* proNameCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = proNameCell.m; path = viewController/product/proNameCell.m; sourceTree = "<group>"; };
 		336B8A1A19BE906600D65642 /* AllSeeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AllSeeCell.h; path = viewController/product/AllSeeCell.h; sourceTree = "<group>"; };
@@ -629,8 +638,21 @@
 				33447E0E1A16F95000987E48 /* confirmOrderViewController.m */,
 				33447E101A16FBE300987E48 /* confirmLabelCell.h */,
 				33447E111A16FBE300987E48 /* confirmLabelCell.m */,
+				335422D41A1CCA2600AFA31F /* confirmTakeGoodCell.h */,
+				335422D51A1CCA2600AFA31F /* confirmTakeGoodCell.m */,
+				335422DB1A1CEF4600AFA31F /* confirmPayCell.h */,
+				335422DC1A1CEF4600AFA31F /* confirmPayCell.m */,
 			);
 			name = order;
+			sourceTree = "<group>";
+		};
+		335422D71A1CCD2F00AFA31F /* confirm */ = {
+			isa = PBXGroup;
+			children = (
+				335422D81A1CCD9200AFA31F /* confirmAddressDataSource.h */,
+				335422D91A1CCD9200AFA31F /* confirmAddressDataSource.m */,
+			);
+			name = confirm;
 			sourceTree = "<group>";
 		};
 		336B8A2319BE9F2000D65642 /* public */ = {
@@ -1123,6 +1145,7 @@
 		35A0CC99197D11DA00D201D3 /* model */ = {
 			isa = PBXGroup;
 			children = (
+				335422D71A1CCD2F00AFA31F /* confirm */,
 				33CC267519DA9B9E0076372C /* cart */,
 				33D69D1D19CEAF9E00EF332B /* category */,
 				33C8DD2719CAD47E00E02BAB /* list */,
@@ -1399,6 +1422,7 @@
 				3370599919B9A7F50077ACF2 /* getProductHtml.m in Sources */,
 				3532926319879F5D00149438 /* UIImage+MultiFormat.m in Sources */,
 				331A798919BB1DC400B22346 /* getProComment.m in Sources */,
+				335422DA1A1CCD9200AFA31F /* confirmAddressDataSource.m in Sources */,
 				35A0CC47197D099E00D201D3 /* ASINetworkQueue.m in Sources */,
 				3532926419879F5D00149438 /* UIImage+WebP.m in Sources */,
 				33C8DD2619C9B2EA00E02BAB /* getKeywordList.m in Sources */,
@@ -1415,6 +1439,7 @@
 				3390642519A386F1003BA869 /* shopTopDataSource.m in Sources */,
 				334459B619DBAB96002DDE7A /* BaseViewController.m in Sources */,
 				35A0CCC2197E0A9400D201D3 /* JSONKit.m in Sources */,
+				335422DD1A1CEF4600AFA31F /* confirmPayCell.m in Sources */,
 				3370599F19B9B2570077ACF2 /* proHtmlDataSource.m in Sources */,
 				336B8A2819BEA9E700D65642 /* baseParameterCell.m in Sources */,
 				337059A219B9C95F0077ACF2 /* reportWebViewController.m in Sources */,
@@ -1435,6 +1460,7 @@
 				331A798C19BC5A1B00B22346 /* proCommentDataSource.m in Sources */,
 				35A0CC46197D099E00D201D3 /* ASIInputStream.m in Sources */,
 				3532926219879F5D00149438 /* UIImage+GIF.m in Sources */,
+				335422D61A1CCA2600AFA31F /* confirmTakeGoodCell.m in Sources */,
 				35A0CC4E197D099E00D201D3 /* ASICloudFilesObjectRequest.m in Sources */,
 				35A0CC53197D099E00D201D3 /* ASIS3ObjectRequest.m in Sources */,
 				35A0CC45197D099E00D201D3 /* ASIHTTPRequest.m in Sources */,
@@ -1586,7 +1612,7 @@
 				INFOPLIST_FILE = "todayios/todayios-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "601a4208-fcb3-40a0-829b-11b23beb615b";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -1607,7 +1633,7 @@
 				INFOPLIST_FILE = "todayios/todayios-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "601a4208-fcb3-40a0-829b-11b23beb615b";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
