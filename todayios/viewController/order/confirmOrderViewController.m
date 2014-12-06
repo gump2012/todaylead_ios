@@ -10,6 +10,7 @@
 #import "confirmLabelCell.h"
 #import "confirmTakeGoodCell.h"
 #import "confirmPayCell.h"
+#import "receiveViewController.h"
 
 @interface confirmOrderViewController ()
 
@@ -37,6 +38,7 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [[CP shareInstance].mytabbar.tabBar setHidden:YES];
+    [_tableview reloadData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -74,7 +76,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    return 30.0f;
+    return 40.0f;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -150,6 +152,10 @@
         if (indexPath.row == 0) {
             [self makeACall];
         }
+    }
+    else if(indexPath.section == 1){
+        receiveViewController *receiveView = [[receiveViewController alloc] init];
+        [self.navigationController pushViewController:receiveView animated:YES];
     }
 }
 

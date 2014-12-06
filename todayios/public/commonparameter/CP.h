@@ -17,6 +17,7 @@
 @property(nonatomic,assign) UIWindow *mywindow;
 @property(nonatomic,strong) UITabBarController *mytabbar;
 @property(nonatomic,strong) NSString *idfv;
+@property(nonatomic,assign) float deviceVersion;
 
 + (CP *)shareInstance;
 

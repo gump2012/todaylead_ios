@@ -32,6 +32,7 @@ static CP * shareins = nil;
         self.mywindow = nil;
         self.mytabbar = nil;
         self.idfv = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
+        self.deviceVersion = [[[UIDevice currentDevice] systemVersion] floatValue];
     }
     return self;
 }

@@ -33,4 +33,7 @@
 #define NotifyCartProductList            @"CartProductList"     //购物车列表
 #define NotifyCartSave                   @"CartSave"            //购物车保存
 #define NotifyCartDelete                 @"CartDelete"          //购物车删除
+
+//UI
+#define NotifyConfirmHideAddressPick    @"ConfirmHideAddressPick" //隐藏输入框
 #endif

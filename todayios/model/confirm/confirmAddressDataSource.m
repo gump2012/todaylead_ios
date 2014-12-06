@@ -16,6 +16,10 @@ static confirmAddressDataSource * shareins = nil;
 @synthesize phone = _phone;
 @synthesize province = _province;
 @synthesize city = _city;
+@synthesize area = _area;
+@synthesize proviceArr = _proviceArr;
+@synthesize cityArr = _cityArr;
+@synthesize areaArr = _areaArr;
 
 + (confirmAddressDataSource *)shareInstance
 {
@@ -24,6 +28,17 @@ static confirmAddressDataSource * shareins = nil;
         shareins = [[confirmAddressDataSource alloc] init];
     }
     return shareins;
+}
+
+-(id)init{
+    self = [super init];
+    if (self) {
+        _proviceArr = [[NSMutableArray alloc] init];
+        _cityArr = [[NSMutableArray alloc] init];
+        _areaArr = [[NSMutableArray alloc] init];
+    }
+    
+    return self;
 }
 
 @end

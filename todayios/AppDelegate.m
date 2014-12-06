@@ -9,6 +9,8 @@
 #import "AppDelegate.h"
 #import "viewStart.h"
 #import "getCartProductList.h"
+#import "confirmAddressDataSource.h"
+#import "comfirmdb.h"
 
 @implementation AppDelegate
 
@@ -21,12 +23,17 @@
     [CP shareInstance].mywindow = self.window;
     [[viewStart shareInstance] start:self.window];
     [self getDataFromNet];
+    [self initLocalData];
     
     return YES;
 }
 
 -(void)getDataFromNet{
     [[httpManager shareInstance].cartProList request];
+}
+
+-(void)initLocalData{
+    [[confirmAddressDataSource shareInstance] initFromDB];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

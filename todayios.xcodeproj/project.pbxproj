@@ -31,6 +31,17 @@
 		335422D61A1CCA2600AFA31F /* confirmTakeGoodCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 335422D51A1CCA2600AFA31F /* confirmTakeGoodCell.m */; };
 		335422DA1A1CCD9200AFA31F /* confirmAddressDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 335422D91A1CCD9200AFA31F /* confirmAddressDataSource.m */; };
 		335422DD1A1CEF4600AFA31F /* confirmPayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 335422DC1A1CEF4600AFA31F /* confirmPayCell.m */; };
+		335422E01A1E05F800AFA31F /* receiveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 335422DF1A1E05F800AFA31F /* receiveViewController.m */; };
+		335422E31A208FAD00AFA31F /* receiveEditCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 335422E21A208FAD00AFA31F /* receiveEditCell.m */; };
+		335423301A2CCE3900AFA31F /* receiveAreaCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3354232F1A2CCE3900AFA31F /* receiveAreaCell.m */; };
+		335423401A2D0FF900AFA31F /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 335423361A2D0FF900AFA31F /* FMDatabase.m */; };
+		335423411A2D0FF900AFA31F /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 335423381A2D0FF900AFA31F /* FMDatabaseAdditions.m */; };
+		335423421A2D0FF900AFA31F /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 3354233A1A2D0FF900AFA31F /* FMDatabasePool.m */; };
+		335423431A2D0FF900AFA31F /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 3354233C1A2D0FF900AFA31F /* FMDatabaseQueue.m */; };
+		335423441A2D0FF900AFA31F /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 3354233F1A2D0FF900AFA31F /* FMResultSet.m */; };
+		335423461A2D10B700AFA31F /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 335423451A2D10B700AFA31F /* libsqlite3.dylib */; };
+		3354234A1A2F595C00AFA31F /* comfirmdb.m in Sources */ = {isa = PBXBuildFile; fileRef = 335423491A2F595C00AFA31F /* comfirmdb.m */; };
+		3354234B1A2F65B600AFA31F /* region.db in Resources */ = {isa = PBXBuildFile; fileRef = 335423321A2D082000AFA31F /* region.db */; };
 		336B8A1919BE891300D65642 /* proNameCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 336B8A1819BE891300D65642 /* proNameCell.m */; };
 		336B8A1C19BE906600D65642 /* AllSeeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 336B8A1B19BE906600D65642 /* AllSeeCell.m */; };
 		336B8A1F19BE981500D65642 /* getProRecommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 336B8A1E19BE981500D65642 /* getProRecommand.m */; };
@@ -229,6 +240,27 @@
 		335422D91A1CCD9200AFA31F /* confirmAddressDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = confirmAddressDataSource.m; path = model/confirm/confirmAddressDataSource.m; sourceTree = "<group>"; };
 		335422DB1A1CEF4600AFA31F /* confirmPayCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = confirmPayCell.h; path = viewController/order/confirmPayCell.h; sourceTree = "<group>"; };
 		335422DC1A1CEF4600AFA31F /* confirmPayCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = confirmPayCell.m; path = viewController/order/confirmPayCell.m; sourceTree = "<group>"; };
+		335422DE1A1E05F800AFA31F /* receiveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = receiveViewController.h; path = viewController/order/receiveViewController.h; sourceTree = "<group>"; };
+		335422DF1A1E05F800AFA31F /* receiveViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = receiveViewController.m; path = viewController/order/receiveViewController.m; sourceTree = "<group>"; };
+		335422E11A208FAD00AFA31F /* receiveEditCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = receiveEditCell.h; path = viewController/order/receiveEditCell.h; sourceTree = "<group>"; };
+		335422E21A208FAD00AFA31F /* receiveEditCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = receiveEditCell.m; path = viewController/order/receiveEditCell.m; sourceTree = "<group>"; };
+		3354232E1A2CCE3900AFA31F /* receiveAreaCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = receiveAreaCell.h; path = viewController/order/receiveAreaCell.h; sourceTree = "<group>"; };
+		3354232F1A2CCE3900AFA31F /* receiveAreaCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = receiveAreaCell.m; path = viewController/order/receiveAreaCell.m; sourceTree = "<group>"; };
+		335423321A2D082000AFA31F /* region.db */ = {isa = PBXFileReference; lastKnownFileType = file; name = region.db; path = resource/db/region.db; sourceTree = "<group>"; };
+		335423351A2D0FF900AFA31F /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FMDatabase.h; path = db/fmdb/FMDatabase.h; sourceTree = "<group>"; };
+		335423361A2D0FF900AFA31F /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FMDatabase.m; path = db/fmdb/FMDatabase.m; sourceTree = "<group>"; };
+		335423371A2D0FF900AFA31F /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FMDatabaseAdditions.h; path = db/fmdb/FMDatabaseAdditions.h; sourceTree = "<group>"; };
+		335423381A2D0FF900AFA31F /* FMDatabaseAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FMDatabaseAdditions.m; path = db/fmdb/FMDatabaseAdditions.m; sourceTree = "<group>"; };
+		335423391A2D0FF900AFA31F /* FMDatabasePool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FMDatabasePool.h; path = db/fmdb/FMDatabasePool.h; sourceTree = "<group>"; };
+		3354233A1A2D0FF900AFA31F /* FMDatabasePool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FMDatabasePool.m; path = db/fmdb/FMDatabasePool.m; sourceTree = "<group>"; };
+		3354233B1A2D0FF900AFA31F /* FMDatabaseQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FMDatabaseQueue.h; path = db/fmdb/FMDatabaseQueue.h; sourceTree = "<group>"; };
+		3354233C1A2D0FF900AFA31F /* FMDatabaseQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FMDatabaseQueue.m; path = db/fmdb/FMDatabaseQueue.m; sourceTree = "<group>"; };
+		3354233D1A2D0FF900AFA31F /* FMDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FMDB.h; path = db/fmdb/FMDB.h; sourceTree = "<group>"; };
+		3354233E1A2D0FF900AFA31F /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FMResultSet.h; path = db/fmdb/FMResultSet.h; sourceTree = "<group>"; };
+		3354233F1A2D0FF900AFA31F /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FMResultSet.m; path = db/fmdb/FMResultSet.m; sourceTree = "<group>"; };
+		335423451A2D10B700AFA31F /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		335423481A2F595C00AFA31F /* comfirmdb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = comfirmdb.h; path = db/confirmdb/comfirmdb.h; sourceTree = "<group>"; };
+		335423491A2F595C00AFA31F /* comfirmdb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = comfirmdb.m; path = db/confirmdb/comfirmdb.m; sourceTree = "<group>"; };
 		336B8A1719BE891300D65642 /* proNameCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = proNameCell.h; path = viewController/product/proNameCell.h; sourceTree = "<group>"; };
 		336B8A1819BE891300D65642 /* proNameCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = proNameCell.m; path = viewController/product/proNameCell.m; sourceTree = "<group>"; };
 		336B8A1A19BE906600D65642 /* AllSeeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AllSeeCell.h; path = viewController/product/AllSeeCell.h; sourceTree = "<group>"; };
@@ -496,6 +528,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				335423461A2D10B700AFA31F /* libsqlite3.dylib in Frameworks */,
 				35A0CC93197D0BD600D201D3 /* libxml2.dylib in Frameworks */,
 				35A0CC91197D0B9C00D201D3 /* libz.dylib in Frameworks */,
 				35A0CB77197CDEF400D201D3 /* CoreGraphics.framework in Frameworks */,
@@ -642,6 +675,12 @@
 				335422D51A1CCA2600AFA31F /* confirmTakeGoodCell.m */,
 				335422DB1A1CEF4600AFA31F /* confirmPayCell.h */,
 				335422DC1A1CEF4600AFA31F /* confirmPayCell.m */,
+				335422DE1A1E05F800AFA31F /* receiveViewController.h */,
+				335422DF1A1E05F800AFA31F /* receiveViewController.m */,
+				335422E11A208FAD00AFA31F /* receiveEditCell.h */,
+				335422E21A208FAD00AFA31F /* receiveEditCell.m */,
+				3354232E1A2CCE3900AFA31F /* receiveAreaCell.h */,
+				3354232F1A2CCE3900AFA31F /* receiveAreaCell.m */,
 			);
 			name = order;
 			sourceTree = "<group>";
@@ -653,6 +692,50 @@
 				335422D91A1CCD9200AFA31F /* confirmAddressDataSource.m */,
 			);
 			name = confirm;
+			sourceTree = "<group>";
+		};
+		335423311A2D080100AFA31F /* db */ = {
+			isa = PBXGroup;
+			children = (
+				335423321A2D082000AFA31F /* region.db */,
+			);
+			name = db;
+			sourceTree = "<group>";
+		};
+		335423331A2D086100AFA31F /* db */ = {
+			isa = PBXGroup;
+			children = (
+				335423471A2F58DF00AFA31F /* confirmdb */,
+				335423341A2D0FE000AFA31F /* fmdb */,
+			);
+			name = db;
+			sourceTree = "<group>";
+		};
+		335423341A2D0FE000AFA31F /* fmdb */ = {
+			isa = PBXGroup;
+			children = (
+				335423351A2D0FF900AFA31F /* FMDatabase.h */,
+				335423361A2D0FF900AFA31F /* FMDatabase.m */,
+				335423371A2D0FF900AFA31F /* FMDatabaseAdditions.h */,
+				335423381A2D0FF900AFA31F /* FMDatabaseAdditions.m */,
+				335423391A2D0FF900AFA31F /* FMDatabasePool.h */,
+				3354233A1A2D0FF900AFA31F /* FMDatabasePool.m */,
+				3354233B1A2D0FF900AFA31F /* FMDatabaseQueue.h */,
+				3354233C1A2D0FF900AFA31F /* FMDatabaseQueue.m */,
+				3354233D1A2D0FF900AFA31F /* FMDB.h */,
+				3354233E1A2D0FF900AFA31F /* FMResultSet.h */,
+				3354233F1A2D0FF900AFA31F /* FMResultSet.m */,
+			);
+			name = fmdb;
+			sourceTree = "<group>";
+		};
+		335423471A2F58DF00AFA31F /* confirmdb */ = {
+			isa = PBXGroup;
+			children = (
+				335423481A2F595C00AFA31F /* comfirmdb.h */,
+				335423491A2F595C00AFA31F /* comfirmdb.m */,
+			);
+			name = confirmdb;
 			sourceTree = "<group>";
 		};
 		336B8A2319BE9F2000D65642 /* public */ = {
@@ -690,6 +773,7 @@
 		33B8FE9B19B6F8150068F4F5 /* resource */ = {
 			isa = PBXGroup;
 			children = (
+				335423311A2D080100AFA31F /* db */,
 				3335160019D54B1400E25C36 /* cart */,
 				33D69D0019CC24E900EF332B /* dropdown */,
 				33F9747219C149C3004DAE54 /* pay */,
@@ -893,6 +977,7 @@
 		35A0CB73197CDEF400D201D3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				335423451A2D10B700AFA31F /* libsqlite3.dylib */,
 				35A0CC92197D0BD600D201D3 /* libxml2.dylib */,
 				35A0CC90197D0B9C00D201D3 /* libz.dylib */,
 				35A0CC8A197D0AB200D201D3 /* MobileCoreServices.framework */,
@@ -909,6 +994,7 @@
 		35A0CB7A197CDEF400D201D3 /* todayios */ = {
 			isa = PBXGroup;
 			children = (
+				335423331A2D086100AFA31F /* db */,
 				33B8FE9B19B6F8150068F4F5 /* resource */,
 				35A0CCCF197E4FCB00D201D3 /* public */,
 				35A0CCBC197DF7A100D201D3 /* commondef */,
@@ -1328,6 +1414,7 @@
 				33B8FEAF19B6FD4D0068F4F5 /* icon58.png in Resources */,
 				331A798519B9E42500B22346 /* icon_bottom_shopcar_c.png in Resources */,
 				33B8FEB119B6FD4D0068F4F5 /* icon114.png in Resources */,
+				3354234B1A2F65B600AFA31F /* region.db in Resources */,
 				33D69D0F19CC24F600EF332B /* whiteArrow.png in Resources */,
 				3370599019B9A40A0077ACF2 /* icon_cod_review.png in Resources */,
 				3370599219B9A40A0077ACF2 /* icon_pratice_report.png in Resources */,
@@ -1373,6 +1460,7 @@
 				35A0CC41197D099E00D201D3 /* ASIDataCompressor.m in Sources */,
 				33B8FE9A19B6C3FB0068F4F5 /* proiceLabel.m in Sources */,
 				35A0CC54197D099E00D201D3 /* ASIS3Request.m in Sources */,
+				335423421A2D0FF900AFA31F /* FMDatabasePool.m in Sources */,
 				35A0CC48197D099E00D201D3 /* ASIWebPageRequest.m in Sources */,
 				33B8959A19E821EC00C43A52 /* cartUpdate.m in Sources */,
 				3532923519878DB000149438 /* adListCell.m in Sources */,
@@ -1387,6 +1475,7 @@
 				3532925919879F5D00149438 /* NSData+ImageContentType.m in Sources */,
 				35A0CC9C197D123100D201D3 /* httpManager.m in Sources */,
 				35A0CCC8197E271700D201D3 /* SVProgressHUD.m in Sources */,
+				335422E31A208FAD00AFA31F /* receiveEditCell.m in Sources */,
 				33D69CFF19CBCE5600EF332B /* getTopicList.m in Sources */,
 				334459AF19DB97E9002DDE7A /* cartEmptyView.m in Sources */,
 				3322B59F19A89B2000DE26EA /* productDetailDataSource.m in Sources */,
@@ -1403,10 +1492,13 @@
 				3532925F19879F5D00149438 /* SDWebImageManager.m in Sources */,
 				33D69D2919CECD8F00EF332B /* getCategoryProducts.m in Sources */,
 				35A0CC43197D099E00D201D3 /* ASIDownloadCache.m in Sources */,
+				3354234A1A2F595C00AFA31F /* comfirmdb.m in Sources */,
 				336B8A1C19BE906600D65642 /* AllSeeCell.m in Sources */,
+				335423301A2CCE3900AFA31F /* receiveAreaCell.m in Sources */,
 				3532925A19879F5D00149438 /* SDImageCache.m in Sources */,
 				35A0CB85197CDEF400D201D3 /* AppDelegate.m in Sources */,
 				3390642B19A58EBE003BA869 /* shopTopCell.m in Sources */,
+				335423441A2D0FF900AFA31F /* FMResultSet.m in Sources */,
 				3532925C19879F5D00149438 /* SDWebImageDecoder.m in Sources */,
 				33C8DD1F19C6E52A00E02BAB /* adWebViewController.m in Sources */,
 				35A0CBB6197CF26B00D201D3 /* paymentViewController.m in Sources */,
@@ -1429,8 +1521,10 @@
 				33F9747119C13987004DAE54 /* payButtonView.m in Sources */,
 				3374F12419FCA23C000BDA91 /* getCartProductList.m in Sources */,
 				35A0CC4A197D099E00D201D3 /* ASICloudFilesContainer.m in Sources */,
+				335423401A2D0FF900AFA31F /* FMDatabase.m in Sources */,
 				33D69D1719CC28FF00EF332B /* EGORefreshTableFooterView.m in Sources */,
 				3370599C19B9A9810077ACF2 /* baseDataSource.m in Sources */,
+				335422E01A1E05F800AFA31F /* receiveViewController.m in Sources */,
 				334459B519DBAB96002DDE7A /* BaseCell.m in Sources */,
 				336B8A2B19C05B7600D65642 /* priceCell.m in Sources */,
 				35A0CC52197D099E00D201D3 /* ASIS3BucketRequest.m in Sources */,
@@ -1481,6 +1575,8 @@
 				3532926619879F5D00149438 /* UIImageView+WebCache.m in Sources */,
 				35A0CC55197D099E00D201D3 /* ASIS3ServiceRequest.m in Sources */,
 				35A0CBB9197CF2CB00D201D3 /* meViewController.m in Sources */,
+				335423411A2D0FF900AFA31F /* FMDatabaseAdditions.m in Sources */,
+				335423431A2D0FF900AFA31F /* FMDatabaseQueue.m in Sources */,
 				35A0CB81197CDEF400D201D3 /* main.m in Sources */,
 				33C8DD2D19CAE97800E02BAB /* listProductCell.m in Sources */,
 				336B8A1F19BE981500D65642 /* getProRecommand.m in Sources */,
